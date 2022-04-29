@@ -328,6 +328,66 @@ datum
 				..()
 				return
 
+		harmful/botulinum
+			name = "botulinum"
+			id = "botulinum"
+			reagent_state = LIQUID
+			fluid_r = 50
+			fluid_g = 155
+			fluid_b = 60
+			transparency = 200
+			description = "A potent neurotoxin that causes numbs and paralyzes muscles, dangerous when in significant amounts."
+			depletion_rate = 0.05
+			penetrates_skin = 0
+			flushing_multiplier = 0.25
+			var/list/flushed_reagents = list("histamine")
+			var/counter = 1
+
+			on_mob_life(var/mob/M, var/mult = 1)
+				if (!M) M = holder.my_atom
+				if (!counter) counter = 1
+
+				M.jitteriness = max(M.jitteriness-5,0) //botulin has some uses in small doses to counteract
+				flush(M, 0.8 * mult, flushed_reagents) //hyperactive nerves, mild pain and allergies
+
+				switch(counter += (1 * mult))
+					if (20 to 60)
+						M = holder.my_atom
+						M.remove_stam_mod_max("botulinum")//slowly saps away your stamina
+						M.add_stam_mod_max("botulinum", -min((counter*0.7), 100))
+					if (60 to INFINITY)
+						M = holder.my_atom
+						M.remove_stam_mod_max("botulinum")
+						M.add_stam_mod_max("botulinum", -min((counter), 150))
+
+						M.take_toxin_damage(0.5 * mult)//starts dealing some consistent damage
+
+						M.change_eye_blurry(5, 5)
+						M.make_dizzy(1 * mult)
+						M.setStatusMin("slowed", 10 SECONDS * mult)//makes you slow
+
+						if (probmult(8))
+							M.emote(pick("drool","pale"))
+
+						if (prob(min(((counter-45)*0.4), 80)))//the probability of these happening goes up with time, so it becomes more dangerous
+							boutput(M, "<span class='alert'>You feel [pick("numb", "tired", "weak")].</span>")
+							M.setStatus("drowsy", 15 SECONDS)
+						if (prob(min(((counter-45)*0.4), 80)))
+							boutput(M, "<span class='alert'>You can't feel [pick("your chest", "your body", "anything")]!</span>")
+							M.losebreath += (3 * mult)
+						if (prob(min(((counter-45)*0.4), 80)))
+							boutput(M, "<span class='alert'>You can't feel [pick("your legs", "your arms", "anything")]!.</span>")
+							M.setStatusMin("stunned", 4 SECONDS * mult)
+							M.take_toxin_damage(3 * mult)
+				..()
+				return
+
+			on_remove()
+				if(ismob(holder?.my_atom))
+					var/mob/M = holder.my_atom
+					M.remove_stam_mod_max("botulinum")
+				..()
+
 		harmful/ricin
 			name = "space ricin"
 			id = "ricin"

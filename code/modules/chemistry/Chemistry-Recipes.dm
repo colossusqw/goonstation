@@ -3946,6 +3946,15 @@ datum
 			result_amount = 3
 			mix_phrase = "Irregardless and for all intense and purposes, the coffee becomes stupider."
 
+		botulinum
+			name = "botulinum"
+			id = "botulinum"
+			result = "botulinum"
+			required_reagents = list("space_fungus" = 3, "neurotoxin" = 1, "blood" = 1)
+			result_amount = 2
+			required_temperature = T0C + 40
+			mix_phrase = "The solution settles and and emits a slight odor."
+
 		mimicillium
 			name = "Mimicillium"
 			id = "badmanjuice"
