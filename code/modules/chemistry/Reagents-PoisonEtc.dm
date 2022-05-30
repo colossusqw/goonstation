@@ -337,7 +337,7 @@ datum
 			fluid_b = 60
 			transparency = 200
 			description = "A potent neurotoxin that causes numbs and paralyzes muscles, dangerous when in significant amounts."
-			depletion_rate = 0.05
+			depletion_rate = 0.1
 			penetrates_skin = 0
 			flushing_multiplier = 0.25
 			var/list/flushed_reagents = list("histamine")
@@ -351,11 +351,11 @@ datum
 				flush(M, 0.8 * mult, flushed_reagents) //hyperactive nerves, mild pain and allergies
 
 				switch(counter += (1 * mult))
-					if (20 to 60)
+					if (10 to 30)
 						M = holder.my_atom
 						M.remove_stam_mod_max("botulinum")//slowly saps away your stamina
 						M.add_stam_mod_max("botulinum", -min((counter*0.7), 100))
-					if (60 to INFINITY)
+					if (30 to INFINITY)
 						M = holder.my_atom
 						M.remove_stam_mod_max("botulinum")
 						M.add_stam_mod_max("botulinum", -min((counter), 150))
@@ -364,19 +364,22 @@ datum
 
 						M.change_eye_blurry(5, 5)
 						M.make_dizzy(1 * mult)
-						M.setStatusMin("slowed", 10 SECONDS * mult)//makes you slow
+						M.setStatusMin("slowed", 20 SECONDS)//makes you slow
 
 						if (probmult(8))
 							M.emote(pick("drool","pale"))
 
-						if (prob(min(((counter-45)*0.4), 80)))//the probability of these happening goes up with time, so it becomes more dangerous
-							boutput(M, "<span class='alert'>You feel [pick("numb", "tired", "weak")].</span>")
-							M.setStatus("drowsy", 15 SECONDS)
-						if (prob(min(((counter-45)*0.4), 80)))
-							boutput(M, "<span class='alert'>You can't feel [pick("your chest", "your body", "anything")]!</span>")
+						if (prob(min(((counter-15)*0.4), 80)))//the probability of these happening goes up with time, so it becomes more dangerous
+							ON_COOLDOWN(M, "botulinum_message1", 10 SECONDS)
+								boutput(M, "<span class='alert'>You feel [pick("numb", "tired", "weak")].</span>")
+							M.setStatus("drowsy", 15 SECONDS * mult)
+						if (prob(min(((counter-15)*0.4), 80)))
+							ON_COOLDOWN(M, "botulinum_message2", 10 SECONDS)
+								boutput(M, "<span class='alert'>You can't feel [pick("your chest", "your body", "anything")]!</span>")
 							M.losebreath += (3 * mult)
-						if (prob(min(((counter-45)*0.4), 80)))
-							boutput(M, "<span class='alert'>You can't feel [pick("your legs", "your arms", "anything")]!.</span>")
+						if (prob(min(((counter-15)*0.4), 80)))
+							ON_COOLDOWN(M, "botulinum_message2", 10 SECONDS)
+								boutput(M, "<span class='alert'>You can't feel [pick("your legs", "your arms", "anything")]!.</span>")
 							M.setStatusMin("stunned", 4 SECONDS * mult)
 							M.take_toxin_damage(3 * mult)
 				..()
