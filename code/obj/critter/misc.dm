@@ -1495,6 +1495,7 @@
 	defensive = 1
 	wanderer = 1
 	opensdoors = OBJ_CRITTER_OPENS_DOORS_NONE
+	health_gain_from_food = 5
 	atkcarbon = 1
 	atksilicon = 1
 	firevuln = 1
