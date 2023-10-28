@@ -2515,26 +2515,19 @@
 				holder.remove_reagent("cyanide", amount_to_smoke)
 				count = 0
 
-	Saxitoxin // replacing Sarin - come back to this with new recipe
+	Saxitoxin // replacing Sarin - new recipe
 		name = "Saxitoxin"
 		id = "saxitoxin"
 		result = "saxitoxin"
-		required_reagents = list("chlorine" = 1, "fuel" = 1, "oxygen" = 1, "phosphorus" = 1, "fluorine" = 1, "hydrogen" = 1, "acetone" = 1, "weedkiller" = 1)
-		result_amount = 3 // it is super potent
-		mix_phrase = "The mixture yields a colorless, odorless liquid."
+		required_reagents = list("algae" = 5, "ammonia" = 2, "acetic_acid" = 2)
+		result_amount = 5
+		max_temperature = T0C - 20 //the algae needs to be frozen for the reacion to occur properly
+		mix_phrase = "The solution produces a sickly sweet algae smell."
+		instant = FALSE
+		reaction_speed = 1
+		stateful = TRUE
 		mix_sound = 'sound/misc/drinkfizz.ogg'
-		hidden = TRUE
-
-		on_reaction(var/datum/reagents/holder, created_volume)
-			var/location = get_turf(holder.my_atom)
-			for(var/mob/M in all_viewers(null, location))
-				boutput(M, "<span class='alert'>The solution generates a strong vapor!</span>")
-			if(holder?.my_atom?.is_open_container())
-				// A slightly less stupid way of smoking contents. Maybe.
-				var/datum/reagents/smokeContents = new/datum/reagents/
-				smokeContents.add_reagent("saxitoxin", created_volume / 6)
-				smoke_reaction(smokeContents, 2, location)
-				return
+		reaction_icon_color = "#f2fffc"
 
 	menthol
 		name = "Menthol"
@@ -3250,6 +3243,54 @@
 		required_reagents = list("space_fungus" = 1, "ethanol" = 1)
 		result_amount = 2
 		mix_phrase = "The solvent extracts an antibiotic compound from the fungus."
+
+	algae_creation           // Initial introduction of algae to a water source
+		name = "algae creation"
+		id = "algae_creation"
+		result = "algae"
+		required_reagents = list("vomit" = 4, "water" = 0)
+		inhibitors = list("chlorine", "cleaner", "algae") // chlorine stops algae from growing in your pool
+		result_amount = 1
+		reaction_speed = 0.25
+		mix_phrase = null
+		mix_sound = null
+		reaction_icon_state = null
+		hidden = TRUE
+		instant = FALSE
+
+	algae_growth             //algae spreading on it's own
+		name = "algae growth"
+		id = "algae_growth"
+		result = "algae"
+		required_reagents = list("algae" = 0)
+		inhibitors = list("chlorine", "cleaner") //stops algae from growing in your pool
+		result_amount = 1
+		reaction_speed = 0.5
+		min_temperature = T0C     // Doesn't grow in freezing cold temperatures
+		mix_phrase = null         // This also means you can freeze algae for transport and storage
+		mix_sound = null
+		reaction_icon_state = null
+		hidden = TRUE
+		instant = FALSE
+		stateful = TRUE
+
+		does_react(var/datum/reagents/holder)
+			var/water_baseline = holder.get_reagent_amount("water") / 20
+			var/algae_amount   = holder.get_reagent_amount("algae")
+			if ((algae_amount < water_baseline) || (algae_amount > (water_baseline * 2)))
+				return TRUE
+			else
+				return FALSE
+
+		on_reaction(datum/reagents/holder)
+			var/water_baseline = holder.get_reagent_amount("water") / 20
+			var/algae_amount   = holder.get_reagent_amount("algae")
+
+			if (algae_amount < water_baseline) //Can grow up to 2.5% of it's volume at a time
+				reaction_speed = max(algae_amount / 40, 0.5) //Reacts faster if there is more of it, minimum of 0.5
+			else if (algae_amount > (water_baseline * 2)) // Algae dies when there isn't enough water for it
+				reaction_speed = 0.5
+				holder.remove_reagent("algae", max(algae_amount / 40, 1))
 
 	mutagen2
 		name = "Strange Toxin"

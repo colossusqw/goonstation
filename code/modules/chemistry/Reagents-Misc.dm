@@ -3450,6 +3450,26 @@ datum
 						playsound(T, 'sound/impact_sounds/Slimy_Splat_1.ogg', 50, TRUE)
 						make_cleanable( /obj/decal/cleanable/urine,T)
 
+		algae
+			name = "algae"
+			id = "algae"
+			description = "Microbial algae growth, may create dangerous compounds over time."
+			reagent_state = LIQUID
+			fluid_r = 50
+			fluid_g = 180
+			fluid_b = 130
+			transparency = 255
+			hygiene_value = -5
+			viscosity = 0.5
+
+			on_mob_life(var/mob/M, var/mult = 1)
+				if (!M) M = holder.my_atom
+				if (prob(15))                    //This stuff isn't going to kill you, but it's not exceptional to have it in you either
+					M.emote(pick("drool","pale"))
+					M.take_toxin_damage(2 * mult)
+				..()
+				return
+
 		poo
 			name = "compost"
 			id = "poo"
