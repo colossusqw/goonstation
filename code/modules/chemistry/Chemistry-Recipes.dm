@@ -2524,7 +2524,7 @@
 		max_temperature = T0C - 20 //the algae needs to be frozen for the reacion to occur properly
 		mix_phrase = "The solution produces a sickly sweet algae smell."
 		instant = FALSE
-		reaction_speed = 1
+		reaction_speed = 5
 		stateful = TRUE
 		mix_sound = 'sound/misc/drinkfizz.ogg'
 		reaction_icon_color = "#f2fffc"
@@ -3248,10 +3248,10 @@
 		name = "algae creation"
 		id = "algae_creation"
 		result = "algae"
-		required_reagents = list("vomit" = 4, "water" = 0)
+		required_reagents = list("vomit" = 1, "water" = 0)
 		inhibitors = list("chlorine", "cleaner", "algae") // chlorine stops algae from growing in your pool
-		result_amount = 1
-		reaction_speed = 0.25
+		result_amount = 0.25
+		reaction_speed = 1
 		mix_phrase = null
 		mix_sound = null
 		reaction_icon_state = null
@@ -3263,7 +3263,6 @@
 		id = "algae_growth"
 		result = "algae"
 		required_reagents = list("algae" = 0)
-		inhibitors = list("chlorine", "cleaner") //stops algae from growing in your pool
 		result_amount = 1
 		reaction_speed = 0.5
 		min_temperature = T0C     // Doesn't grow in freezing cold temperatures
@@ -3277,6 +3276,8 @@
 		does_react(var/datum/reagents/holder)
 			var/water_baseline = holder.get_reagent_amount("water") / 20
 			var/algae_amount   = holder.get_reagent_amount("algae")
+			if (holder.has_reagent("chlorine") || holder.has_reagent("cleaner"))
+				water_baseline = 0 // Chlorine and cleaner will make the algae quickly die off
 			if ((algae_amount < water_baseline) || (algae_amount > (water_baseline * 2)))
 				return TRUE
 			else
@@ -3286,11 +3287,23 @@
 			var/water_baseline = holder.get_reagent_amount("water") / 20
 			var/algae_amount   = holder.get_reagent_amount("algae")
 
-			if (algae_amount < water_baseline) //Can grow up to 2.5% of it's volume at a time
-				reaction_speed = max(algae_amount / 40, 0.5) //Reacts faster if there is more of it, minimum of 0.5
+			if (holder.has_reagent("chlorine"))
+				water_baseline = 0 // Chlorine will make the algae quickly die off
+				holder.remove_reagent("chlorine", 2)
+
+			if (algae_amount < water_baseline) //Can grow up to 1% of it's volume at a time
+				reaction_speed = max(algae_amount / 100, 0.25) //Reacts faster if there is more of it, minimum of 0.25
+
+				if (holder.get_reagent_amount("ammonia") > 10) // Ammonia temporarily increases the algae growth speed
+					holder.remove_reagent("ammonia", 3)
+					reaction_speed = reaction_speed * 2
+				if (holder.get_reagent_amount("phosphorus") > 10) // Same thing for phosphorus
+					holder.remove_reagent("phosphorus", 6) // Not as effective as ammonia
+					reaction_speed = reaction_speed * 2  // Can stack
+
 			else if (algae_amount > (water_baseline * 2)) // Algae dies when there isn't enough water for it
 				reaction_speed = 0.5
-				holder.remove_reagent("algae", max(algae_amount / 40, 1))
+				holder.remove_reagent("algae", max(algae_amount / 20, 4))
 
 	mutagen2
 		name = "Strange Toxin"

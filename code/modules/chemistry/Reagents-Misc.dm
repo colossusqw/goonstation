@@ -3462,6 +3462,10 @@ datum
 			hygiene_value = -5
 			viscosity = 0.5
 
+			on_plant_life(var/obj/machinery/plantpot/P)
+				var/datum/plantgenes/DNA = P.plantgenes // Steals nutrients from plants and harms their health
+				if (DNA.potency > 10 && prob(50)) DNA.potency--
+
 			on_mob_life(var/mob/M, var/mult = 1)
 				if (!M) M = holder.my_atom
 				if (prob(15))                    //This stuff isn't going to kill you, but it's not exceptional to have it in you either
