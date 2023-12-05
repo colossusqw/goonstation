@@ -2483,7 +2483,7 @@
 		id = "cyanide_offgas"
 		required_reagents = list("cyanide" = 0) //removed in on_reaction
 		result_amount = 1
-		min_temperature = T0C + 30 // Generates vapor above room temperature
+		min_temperature = T0C - 10 // Generates vapor above room temperature
 		mix_phrase = "The mixture slowly gives off fumes."
 		mix_sound = null
 		instant = FALSE
