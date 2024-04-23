@@ -3653,6 +3653,62 @@
 		result_amount = 3
 		mix_phrase = "The mixture congeals into a sticky gel."
 
+	slow_burner_combusting
+		name = "slow_burner_combusting"
+		id = "slow_burner_combusting"
+		required_reagents = list("slowburner" = 1)
+		result_amount = 1
+		mix_phrase = "The mixture begins burning!"
+		mix_sound = null
+		instant = FALSE
+		stateful = TRUE
+		reaction_icon_color = "#deb03b"
+		reaction_speed = 5
+
+		does_react(var/datum/reagents/holder)
+			if (holder.reagent_list["slowburner"]:is_burning == TRUE\
+			 || holder.reagent_list["slowburner"]:minimum_reaction_temperature <= holder.total_temperature)
+				return TRUE
+			else
+				return FALSE
+
+		on_reaction(var/datum/reagents/holder, var/created_volume)
+			for (var/turf/T in holder.covered_turf())
+				fireflash_melting(T, 0, 1600, 50)
+
+	slow_burner_offgas
+		name = "slow burner offgas"
+		id = "slow_burner_offgas"
+		required_reagents = list("slowburner" = 0) // Removed in on_reaction
+		result_amount = 1
+		mix_phrase = "The mixture slowly gives off fumes."
+		mix_sound = null
+		instant = FALSE
+		stateful = TRUE
+		min_temperature = T0C + 25 // Generates vapor above room temperature
+		reaction_icon_color = "#deb03b"
+		var/count = 0
+		var/amount_to_smoke = 3
+
+		does_react(var/datum/reagents/holder)
+			if (holder.my_atom && holder.my_atom.is_open_container() || (istype(holder,/datum/reagents/fluid_group) && !holder.is_airborne()))
+				return TRUE
+			else
+				return FALSE
+
+		on_reaction(var/datum/reagents/holder, var/created_volume)
+			amount_to_smoke = 3
+			if(count < 3)
+				count++
+				reaction_icon_state = null
+			else
+				var/location = get_turf(holder.my_atom)
+				reaction_icon_state = list("reaction_smoke-1", "reaction_smoke-2")
+				var/datum/reagents/smokeContents = new/datum/reagents/
+				smokeContents.add_reagent("slowburner", amount_to_smoke)
+				smoke_reaction(smokeContents, 1, location, do_sfx = FALSE)
+				holder.remove_reagent("slowburner", amount_to_smoke)
+				count = 0
 
 	big_bang_precursor
 		name = "stable bose-einstein macro-condensate"
