@@ -267,3 +267,10 @@
 		var/datum/reagent/reagent = FG.reagent_list[reagent_id]
 		if (reagent.fluid_flags & FLUID_BANNED)
 			FG.del_reagent(reagent_id)
+
+/// Exposes reagents to open flames
+/proc/open_flame_reaction(datum/reagents/FG)
+	for (var/reagent_id in FG.reagent_list)
+		var/datum/reagent/reagent = FG.reagent_list[reagent_id]
+		if (reagent.combusts_on_fire_contact == TRUE)
+			reagent.is_burning = TRUE

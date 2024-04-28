@@ -17,7 +17,8 @@ datum
 			fluid_g = 155
 			volatility = 2
 			transparency = 175
-			var/is_burning = FALSE
+			burns_over_time = TRUE
+			combusts_on_fire_contact = TRUE
 			minimum_reaction_temperature = T0C + 100
 			var/burn_speed = 5
 			var/burn_temp = T0C + 800
@@ -36,7 +37,7 @@ datum
 				if (!is_burning)
 					if(isitem(O))
 						var/obj/item/I = O
-						if(I.firesource)
+						if(I.firesource || I.burning)
 							is_burning = TRUE
 				. = ..()
 
