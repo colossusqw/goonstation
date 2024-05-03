@@ -17,11 +17,10 @@ datum
 			fluid_g = 155
 			volatility = 2
 			transparency = 175
-			burns_over_time = TRUE
 			combusts_on_fire_contact = TRUE
 			minimum_reaction_temperature = T0C + 100
-			var/burn_speed = 5
-			var/burn_temp = T0C + 800
+			burn_speed = 5
+			burn_temperature = T0C + 800
 			viscosity = 0.7
 
 			reaction_turf(var/turf/T, var/volume)
@@ -31,15 +30,6 @@ datum
 				if(holder.total_temperature <= minimum_reaction_temperature && !is_burning) return //Too cold. Doesnt work.
 				is_burning = TRUE
 				return
-
-			reaction_obj(var/obj/O, var/volume)
-				if (isnull(O)) return
-				if (!is_burning)
-					if(isitem(O))
-						var/obj/item/I = O
-						if(I.firesource || I.burning)
-							is_burning = TRUE
-				. = ..()
 
 			reaction_mob(var/mob/M, var/method=TOUCH, var/volume_passed)
 				. = ..()
