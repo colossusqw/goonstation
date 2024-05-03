@@ -17,6 +17,8 @@
 	src.material_trigger_on_temp(exposed_temperature)
 	if (src.reagents)
 		src.reagents.temperature_reagents(exposed_temperature, exposed_volume, 350, 300, 1)
+	if (src.active_liquid && src.active_liquid.group && exposed_temperature  >= 550)
+		open_flame_reaction(src.active_liquid.group.reagents)
 	if(!ON_COOLDOWN(src, "hotspot_expose_to_atoms__1", 1 SECOND) || !ON_COOLDOWN(src, "hotspot_expose_to_atoms__2", 1 SECOND) || \
 		!ON_COOLDOWN(src, "hotspot_expose_to_atoms__3", 1 SECOND) || !ON_COOLDOWN(src, "hotspot_expose_to_atoms__4", 1 SECOND) || \
 		!ON_COOLDOWN(src, "hotspot_expose_to_atoms__5", 1 SECOND))

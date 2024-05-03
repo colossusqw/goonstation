@@ -576,8 +576,6 @@ ABSTRACT_TYPE(/obj/item)
 					firesource = I
 					break
 			src.combust(firesource)
-	if (T.reagents)
-		open_flame_reaction(T.reagents)
 	..() // call your fucking parents
 
 /// Don't override this, override _update_stack_appearance() instead.
