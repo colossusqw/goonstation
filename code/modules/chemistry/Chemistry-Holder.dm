@@ -416,10 +416,12 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 		if (defer_reactions)
 			deferred_reaction_checks++
 			return
-		if (src.is_combusting) // Processes all sorts of burning things
 
 		var/list/old_reactions = active_reactions
 		active_reactions = list()
+
+		if (src.is_combusting) // Processes all sorts of burning things
+			active_reactions += chem_reactions_by_id["chemical_burning"]
 
 		reaction_loop:
 			for(var/datum/chemical_reaction/C in src.possible_reactions)
@@ -661,7 +663,7 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 		return 0
 
 	proc/test_chem_burning() // Handles logic checking if chems should burn
-		if (combustible_volume <= (total_volume/5))
+		if (combustible_volume <= (total_volume/5) && !is_combusting)
 			for(var/current_id in reagent_list)
 				var/datum/reagent/current_reagent = reagent_list[current_id]
 				current_reagent.is_burning = FALSE
