@@ -33,6 +33,12 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 	var/total_volume = 0
 	var/composite_heat_capacity = 0
 
+	///Variables related to burn rate and temperature
+	var/is_combusting = FALSE
+	var/combustible_volume = 0
+	var/composite_combust_speed = 0
+	var/composite_combust_temp = 0
+
 	///Set internally to prevent reactions inside reactions.
 	var/defer_reactions = 0
 	var/deferred_reaction_checks = 0
@@ -410,8 +416,11 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 		if (defer_reactions)
 			deferred_reaction_checks++
 			return
+		if (src.is_combusting) // Processes all sorts of burning things
+
 		var/list/old_reactions = active_reactions
 		active_reactions = list()
+
 		reaction_loop:
 			for(var/datum/chemical_reaction/C in src.possible_reactions)
 				if(src.disposed)
@@ -620,6 +629,8 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 
 	proc/update_total()
 		total_volume = 0
+		combustible_volume = 0
+		var/will_proc_burn = FALSE
 
 		for(var/current_id in reagent_list)
 			var/datum/reagent/current_reagent = reagent_list[current_id]
@@ -630,6 +641,14 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 					current_reagent.volume = max(round(current_reagent.volume, 0.001), 0.001)
 					composite_heat_capacity = total_volume/(total_volume+current_reagent.volume)*composite_heat_capacity + current_reagent.volume/(total_volume+current_reagent.volume)*current_reagent.heat_capacity
 					total_volume += current_reagent.volume
+					if (current_reagent.is_burning)
+						will_proc_burn = TRUE
+					if (current_reagent.flammable)
+						combustible_volume += current_reagent.volume
+
+		if (will_proc_burn)
+			test_chem_burning()
+
 		if(isitem(my_atom))
 			var/obj/item/I = my_atom
 			I.tooltip_rebuild = 1
@@ -640,6 +659,28 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 			del_reagent(current_id)
 
 		return 0
+
+	proc/test_chem_burning() // Handles logic checking if chems should burn
+		if (combustible_volume <= (total_volume/5))
+			for(var/current_id in reagent_list)
+				var/datum/reagent/current_reagent = reagent_list[current_id]
+				current_reagent.is_burning = FALSE
+			is_combusting = FALSE
+			return
+
+		is_combusting = TRUE
+
+		for(var/current_id in reagent_list)
+			var/datum/reagent/current_reagent = reagent_list[current_id]
+			if (current_reagent.flammable)
+				current_reagent.is_burning = TRUE
+				composite_combust_speed += current_reagent.burn_speed * current_reagent.volume
+				composite_combust_temp += current_reagent.burn_temperature * current_reagent.volume
+
+		composite_combust_temp = composite_combust_temp / combustible_volume
+		composite_combust_speed = composite_combust_speed / combustible_volume
+
+
 
 	proc/grenade_effects(var/obj/grenade, var/atom/A)
 		for (var/id in src.reagent_list)

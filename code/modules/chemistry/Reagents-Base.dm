@@ -137,6 +137,10 @@
 	addiction_min = 10
 	depletion_rate = 0.05 // ethanol depletes slower but is formed in smaller quantities
 	overdose = 100 // ethanol poisoning
+	flammable = TRUE
+	combusts_on_fire_contact = TRUE
+	burn_speed = 12
+	burn_temperature = 350 + T0C
 	thirst_value = -0.02
 	bladder_value = -0.2
 	hygiene_value = 1

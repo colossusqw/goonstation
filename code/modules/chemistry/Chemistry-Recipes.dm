@@ -3690,6 +3690,35 @@
 		mix_phrase = "The solution settles and congeals into a strange viscous fluid that seems to have the properties of both a liquid and a gas."
 		max_temperature = 0
 
+	chemical_burning // Generalized burning proc
+		name = "chemical burning"
+		id = "chemical_burning"
+		required_reagents = list()
+		result_amount = 1
+		mix_sound = null
+		instant = FALSE
+		stateful = TRUE
+		hidden = TRUE
+		var/burn_temperature
+
+		does_react(var/datum/reagents/holder)
+			if (holder.is_combusting)
+				return TRUE
+			else
+				return FALSE
+
+		on_reaction(var/datum/reagents/holder, var/created_volume) //heats up and makes fire
+			reaction_speed = holder.composite_combust_speed
+			burn_temperature = holder.composite_combust_temp
+			required_reagents = list()
+
+			for (var/reagent_id in holder.reagent_list)
+				var/datum/reagent/reagent = holder.reagent_list[reagent_id]
+				if (reagent.is_burning)
+					holder.remove_reagent(reagent_id, reaction_speed)
+
+			for (var/turf/T in holder.covered_turf())
+				fireflash_melting(T, 0, burn_temperature, 0)
 
 	aerosol  //aerosol's reaction when crossing the heat threshold
 		name = "Aerosol"

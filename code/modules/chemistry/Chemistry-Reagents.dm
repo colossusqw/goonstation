@@ -32,10 +32,11 @@ datum
 		var/max_addiction_severity = "HIGH" // HIGH = barfing, stuns, etc, LOW = twitching, getting tired
 		var/dispersal = 4 // The range at which this disperses from a grenade. Should be lower for heavier particles (and powerful stuff).
 		var/volatility = 0 // Volatility determines effectiveness in pipebomb. This is 0 for a bad additive, otherwise a positive number which linerally affects explosive power.
-		var/combusts_on_fire_contact = FALSE
+		var/flammable = FALSE  // Determines if the chemical can burn at all
+		var/combusts_on_fire_contact = FALSE // Determines if the chemical burns when in direct contact with fire
+		var/is_burning = FALSE // Determines if the chemical is currently burning
 		var/burn_speed = 0 // Speed at which a chem burns
-		var/burn_temperature = 0
-		var/is_burning = FALSE
+		var/burn_temperature = 0 // Temperature at which a chem burns
 		var/reacting = 0 // fuck off chemist spam
 		var/overdose = 0 // if reagents are at or above this in a mob, it's an overdose - if double this, it's a major overdose
 		var/depletion_rate = 0.4 // this much goes away per tick
