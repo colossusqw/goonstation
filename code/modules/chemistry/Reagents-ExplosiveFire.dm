@@ -7,51 +7,6 @@ datum
 		combustible/
 			name = "fire stuff"
 
-		combustible/slow_burner
-			name = "flammable liquid"
-			id = "slowburner"
-			description = "Flammable looking fluid."
-			reagent_state = LIQUID
-			fluid_r = 140
-			fluid_b = 70
-			fluid_g = 155
-			volatility = 2
-			transparency = 175
-			combusts_on_fire_contact = TRUE
-			minimum_reaction_temperature = T0C + 100
-			burn_speed = 5
-			burn_temperature = T0C + 800
-			viscosity = 0.7
-
-			reaction_turf(var/turf/T, var/volume)
-				. = ..()
-				if (!holder)
-					return
-				if(holder.total_temperature <= minimum_reaction_temperature && !is_burning) return //Too cold. Doesnt work.
-				is_burning = TRUE
-				return
-
-			reaction_mob(var/mob/M, var/method=TOUCH, var/volume_passed)
-				. = ..()
-				if (!holder)
-					return
-				var/mob/living/L = M
-
-				if (holder.total_temperature < minimum_reaction_temperature && !is_burning\
-				   	&& !(istype(L) && L.getStatusDuration("burning"))) return //either the affected mob or it need be burning
-
-				L.update_burning(clamp(volume_passed / 2, 1, 50))
-				is_burning = TRUE
-
-				if (method == INGEST)
-					M.TakeDamage("All", 0, clamp(volume_passed * 1, 10, 45), 0, DAMAGE_BURN)
-					boutput(M, SPAN_ALERT("It burns!"))
-
-			reaction_temperature(exposed_temperature, exposed_volume)
-				if(!is_burning)
-					is_burning = TRUE
-				return
-
 		combustible/phlogiston //This is used for the smoke/phlogiston reaction.
 			name = "phlogiston"
 			id = "phlogiston"

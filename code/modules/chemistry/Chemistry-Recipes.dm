@@ -3653,29 +3653,6 @@
 		result_amount = 3
 		mix_phrase = "The mixture congeals into a sticky gel."
 
-	slow_burner_combusting
-		name = "slow_burner_combusting"
-		id = "slow_burner_combusting"
-		required_reagents = list("slowburner" = 1)
-		result_amount = 1
-		mix_phrase = "The mixture begins burning!"
-		mix_sound = null
-		instant = FALSE
-		stateful = TRUE
-		reaction_icon_color = "#deb03b"
-		reaction_speed = 5
-
-		does_react(var/datum/reagents/holder)
-			if (holder.reagent_list["slowburner"]:is_burning == TRUE\
-			 || holder.reagent_list["slowburner"]:minimum_reaction_temperature <= holder.total_temperature)
-				return TRUE
-			else
-				return FALSE
-
-		on_reaction(var/datum/reagents/holder, var/created_volume) //heats up and makes fire
-			for (var/turf/T in holder.covered_turf())
-				fireflash_melting(T, 0, 2600, 0)
-
 	big_bang_precursor
 		name = "stable bose-einstein macro-condensate"
 		id = "big_bang_precursor"
@@ -3711,14 +3688,22 @@
 			reaction_speed = holder.composite_combust_speed
 			burn_temperature = holder.composite_combust_temp
 			required_reagents = list()
+			var/covered_area = 0
+			var/continue_burn = FALSE
+
+			for (var/turf/T in holder.covered_turf())
+				covered_area += 1
+				fireflash_melting(T, 0, burn_temperature, 0)
 
 			for (var/reagent_id in holder.reagent_list)
 				var/datum/reagent/reagent = holder.reagent_list[reagent_id]
 				if (reagent.is_burning)
-					holder.remove_reagent(reagent_id, reaction_speed)
+					var/amount_to_remove = (reaction_speed * covered_area) * (reagent.volume / holder.combustible_volume)
+					holder.remove_reagent(reagent_id, amount_to_remove)
+					continue_burn = TRUE
 
-			for (var/turf/T in holder.covered_turf())
-				fireflash_melting(T, 0, burn_temperature, 0)
+			if (!continue_burn)
+				holder.is_combusting = FALSE
 
 	aerosol  //aerosol's reaction when crossing the heat threshold
 		name = "Aerosol"

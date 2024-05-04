@@ -417,6 +417,9 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 			deferred_reaction_checks++
 			return
 
+		//if (src.is_combusting) // Processes all sorts of burning things
+
+
 		var/list/old_reactions = active_reactions
 		active_reactions = list()
 
