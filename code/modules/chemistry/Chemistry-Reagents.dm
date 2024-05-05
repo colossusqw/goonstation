@@ -36,6 +36,7 @@ datum
 		var/combusts_on_fire_contact = FALSE // Determines if the chemical burns when in direct contact with fire
 		var/is_burning = FALSE // Determines if the chemical is currently burning
 		var/burn_speed = 0 // Speed at which a chem burns
+		var/burn_volatility = 0 // How violently it burns
 		var/burn_temperature = 0 // Temperature at which a chem burns
 		var/reacting = 0 // fuck off chemist spam
 		var/overdose = 0 // if reagents are at or above this in a mob, it's an overdose - if double this, it's a major overdose

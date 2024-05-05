@@ -141,6 +141,7 @@
 	combusts_on_fire_contact = TRUE
 	burn_speed = 3
 	burn_temperature = 1920 + T0C
+	burn_volatility = 5
 	thirst_value = -0.02
 	bladder_value = -0.2
 	hygiene_value = 1
@@ -216,6 +217,7 @@
 							HH.organHolder.damage_organ(0, 0, liver_damage*mult, "liver")
 						else if (ethanol_amt >= 40 && prob(ethanol_amt/2))
 							HH.organHolder.damage_organ(0, 0, liver_damage*mult, "liver")
+
 //inc_alcohol_metabolized()
 //bunch of extra logic for dumb stat tracking. This is copy pasted from proc/how_many_depletions() in Chemistry-Reagents.dm
 #if defined(MAP_OVERRIDE_POD_WARS)
@@ -415,6 +417,11 @@
 	id = "plasma"
 	description = "The liquid phase of an unusual extraterrestrial compound."
 	reagent_state = LIQUID
+	flammable = TRUE
+	combusts_on_fire_contact = TRUE
+	burn_speed = 10
+	burn_temperature = 2520 + T0C
+	burn_volatility = 10
 
 	fluid_r = 130
 	fluid_g = 40
@@ -426,12 +433,7 @@
 	reaction_temperature(exposed_temperature, exposed_volume)
 		if(!reacted_to_temp)
 			reacted_to_temp = 1
-			if(holder)
-				var/list/covered = holder.covered_turf()
-				for(var/turf/t in covered)
-					SPAWN(1 DECI SECOND) fireflash(t, clamp(((volume/covered.len)/15), 0, 6))
-		if(holder)
-			holder.del_reagent(id)
+			is_burning = TRUE
 
 	on_mob_life(var/mob/M, var/mult = 1)
 		if(!M) M = holder.my_atom
@@ -445,7 +447,7 @@
 		. = ..()
 		if(method == TOUCH)
 			var/mob/living/L = M
-			if(istype(L) && L.getStatusDuration("burning"))
+			if(istype(L) && (L.getStatusDuration("burning") || is_burning))
 				L.changeStatus("burning", 30 SECONDS)
 		return 1
 

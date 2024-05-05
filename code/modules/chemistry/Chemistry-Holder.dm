@@ -38,6 +38,7 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 	var/combustible_volume = 0
 	var/composite_combust_speed = 0
 	var/composite_combust_temp = 0
+	var/composite_volatility = 0
 
 	///Set internally to prevent reactions inside reactions.
 	var/defer_reactions = 0
@@ -681,10 +682,11 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 				current_reagent.is_burning = TRUE
 				composite_combust_speed += current_reagent.burn_speed * current_reagent.volume
 				composite_combust_temp += current_reagent.burn_temperature * current_reagent.volume
+				composite_volatility += current_reagent.burn_volatility * current_reagent.volume
 
 		composite_combust_temp = composite_combust_temp / combustible_volume
 		composite_combust_speed = composite_combust_speed / combustible_volume
-
+		composite_volatility = composite_volatility / combustible_volume
 
 
 	proc/grenade_effects(var/obj/grenade, var/atom/A)

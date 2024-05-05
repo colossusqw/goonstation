@@ -3677,6 +3677,8 @@
 		stateful = TRUE
 		hidden = TRUE
 		var/burn_temperature
+		var/burn_volatility
+		var/burning_volume
 
 		does_react(var/datum/reagents/holder)
 			if (holder.is_combusting)
@@ -3685,25 +3687,38 @@
 				return FALSE
 
 		on_reaction(var/datum/reagents/holder, var/created_volume) //heats up and makes fire
-			reaction_speed = holder.composite_combust_speed
+			reaction_speed = holder.composite_combust_speed // Acquires both speed and temperature
 			burn_temperature = holder.composite_combust_temp
+			burning_volume = holder.combustible_volume
 			required_reagents = list()
-			var/covered_area = 0
-			var/continue_burn = FALSE
 
-			for (var/turf/T in holder.covered_turf())
-				covered_area += 1
-				fireflash_melting(T, 0, burn_temperature, 0)
+			if (istype(holder,/datum/reagents/fluid_group)) // Smoke and pools burning
+				var/covered_area = 0
+				for (var/turf/T in holder.covered_turf())
+					covered_area += 1
 
-			for (var/reagent_id in holder.reagent_list)
-				var/datum/reagent/reagent = holder.reagent_list[reagent_id]
-				if (reagent.is_burning)
-					var/amount_to_remove = (reaction_speed * covered_area) * (reagent.volume / holder.combustible_volume)
-					holder.remove_reagent(reagent_id, amount_to_remove)
-					continue_burn = TRUE
+				var/continue_burn = FALSE
+				burn_volatility = holder.composite_volatility *  burning_volume / max(1, covered_area)
+				burn_volatility = clamp((burn_volatility / 20) - 1, 0, 20)
 
-			if (!continue_burn)
-				holder.is_combusting = FALSE
+				for (var/turf/T in holder.covered_turf())
+					fireflash_melting(T, burn_volatility/4, burn_temperature, 0)
+
+				for (var/reagent_id in holder.reagent_list)
+					var/datum/reagent/reagent = holder.reagent_list[reagent_id]
+					if (reagent.is_burning && reagent.volume > 0)
+						var/amount_to_remove = (reaction_speed * covered_area) * (reagent.volume / burning_volume)
+						holder.remove_reagent(reagent_id, amount_to_remove)
+						continue_burn = TRUE
+
+				if (!continue_burn)
+					holder.is_combusting = FALSE
+				return
+
+			//else if (holder.my_atom && holder.my_atom.is_open_container()) // Things burning in open containers
+
+
+			//else if (holder.my_atom && !holder.my_atom.is_open_container() && !ismob(holder?.my_atom)) // Things burning in closed containers
 
 	aerosol  //aerosol's reaction when crossing the heat threshold
 		name = "Aerosol"
