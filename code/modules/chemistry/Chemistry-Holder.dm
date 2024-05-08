@@ -418,14 +418,8 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 			deferred_reaction_checks++
 			return
 
-		//if (src.is_combusting) // Processes all sorts of burning things
-
-
 		var/list/old_reactions = active_reactions
 		active_reactions = list()
-
-		if (src.is_combusting) // Processes all sorts of burning things
-			active_reactions += chem_reactions_by_id["chemical_burning"]
 
 		reaction_loop:
 			for(var/datum/chemical_reaction/C in src.possible_reactions)
@@ -534,7 +528,7 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 		for (var/datum/chemical_reaction/reaction in removed_reactions)
 			reaction.on_end_reaction(src)
 
-		if (!active_reactions.len)
+		if (!active_reactions.len && !src.is_combusting)
 			if (processing_reactions)
 				processing_reactions = 0
 				active_reagent_holders -= src
@@ -546,6 +540,9 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 	proc/process_reactions()
 		defer_reactions = 1
 		deferred_reaction_checks = 0
+		if (src.is_combusting) // Processes all sorts of burning things
+			burning_chems()
+
 		for(var/datum/chemical_reaction/C in src.active_reactions)
 			if (C.result_amount <= 0)
 				src.active_reactions -= C
@@ -633,6 +630,29 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 
 		return 1
 
+	proc/burning_chems(mult = 1)
+		if (istype(src,/datum/reagents/fluid_group)) // Smoke and pools burning
+			var/covered_area = 0
+			for (var/turf/T in src.covered_turf())
+				covered_area += 1
+
+			var/continue_burn = FALSE
+			var/burn_volatility = src.composite_volatility *  src.combustible_volume / max(1, covered_area)
+			burn_volatility = clamp((burn_volatility / 20) - 1, 0, 20)
+
+			for (var/turf/T in src.covered_turf())
+				fireflash_melting(T, burn_volatility/4, src.composite_combust_temp, 0)
+
+			for (var/reagent_id in src.reagent_list)
+				var/datum/reagent/reagent = src.reagent_list[reagent_id]
+				if (reagent.is_burning)
+					var/amount_to_remove = (src.composite_combust_speed * mult * covered_area) * (reagent.volume / src.combustible_volume)
+					src.remove_reagent(reagent_id, amount_to_remove)
+					continue_burn = TRUE
+
+			src.is_combusting = continue_burn
+			return
+
 	proc/update_total()
 		total_volume = 0
 		combustible_volume = 0
@@ -673,7 +693,8 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 				current_reagent.is_burning = FALSE
 			is_combusting = FALSE
 			return
-
+		if (!is_combusting)
+			active_reagent_holders += src
 		is_combusting = TRUE
 
 		for(var/current_id in reagent_list)
