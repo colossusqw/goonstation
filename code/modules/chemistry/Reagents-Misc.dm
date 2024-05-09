@@ -1279,7 +1279,7 @@ datum
 			do_burn()
 				if (istype(holder,/datum/reagents/fluid_group))
 					var/list/covered = holder.covered_turf()
-					if (prob(10 + smoke_counter) && src.volume >= 20)
+					if (prob(5 + smoke_counter) && src.volume >= 20)
 						var/turf/location = pick(covered)
 						var/datum/effects/system/bad_smoke_spread/smoke = new /datum/effects/system/bad_smoke_spread()
 						smoke.set_up(max(round(length(covered)/3), 1), 0, location)
@@ -1287,7 +1287,7 @@ datum
 						smoke_counter = 0
 						holder.add_reagent("ash", 1, null)
 					else
-						smoke_counter += length(covered)
+						smoke_counter += length(covered) / 2
 				if (holder.my_atom && holder.my_atom.is_open_container())
 					if (prob(5 + smoke_counter) && src.volume >= 20)
 						var/datum/effects/system/bad_smoke_spread/smoke = new /datum/effects/system/bad_smoke_spread()
