@@ -569,7 +569,7 @@ datum
 						smoke.start()
 						smoke_counter = 0
 					else
-						smoke_counter += reacting_volume * 3
+						smoke_counter += reacting_volume * 2
 				if (holder.my_atom && holder.my_atom.is_open_container())
 					if (prob(5 + smoke_counter) && src.volume >= 20)
 						var/datum/effects/system/bad_smoke_spread/smoke = new /datum/effects/system/bad_smoke_spread()
@@ -577,7 +577,7 @@ datum
 						smoke.start()
 						smoke_counter = 0
 					else
-						smoke_counter += reacting_volume * 3
+						smoke_counter += reacting_volume * 2
 
 			reaction_obj(var/obj/O, var/volume)
 				return 1
