@@ -661,12 +661,10 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 			burn_volatility = clamp(burn_volatility - 1, 0, 20)
 
 			switch (burn_volatility)
-				if (0 to 1) // Safe to handle, flames contained inside
-					src.temperature_reagents(src.composite_combust_temp, src.burn_volatility, change_min = 1)
+				if (0 to 2) // Safe to handle, flames contained inside
+					src.temperature_reagents(src.composite_combust_temp, burn_volatility, change_min = 1)
 					// Some sort of indication that something is burning goes here
-				if (1 to 6) // Unsafe, leaking up flames
-					fireflash_melting(src.my_atom, burn_volatility/4, src.composite_combust_temp, 0)
-				if (6 to 8) // Hazardous to be around
+				if (2 to 8) // Unsafe, leaking up flames
 					fireflash_melting(src.my_atom, burn_volatility/4, src.composite_combust_temp, 0)
 				if (8 to 14) // Very spicy fire that maybe breaks stuff
 					fireflash_melting(src.my_atom, burn_volatility/4, src.composite_combust_temp, 0)
