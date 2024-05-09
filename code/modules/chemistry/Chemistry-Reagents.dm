@@ -133,7 +133,7 @@ datum
 		proc/reaction_temperature(exposed_temperature, exposed_volume) //By default we do nothing.
 			return
 
-		proc/do_burn()
+		proc/do_burn(var/reacting_volume)
 			return
 
 		//reaction_mob, reaction_obj reaction_turf and reaction_blob all return 1 by default. Children procs should override return value with 0.

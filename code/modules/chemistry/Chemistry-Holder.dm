@@ -650,15 +650,16 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 					burn_speed *= 1.25
 					for (var/turf/T in src.covered_turf())
 						fireflash_melting(T, 1, src.composite_combust_temp, 0)
-					if (prob(burn_volatility * 5)) // from 30 to 70% chance
+					if (prob(burn_volatility * 5) && length(src.covered_turf())) // from 30 to 70% chance
 						var/turf/chosen_turf = pick(src.covered_turf()) // chance to cause an additional, brighter fireball
 						fireflash_melting(chosen_turf, 1, src.composite_combust_temp * 1.5, 0)
 				if (14 to 20)
 					burn_speed *= 2
 					for (var/turf/T in src.covered_turf())
 						fireflash_melting(T, 2, src.composite_combust_temp, 0)
-					var/turf/chosen_turf = pick(src.covered_turf()) // causes an additional small explosion
-					explosion(chosen_turf, chosen_turf, -1,-1,(burn_volatility - 14)/2, burn_volatility - 14)
+					if (length(src.covered_turf()))
+						var/turf/chosen_turf = pick(src.covered_turf()) // causes an additional small explosion
+						explosion(chosen_turf, chosen_turf, -1,-1,(burn_volatility - 14)/2, burn_volatility - 14)
 
 			for (var/reagent_id in src.reagent_list)
 				var/datum/reagent/reagent = src.reagent_list[reagent_id]
@@ -686,13 +687,15 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 						fireflash(src.my_atom, 0, src.composite_combust_temp)
 					if (8 to 14) // Very spicy fire that maybe breaks stuff
 						burn_speed *= 1.25
-						fireflash_melting(src.my_atom, burn_volatility/4, src.composite_combust_temp, 0)
+						var/explosion_size = clamp(((burn_volatility - 8) * (combustible_volume ** 0.33) / 3), 0, 6)
+						fireflash_melting(src.my_atom, explosion_size, src.composite_combust_temp, 0)
 						if(istype(src?.my_atom, /obj))
 							var/obj/container = src.my_atom
 							container.shatter_chemically(projectiles = TRUE)
 					if (14 to 20) // Here be explosions
 						burn_speed *= 2
-						explosion(src.my_atom, src.my_atom, -1,-1,(burn_volatility - 14)/2,burn_volatility - 14)
+						var/explosion_size = clamp(((burn_volatility - 14) * (combustible_volume ** 0.33) / 3), 0, 10)
+						explosion(src.my_atom, src.my_atom, -1,-1,explosion_size/2,explosion_size)
 						if(istype(src?.my_atom, /obj))
 							var/obj/container = src.my_atom
 							container.shatter_chemically(projectiles = TRUE)
@@ -700,8 +703,8 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 			for (var/reagent_id in src.reagent_list)
 				var/datum/reagent/reagent = src.reagent_list[reagent_id]
 				if (reagent.is_burning)
-					reagent.do_burn()
 					var/amount_to_remove = (burn_speed * mult) * (reagent.volume / src.combustible_volume)
+					reagent.do_burn(amount_to_remove)
 					src.remove_reagent(reagent_id, amount_to_remove)
 					continue_burn = TRUE
 
