@@ -559,7 +559,7 @@ datum
 			reaction_temperature(exposed_temperature, exposed_volume)
 				is_burning = TRUE
 
-			do_burn()
+			do_burn(reacting_volume)
 				if (istype(holder,/datum/reagents/fluid_group))
 					var/list/covered = holder.covered_turf()
 					if (prob(5 + smoke_counter))
@@ -569,7 +569,7 @@ datum
 						smoke.start()
 						smoke_counter = 0
 					else
-						smoke_counter += length(covered) / 2
+						smoke_counter += reacting_volume * 3
 				if (holder.my_atom && holder.my_atom.is_open_container())
 					if (prob(5 + smoke_counter) && src.volume >= 20)
 						var/datum/effects/system/bad_smoke_spread/smoke = new /datum/effects/system/bad_smoke_spread()
@@ -577,7 +577,7 @@ datum
 						smoke.start()
 						smoke_counter = 0
 					else
-						smoke_counter += min(src.volume / 20, 8)
+						smoke_counter += reacting_volume * 3
 
 			reaction_obj(var/obj/O, var/volume)
 				return 1

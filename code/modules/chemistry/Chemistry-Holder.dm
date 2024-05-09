@@ -664,8 +664,8 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 			for (var/reagent_id in src.reagent_list)
 				var/datum/reagent/reagent = src.reagent_list[reagent_id]
 				if (reagent.is_burning)
-					reagent.do_burn()
 					var/amount_to_remove = (burn_speed * mult * covered_area) * (reagent.volume / src.combustible_volume)
+					reagent.do_burn(amount_to_remove)
 					src.remove_reagent(reagent_id, amount_to_remove)
 					continue_burn = TRUE
 
@@ -678,7 +678,7 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 			burn_volatility = clamp(burn_volatility - 1, 0, 20)
 			var/burn_speed = src.composite_combust_speed
 
-			if (src.combustible_volume >= 3) // A minimum amount to prevent low volume fuckery
+			if (src.combustible_volume >= 1) // A minimum amount to prevent low volume fuckery
 				switch (burn_volatility)
 					if (0 to 2) // Safe to handle, flames contained inside
 						src.temperature_reagents(src.composite_combust_temp, burn_volatility, change_min = 1)
