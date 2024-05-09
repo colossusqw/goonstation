@@ -1296,7 +1296,7 @@ datum
 						smoke_counter = 0
 						holder.add_reagent("ash", 1, null)
 					else
-						smoke_counter += src.volume / 20
+						smoke_counter += min(src.volume / 20, 8)
 
 			reaction_mob(var/mob/M, var/method=TOUCH, var/volume)
 				. = ..()

@@ -577,7 +577,7 @@ datum
 						smoke.start()
 						smoke_counter = 0
 					else
-						smoke_counter += src.volume / 20
+						smoke_counter += min(src.volume / 20, 8)
 
 			reaction_obj(var/obj/O, var/volume)
 				return 1
