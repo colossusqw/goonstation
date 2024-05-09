@@ -639,16 +639,32 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 
 			var/continue_burn = FALSE
 			var/burn_volatility = src.composite_volatility *  clamp(((src.combustible_volume ** 0.33) / max(1, covered_area)), 0, 1)
-			burn_volatility = clamp(burn_volatility, 0, 30)
+			burn_volatility = clamp(burn_volatility, 0, 20)
+			var/burn_speed = src.composite_combust_speed
 
-			for (var/turf/T in src.covered_turf())
-				fireflash_melting(T, burn_volatility/4, src.composite_combust_temp, 0)
+			switch (burn_volatility)
+				if (0 to 6)
+					for (var/turf/T in src.covered_turf())
+						fireflash(T, 0, src.composite_combust_temp)
+				if (6 to 14)
+					burn_speed *= 1.25
+					for (var/turf/T in src.covered_turf())
+						fireflash_melting(T, 1, src.composite_combust_temp, 0)
+					if (prob(burn_volatility * 5)) // from 30 to 70% chance
+						var/turf/chosen_turf = pick(src.covered_turf()) // chance to cause an additional, brighter fireball
+						fireflash_melting(chosen_turf, 1, src.composite_combust_temp * 1.5, 0)
+				if (14 to 20)
+					burn_speed *= 2
+					for (var/turf/T in src.covered_turf())
+						fireflash_melting(T, 2, src.composite_combust_temp, 0)
+					var/turf/chosen_turf = pick(src.covered_turf()) // causes an additional small explosion
+					explosion(chosen_turf, chosen_turf, -1,-1,(burn_volatility - 14)/2, burn_volatility - 14)
 
 			for (var/reagent_id in src.reagent_list)
 				var/datum/reagent/reagent = src.reagent_list[reagent_id]
 				if (reagent.is_burning)
 					reagent.do_burn()
-					var/amount_to_remove = (src.composite_combust_speed * mult * covered_area) * (reagent.volume / src.combustible_volume)
+					var/amount_to_remove = (burn_speed * mult * covered_area) * (reagent.volume / src.combustible_volume)
 					src.remove_reagent(reagent_id, amount_to_remove)
 					continue_burn = TRUE
 
@@ -659,6 +675,7 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 			var/continue_burn = FALSE
 			var/burn_volatility = src.composite_volatility * ((clamp(src.combustible_volume / src.my_atom.reagents.maximum_volume, 0, 1) + 1)/2)
 			burn_volatility = clamp(burn_volatility - 1, 0, 20)
+			var/burn_speed = src.composite_combust_speed
 
 			if (src.combustible_volume >= 3) // A minimum amount to prevent low volume fuckery
 				switch (burn_volatility)
@@ -668,12 +685,14 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 					if (2 to 8) // Unsafe, leaking up flames
 						fireflash(src.my_atom, 0, src.composite_combust_temp)
 					if (8 to 14) // Very spicy fire that maybe breaks stuff
+						burn_speed *= 1.25
 						fireflash_melting(src.my_atom, burn_volatility/4, src.composite_combust_temp, 0)
 						if(istype(src?.my_atom, /obj))
 							var/obj/container = src.my_atom
 							container.shatter_chemically(projectiles = TRUE)
 					if (14 to 20) // Here be explosions
-						explosion(src.my_atom, src.my_atom, -1,burn_volatility/15,burn_volatility/5,burn_volatility)
+						burn_speed *= 2
+						explosion(src.my_atom, src.my_atom, -1,-1,(burn_volatility - 14)/2,burn_volatility - 14)
 						if(istype(src?.my_atom, /obj))
 							var/obj/container = src.my_atom
 							container.shatter_chemically(projectiles = TRUE)
@@ -682,7 +701,7 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 				var/datum/reagent/reagent = src.reagent_list[reagent_id]
 				if (reagent.is_burning)
 					reagent.do_burn()
-					var/amount_to_remove = (src.composite_combust_speed * mult) * (reagent.volume / src.combustible_volume)
+					var/amount_to_remove = (burn_speed * mult) * (reagent.volume / src.combustible_volume)
 					src.remove_reagent(reagent_id, amount_to_remove)
 					continue_burn = TRUE
 
@@ -730,8 +749,9 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 			is_combusting = FALSE
 			return
 		if (!is_combusting)
-			for(var/mob/living/M in AIviewers(7, get_turf(my_atom)) )
-				boutput(M, SPAN_NOTICE("[bicon(my_atom)] The mixture begins burning!"))
+			if (!ON_COOLDOWN(global, "burning_messages", 4 SECONDS)) // Fuck you chemical message spam
+				for(var/mob/living/M in AIviewers(7, get_turf(my_atom)))
+					boutput(M, SPAN_NOTICE("[bicon(my_atom)] The mixture begins burning!"))
 			active_reagent_holders += src
 		is_combusting = TRUE
 
