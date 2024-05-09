@@ -657,7 +657,7 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 		// Open containers burning
 		if (src.my_atom && src.my_atom.is_open_container())
 			var/continue_burn = FALSE
-			var/burn_volatility = src.composite_volatility * (((src.combustible_volume / src.maximum_volume) + 1)/2)
+			var/burn_volatility = src.composite_volatility * ((clamp(src.combustible_volume / src.maximum_volume, 0, 1) + 1)/2)
 			burn_volatility = clamp(burn_volatility - 1, 0, 20)
 
 			switch (burn_volatility)
