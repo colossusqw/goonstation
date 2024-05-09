@@ -657,25 +657,26 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 		// Open containers burning
 		if (src.my_atom && src.my_atom.is_open_container())
 			var/continue_burn = FALSE
-			var/burn_volatility = src.composite_volatility * ((clamp(src.combustible_volume / src.maximum_volume, 0, 1) + 1)/2)
+			var/burn_volatility = src.composite_volatility * ((clamp(src.combustible_volume / src.my_atom.reagents.maximum_volume, 0, 1) + 1)/2)
 			burn_volatility = clamp(burn_volatility - 1, 0, 20)
 
-			switch (burn_volatility)
-				if (0 to 2) // Safe to handle, flames contained inside
-					src.temperature_reagents(src.composite_combust_temp, burn_volatility, change_min = 1)
-					// Some sort of indication that something is burning goes here
-				if (2 to 8) // Unsafe, leaking up flames
-					fireflash_melting(src.my_atom, burn_volatility/4, src.composite_combust_temp, 0)
-				if (8 to 14) // Very spicy fire that maybe breaks stuff
-					fireflash_melting(src.my_atom, burn_volatility/4, src.composite_combust_temp, 0)
-					if(istype(src?.my_atom, /obj))
-						var/obj/container = src.my_atom
-						container.shatter_chemically(projectiles = TRUE)
-				if (14 to 20) // Here be explosions
-					explosion(src.my_atom, src.my_atom, -1,burn_volatility/15,burn_volatility/5,burn_volatility)
-					if(istype(src?.my_atom, /obj))
-						var/obj/container = src.my_atom
-						container.shatter_chemically(projectiles = TRUE)
+			if (src.combustible_volume >= 3) // A minimum amount to prevent low volume fuckery
+				switch (burn_volatility)
+					if (0 to 2) // Safe to handle, flames contained inside
+						src.temperature_reagents(src.composite_combust_temp, burn_volatility, change_min = 1)
+						// Some sort of indication that something is burning goes here
+					if (2 to 8) // Unsafe, leaking up flames
+						fireflash(src.my_atom, 0, src.composite_combust_temp)
+					if (8 to 14) // Very spicy fire that maybe breaks stuff
+						fireflash_melting(src.my_atom, burn_volatility/4, src.composite_combust_temp, 0)
+						if(istype(src?.my_atom, /obj))
+							var/obj/container = src.my_atom
+							container.shatter_chemically(projectiles = TRUE)
+					if (14 to 20) // Here be explosions
+						explosion(src.my_atom, src.my_atom, -1,burn_volatility/15,burn_volatility/5,burn_volatility)
+						if(istype(src?.my_atom, /obj))
+							var/obj/container = src.my_atom
+							container.shatter_chemically(projectiles = TRUE)
 
 			for (var/reagent_id in src.reagent_list)
 				var/datum/reagent/reagent = src.reagent_list[reagent_id]
