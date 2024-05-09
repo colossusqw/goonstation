@@ -565,7 +565,7 @@ datum
 					if (prob(10 + smoke_counter))
 						var/turf/location = pick(covered)
 						var/datum/effects/system/bad_smoke_spread/smoke = new /datum/effects/system/bad_smoke_spread()
-						smoke.set_up(1, 0, location)
+						smoke.set_up(max(round(length(covered)/3), 1), 0, location)
 						smoke.start()
 						smoke_counter = 0
 					else
