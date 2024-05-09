@@ -647,6 +647,7 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 			for (var/reagent_id in src.reagent_list)
 				var/datum/reagent/reagent = src.reagent_list[reagent_id]
 				if (reagent.is_burning)
+					reagent.do_burn()
 					var/amount_to_remove = (src.composite_combust_speed * mult * covered_area) * (reagent.volume / src.combustible_volume)
 					src.remove_reagent(reagent_id, amount_to_remove)
 					continue_burn = TRUE
@@ -680,6 +681,7 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 			for (var/reagent_id in src.reagent_list)
 				var/datum/reagent/reagent = src.reagent_list[reagent_id]
 				if (reagent.is_burning)
+					reagent.do_burn()
 					var/amount_to_remove = (src.composite_combust_speed * mult) * (reagent.volume / src.combustible_volume)
 					src.remove_reagent(reagent_id, amount_to_remove)
 					continue_burn = TRUE

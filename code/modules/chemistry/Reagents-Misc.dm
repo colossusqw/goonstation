@@ -1270,10 +1270,33 @@ datum
 			burn_temperature = 1920 + T0C
 			burn_volatility = 3
 			minimum_reaction_temperature = T0C + 200
+			var/smoke_counter = 0
 
 			reaction_temperature(exposed_temperature, exposed_volume)
 				if (!src.reacting && (holder && !holder.has_reagent("chlorine"))) // need this to be higher to make propylene possible
 					is_burning = TRUE
+
+			do_burn()
+				if (istype(holder,/datum/reagents/fluid_group))
+					var/list/covered = holder.covered_turf()
+					if (prob(10 + smoke_counter) && src.volume >= 20)
+						var/turf/location = pick(covered)
+						var/datum/effects/system/bad_smoke_spread/smoke = new /datum/effects/system/bad_smoke_spread()
+						smoke.set_up(1, 0, location)
+						smoke.start()
+						smoke_counter = 0
+						holder.add_reagent("ash", 1, null)
+					else
+						smoke_counter += length(covered)
+				if (holder.my_atom && holder.my_atom.is_open_container())
+					if (prob(5 + smoke_counter) && src.volume >= 20)
+						var/datum/effects/system/bad_smoke_spread/smoke = new /datum/effects/system/bad_smoke_spread()
+						smoke.set_up(1, 0, holder.my_atom)
+						smoke.start()
+						smoke_counter = 0
+						holder.add_reagent("ash", 1, null)
+					else
+						smoke_counter += src.volume / 20
 
 			reaction_mob(var/mob/M, var/method=TOUCH, var/volume)
 				. = ..()
@@ -1291,25 +1314,26 @@ datum
 				return
 
 			reaction_turf(var/turf/target, var/volume)
-				if (is_burning) return // Don't make the floor slippy if on fire
 				var/turf/simulated/T = target
 				if (istype(T)) //Wire: fix for Undefined variable /turf/space/var/wet (&& T.wet)
-					if (T.wet >= 2) return
+					if (T.wet >= 2) return ..()
 					var/image/wet = image('icons/effects/water.dmi',"wet_floor")
 					wet.blend_mode = BLEND_ADD
 					wet.alpha = 60
 					T.UpdateOverlays(wet, "wet_overlay")
 					T.wet = 2
-					if (!locate(/obj/decal/cleanable/oil) in T)
+					if (!locate(/obj/decal/cleanable/oil) in T && volume <= 5)
 						playsound(T, 'sound/impact_sounds/Slimy_Splat_1.ogg', 50, TRUE)
 						switch(volume)
 							if (0 to 0.5)
 								if (prob(volume * 10))
 									make_cleanable(/obj/decal/cleanable/oil/streak,T)
-							if (5 to 19)
+							if (5 to 12)
 								make_cleanable(/obj/decal/cleanable/oil/streak,T)
-							if (20 to INFINITY)
+							if (12 to 20)
 								make_cleanable(/obj/decal/cleanable/oil,T)
+							if (20 to INFINITY)
+								..()
 					SPAWN(20 SECONDS)
 						T.wet = 0
 						T.UpdateOverlays(null, "wet_overlay")
