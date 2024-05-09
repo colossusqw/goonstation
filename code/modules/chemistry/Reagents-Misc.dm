@@ -1291,6 +1291,7 @@ datum
 				return
 
 			reaction_turf(var/turf/target, var/volume)
+				if (is_burning) return // Don't make the floor slippy if on fire
 				var/turf/simulated/T = target
 				if (istype(T)) //Wire: fix for Undefined variable /turf/space/var/wet (&& T.wet)
 					if (T.wet >= 2) return
