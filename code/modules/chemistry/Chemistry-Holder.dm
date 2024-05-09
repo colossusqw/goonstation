@@ -662,6 +662,7 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 
 			switch (burn_volatility)
 				if (0 to 1) // Safe to handle, flames contained inside
+					src.temperature_reagents(src.composite_combust_temp, src.combustible_volume, change_min = 1)
 					// Some sort of indication that something is burning goes here
 				if (1 to 6) // Unsafe, leaking up flames
 					fireflash_melting(src.my_atom, burn_volatility/4, src.composite_combust_temp, 0)
@@ -730,6 +731,8 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 			is_combusting = FALSE
 			return
 		if (!is_combusting)
+			for(var/mob/living/M in AIviewers(7, get_turf(my_atom)) )
+				boutput(M, SPAN_NOTICE("[bicon(my_atom)] The mixture begins burning!"))
 			active_reagent_holders += src
 		is_combusting = TRUE
 
