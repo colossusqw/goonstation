@@ -727,7 +727,7 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 						// Some sort of indication that something is burning goes here
 					if (4 to 10) // Causes a mild explosion and releases the pressure
 						burn_speed *= 2
-						var/explosion_size = clamp(((burn_volatility - 4) * (combustible_volume ** 0.33) / 3), 0, 6)
+						var/explosion_size = clamp(((burn_volatility - 4) * (combustible_volume ** 0.33) / 6), 0, 4)
 						fireflash_melting(get_turf(src.my_atom), explosion_size, src.composite_combust_temp, 0)
 						explosion(src.my_atom, get_turf(src.my_atom), -1,-1,explosion_size/2,explosion_size)
 						var/obj/container = src.my_atom
