@@ -687,14 +687,14 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 					if (2 to 8) // Unsafe, leaking up flames
 						fireflash(get_turf(src.my_atom), 0, src.composite_combust_temp,  chemfire = CHEM_FIRE_RED)
 					if (8 to 14) // Very spicy fire that maybe breaks stuff
-						burn_speed *= 1.25
+						burn_speed *= 1.15
 						var/explosion_size = clamp(((burn_volatility - 8) * (combustible_volume ** 0.33) / 3), 0, 6)
 						fireflash_melting(get_turf(src.my_atom), explosion_size, src.composite_combust_temp, 0,  chemfire = CHEM_FIRE_RED)
 						if(istype(src?.my_atom, /obj))
 							var/obj/container = src.my_atom
 							container.shatter_chemically(projectiles = TRUE)
 					if (14 to 20) // Here be explosions
-						burn_speed *= 2
+						burn_speed *= 1.5
 						var/explosion_size = clamp(((burn_volatility - 14) * (combustible_volume ** 0.33) / 3), 0, 10)
 						explosion(src.my_atom, get_turf(src.my_atom), -1,-1,explosion_size/2,explosion_size)
 						if(istype(src?.my_atom, /obj))
