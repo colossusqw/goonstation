@@ -422,7 +422,6 @@
 	burn_speed = 10
 	burn_temperature = 2520 + T0C
 	burn_volatility = 10
-
 	fluid_r = 130
 	fluid_g = 40
 	fluid_b = 160

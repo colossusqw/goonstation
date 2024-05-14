@@ -647,14 +647,14 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 					for (var/turf/T in src.covered_turf())
 						fireflash(T, 0, src.composite_combust_temp,  chemfire = CHEM_FIRE_RED)
 				if (6 to 14)
-					burn_speed *= 1.25
+					burn_speed *= 1.15
 					for (var/turf/T in src.covered_turf())
 						fireflash_melting(T, 1, src.composite_combust_temp, 0,  chemfire = CHEM_FIRE_RED)
 					if (prob(burn_volatility * 5) && length(src.covered_turf())) // from 30 to 70% chance
 						var/turf/chosen_turf = pick(src.covered_turf()) // chance to cause an additional, brighter fireball
 						fireflash_melting(chosen_turf, 1, src.composite_combust_temp * 1.5, 0,  chemfire = CHEM_FIRE_RED)
 				if (14 to 20)
-					burn_speed *= 2
+					burn_speed *= 1.5
 					for (var/turf/T in src.covered_turf())
 						fireflash_melting(T, 2, src.composite_combust_temp, 0,  chemfire = CHEM_FIRE_RED)
 					if (length(src.covered_turf()))
