@@ -645,18 +645,18 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 			switch (burn_volatility)
 				if (0 to 6)
 					for (var/turf/T in src.covered_turf())
-						fireflash(T, 0, src.composite_combust_temp)
+						fireflash(T, 0, src.composite_combust_temp,  chemfire = CHEM_FIRE_RED)
 				if (6 to 14)
 					burn_speed *= 1.25
 					for (var/turf/T in src.covered_turf())
-						fireflash_melting(T, 1, src.composite_combust_temp, 0)
+						fireflash_melting(T, 1, src.composite_combust_temp, 0,  chemfire = CHEM_FIRE_RED)
 					if (prob(burn_volatility * 5) && length(src.covered_turf())) // from 30 to 70% chance
 						var/turf/chosen_turf = pick(src.covered_turf()) // chance to cause an additional, brighter fireball
-						fireflash_melting(chosen_turf, 1, src.composite_combust_temp * 1.5, 0)
+						fireflash_melting(chosen_turf, 1, src.composite_combust_temp * 1.5, 0,  chemfire = CHEM_FIRE_RED)
 				if (14 to 20)
 					burn_speed *= 2
 					for (var/turf/T in src.covered_turf())
-						fireflash_melting(T, 2, src.composite_combust_temp, 0)
+						fireflash_melting(T, 2, src.composite_combust_temp, 0,  chemfire = CHEM_FIRE_RED)
 					if (length(src.covered_turf()))
 						var/turf/chosen_turf = pick(src.covered_turf()) // causes an additional small explosion
 						explosion(chosen_turf, chosen_turf, -1,-1,(burn_volatility - 14)/2, burn_volatility - 14)
@@ -685,11 +685,11 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 						src.temperature_reagents(src.composite_combust_temp, burn_volatility, change_min = 1)
 						// Some sort of indication that something is burning goes here
 					if (2 to 8) // Unsafe, leaking up flames
-						fireflash(get_turf(src.my_atom), 0, src.composite_combust_temp)
+						fireflash(get_turf(src.my_atom), 0, src.composite_combust_temp,  chemfire = CHEM_FIRE_RED)
 					if (8 to 14) // Very spicy fire that maybe breaks stuff
 						burn_speed *= 1.25
 						var/explosion_size = clamp(((burn_volatility - 8) * (combustible_volume ** 0.33) / 3), 0, 6)
-						fireflash_melting(get_turf(src.my_atom), explosion_size, src.composite_combust_temp, 0)
+						fireflash_melting(get_turf(src.my_atom), explosion_size, src.composite_combust_temp, 0,  chemfire = CHEM_FIRE_RED)
 						if(istype(src?.my_atom, /obj))
 							var/obj/container = src.my_atom
 							container.shatter_chemically(projectiles = TRUE)
@@ -728,14 +728,14 @@ proc/chem_helmet_check(mob/living/carbon/human/H, var/what_liquid="hot")
 					if (4 to 10) // Causes a mild explosion and releases the pressure
 						burn_speed *= 2
 						var/explosion_size = clamp(((burn_volatility - 4) * (combustible_volume ** 0.33) / 6), 0, 4)
-						fireflash_melting(get_turf(src.my_atom), explosion_size, src.composite_combust_temp, 0)
+						fireflash_melting(get_turf(src.my_atom), explosion_size, src.composite_combust_temp, 0,  chemfire = CHEM_FIRE_RED)
 						explosion(src.my_atom, get_turf(src.my_atom), -1,-1,explosion_size/2,explosion_size)
 						var/obj/container = src.my_atom
 						container.shatter_chemically(projectiles = TRUE)
 					if (10 to 20) // Causes a larger explosion and releases even more pressure
 						burn_speed *= 4
 						var/explosion_size = clamp(((burn_volatility - 10) * (combustible_volume ** 0.33) / 3), 0, 10)
-						fireflash_melting(get_turf(src.my_atom), explosion_size, src.composite_combust_temp, 0)
+						fireflash_melting(get_turf(src.my_atom), explosion_size, src.composite_combust_temp, 0,  chemfire = CHEM_FIRE_RED)
 						explosion(src.my_atom, get_turf(src.my_atom), -1,explosion_size/4,explosion_size/2,explosion_size)
 						var/obj/container = src.my_atom
 						container.shatter_chemically(projectiles = TRUE)
