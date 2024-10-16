@@ -6,7 +6,8 @@
  * @license ISC
  */
 
-import { Section, Stack } from '../../../../components';
+import { Section, Stack } from 'tgui-core/components';
+
 import { DockingAllowedButton } from '../../DockingAllowedButton';
 import type { UpgradeData } from '../../type';
 
@@ -18,27 +19,23 @@ interface UpgradeReportSectionProps {
 
 export const UpgradeReportSection = (props: UpgradeReportSectionProps) => {
   const { onRemoveUpgrade, upgrades, upgrades_max } = props;
-  const upgradeCount = 'Upgrades (' + upgrades.length + ' / ' + upgrades_max + ' installed)';
+  const upgradeCount = `Upgrades (${upgrades.length} / ${upgrades_max} installed)`;
   return (
     <Section title={upgradeCount}>
-      <div>
-        {upgrades.map((upgrade) => {
-          return (
-            <Stack key={upgrade.ref}>
-              <Stack.Item>{upgrade.name}</Stack.Item>
-              <Stack.Item>
-                <DockingAllowedButton
-                  compact
-                  icon="minus-circle"
-                  color="transparent"
-                  tooltip={`Remove ${upgrade.name}`}
-                  onClick={() => onRemoveUpgrade(upgrade.ref)}
-                />
-              </Stack.Item>
-            </Stack>
-          );
-        })}
-      </div>
+      {upgrades.map((upgrade) => (
+        <Stack key={upgrade.ref}>
+          <Stack.Item>{upgrade.name}</Stack.Item>
+          <Stack.Item>
+            <DockingAllowedButton
+              compact
+              icon="minus-circle"
+              color="transparent"
+              tooltip={`Remove ${upgrade.name}`}
+              onClick={() => onRemoveUpgrade(upgrade.ref)}
+            />
+          </Stack.Item>
+        </Stack>
+      ))}
     </Section>
   );
 };

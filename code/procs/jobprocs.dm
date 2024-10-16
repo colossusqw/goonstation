@@ -22,37 +22,10 @@ var/global/totally_random_jobs = FALSE
 	if(!J)
 		CRASH("FindOccupationCandidates called with invalid job name: [job] at level: [level]")
 	for (var/mob/new_player/player in unassigned)
-		if(!player.client || !player.client.preferences) //Well shit.
+		if (!job_controls.check_job_eligibility(player, J))
 			continue
+
 		var/datum/preferences/P  = player.client.preferences
-		if(player.mind?.is_antagonist())
-			if (ticker?.mode && istype(ticker.mode, /datum/game_mode/revolution))
-				if (J.cant_spawn_as_rev || ("loyalist" in P.traitPreferences.traits_selected)) //Why would an NT Loyalist be a revolutionary?
-					continue
-			else if((ticker?.mode && istype(ticker.mode, /datum/game_mode/gang)) && (job != "Staff Assistant"))
-				continue
-			else if ((ticker?.mode && istype(ticker.mode, /datum/game_mode/conspiracy)) && J.cant_spawn_as_con)
-				continue
-
-		if (jobban_isbanned(player, job))
-			continue
-		if (!J.allow_traitors && player.mind.special_role || !J.allow_spy_theft && player.mind.special_role == ROLE_SPY_THIEF)
-			if(set_antag_fallthrough)
-				player.antag_fallthrough = TRUE
-			continue
-		if (!J.allow_antag_fallthrough && player.antag_fallthrough)
-			continue
-
-		if (global.totally_random_jobs)
-			candidates += player
-			continue
-
-		if (J.needs_college && !player.has_medal("Unlike the director, I went to college"))
-			continue
-		if (J.requires_whitelist && !NT.Find(ckey(player.mind.key)))
-			continue
-		if (P.jobs_unwanted.Find(J.name))
-			continue
 		if (level == 1 && P.job_favorite == J.name)
 			candidates += player
 		else if (level == 2 && P.jobs_med_priority.Find(J.name))
@@ -96,17 +69,18 @@ else if (istype(JOB, /datum/job/security/security_officer))\
 			player.mind.assigned_role = "Construction Worker"
 		return
 
+	#ifdef I_WANNA_BE_THE_JOB
+	for (var/mob/new_player/player in unassigned)
+		player.mind.assigned_role = I_WANNA_BE_THE_JOB
+	UNLINT(return)
+	#endif
+
 	var/list/pick1 = list()
 	var/list/pick2 = list()
 	var/list/pick3 = list()
 
-	// Stick all the available jobs into its own list so we can wiggle the fuck outta it
-	var/list/available_job_roles = list()
-	// Apart from ones in THIS list, which are jobs we want to assign before any others
+	// jobs we want to assign before any others
 	var/list/high_priority_jobs = list()
-	// This list is for jobs like staff assistant which have no limits, or other special-case
-	// shit to hand out to people who didn't get one of the main limited slot jobs
-	var/list/low_priority_jobs = list()
 
 	var/list/medical_staff = list()
 	var/list/engineering_staff = list()
@@ -120,26 +94,12 @@ else if (istype(JOB, /datum/job/security/security_officer))\
 		// If it's hi-pri, add it to that list. Simple enough
 		if (JOB.high_priority_job)
 			high_priority_jobs.Add(JOB)
-		// If we've got a job with the low priority var set or no limit, chuck it in the
-		// low-pri list and move onto the next job - if we don't do this, the first time
-		// it hits a limitless job it'll get stuck on it and hand it out to everyone then
-		// boot the game up resulting in ~WEIRD SHIT~
-		else if (JOB.low_priority_job)
-			low_priority_jobs += JOB.name
-			continue
-		// otherwise it's a normal role so it goes in that list instead
-		else
-			available_job_roles.Add(JOB)
 
-	// Wiggle it like a pissy caterpillar
-	shuffle_list(available_job_roles)
 	// Wiggle the players too so that priority isn't determined by key alphabetization
 	shuffle_list(unassigned)
 
 	//Shuffle them and *then* sort them according to their order priority
 	sortList(high_priority_jobs, GLOBAL_PROC_REF(cmp_job_order_priority))
-
-	sortList(available_job_roles, GLOBAL_PROC_REF(cmp_job_order_priority))
 
 	// First we deal with high-priority jobs like Captain or AI which generally will always
 	// be present on the station - we want these assigned first just to be sure
@@ -191,104 +151,10 @@ else if (istype(JOB, /datum/job/security/security_officer))\
 				unassigned -= candidate
 				JOB.assigned++
 
-			//we've filled out the high priority section of this job, drop it down to being a normal role for the rest
-			if (JOB.assigned >= JOB.high_priority_limit && JOB.assigned < JOB.limit)
-				high_priority_jobs -= JOB
-				available_job_roles |= JOB
-				shuffle_list(available_job_roles)
-
-	else
-		// if we are in sandbox mode just roll the hi-pri jobs back into the regular list so
-		// people can still get them if they chose them
-		available_job_roles = available_job_roles | high_priority_jobs
-
-	// Next we go through each player and see if we can get them into their favorite jobs
-	// If we don't do this loop then the main loop below might get to a job they have in their
-	// medium or low priority lists first and give them that one rather than their favorite
-	for (var/mob/new_player/player in unassigned)
-		// If they don't have a favorite, skip em
-		if (derelict_mode) // stop freaking out at the weird jobs
-			continue
-		if (global.totally_random_jobs) //  we don't care about favorites
-			continue
-		if (!player?.client?.preferences || player?.client?.preferences.job_favorite == null)
-			continue
-		// Now get the in-system job via the string
-		var/datum/job/JOB = find_job_in_controller_by_string(player.client.preferences.job_favorite)
-		// Do a few checks to make sure they're allowed to have this job
-		if (ticker?.mode && istype(ticker.mode, /datum/game_mode/revolution))
-			if(player.mind?.is_antagonist() && (JOB.cant_spawn_as_rev || JOB.cant_spawn_as_con))
-				// Fixed AI, security etc spawning as rev heads. The special job picker doesn't care about that var yet,
-				// but I'm not gonna waste too much time tending to a basically abandoned game mode (Convair880).
-				continue
-		if (!JOB || jobban_isbanned(player,JOB.name))
-			continue
-		if (JOB.needs_college && !player.has_medal("Unlike the director, I went to college"))
-			continue
-		if (JOB.requires_whitelist && !NT.Find(ckey(player.mind.key)))
-			continue
-		if (!JOB.allow_traitors && player.mind.special_role ||  !JOB.allow_spy_theft && player.mind.special_role == ROLE_SPY_THIEF)
-			player.antag_fallthrough = TRUE
-			continue
-		if ((!JOB.can_join_gangs) && (player.mind.special_role in list(ROLE_GANG_MEMBER,ROLE_GANG_LEADER)))
-			player.antag_fallthrough = TRUE
-			continue
-		// If there's an open job slot for it, give the player the job and remove them from
-		// the list of unassigned players, hey presto everyone's happy (except clarks probly)
-		if (JOB.limit < 0 || !(JOB.assigned >= JOB.limit))
-			ASSIGN_STAFF_LISTS(JOB, player)
-
-			logTheThing(LOG_DEBUG, null, "<b>I Said No/Jobs:</b> [player] took [JOB.name] from favorite selector")
-			player.mind.assigned_role = JOB.name
-			logTheThing(LOG_DEBUG, player, "assigned job: [player.mind.assigned_role]")
-			unassigned -= player
-			JOB.assigned++
-
-	// Do this loop twice - once for med priority and once for low priority, because elsewise
-	// it was causing weird shit to happen where having something in low priority would
-	// sometimes cause you to get that instead of a higher prioritized job
-	for(var/datum/job/JOB in available_job_roles)
-		// If we've got everyone a job, then stop wasting cycles and get on with the show
-		if (!length(unassigned)) break
-		// If there's no more slots for this job available, move onto the next one
-		if (JOB.limit > 0 && JOB.assigned >= JOB.limit) continue
-		// First, rebuild the lists of who wants to be this job
-		pick2 = FindOccupationCandidates(unassigned,JOB.name,2, TRUE)
-		// Now loop through the candidates in order of priority, and elect them to the
-		// job position if possible - if at any point the job is filled, break the loops
-		for(var/mob/new_player/candidate in pick2)
-			if (JOB.assigned >= JOB.limit || !length(unassigned))
-				break
-			ASSIGN_STAFF_LISTS(JOB, candidate)
-
-			logTheThing(LOG_DEBUG, null, "<b>I Said No/Jobs:</b> [candidate] took [JOB.name] from Level 2 Job Picker")
-			candidate.mind.assigned_role = JOB.name
-			logTheThing(LOG_DEBUG, candidate, "assigned job: [candidate.mind.assigned_role]")
-			unassigned -= candidate
-			JOB.assigned++
-
-	// And then again for low priority
-	for(var/datum/job/JOB in available_job_roles)
-		if (!length(unassigned))
-			break
-
-		if (JOB.limit == 0)
-			continue
-
-		if (JOB.limit > 0 && JOB.assigned >= JOB.limit)
-			continue
-
-		pick3 = FindOccupationCandidates(unassigned,JOB.name,3, TRUE)
-		for(var/mob/new_player/candidate in pick3)
-			if (JOB.assigned >= JOB.limit || !length(unassigned))
-				break
-			ASSIGN_STAFF_LISTS(JOB, candidate)
-
-			logTheThing(LOG_DEBUG, null, "<b>I Said No/Jobs:</b> [candidate] took [JOB.name] from Level 3 Job Picker")
-			candidate.mind.assigned_role = JOB.name
-			logTheThing(LOG_DEBUG, candidate, "assigned job: [candidate.mind.assigned_role]")
-			unassigned -= candidate
-			JOB.assigned++
+	// allocate the remaining players to jobs by preference
+	for (var/mob/new_player/player as anything in unassigned)
+		var/datum/job/job = job_controls.allocate_player_to_job_by_preference(player)
+		ASSIGN_STAFF_LISTS(job, player)
 
 	/////////////////////////////////////////////////
 	///////////COMMAND PROMOTIONS////////////////////
@@ -296,39 +162,25 @@ else if (istype(JOB, /datum/job/security/security_officer))\
 
 	//Find the command jobs, if they are unfilled, pick a random person from within that department to be that command officer
 	//if they had the command job in their medium or low priority jobs
-	for(var/datum/job/JOB in available_job_roles)
-		//cheaper to discout this first than type check here *I think*
-		if (istype(JOB, /datum/job/command) && JOB.limit > 0 && JOB.assigned < JOB.limit)
+	for(var/datum/job/command/command_job in job_controls.staple_jobs)
+		if ((command_job.limit > 0) && (command_job.assigned < command_job.limit))
 			var/list/picks
-			if (istype(JOB, /datum/job/command/chief_engineer))
-				picks = FindPromotionCandidates(engineering_staff, JOB)
-			else if (istype(JOB, /datum/job/command/research_director))
-				picks = FindPromotionCandidates(research_staff, JOB)
-			else if (istype(JOB, /datum/job/command/medical_director))
-				picks = FindPromotionCandidates(medical_staff, JOB)
-			else if (istype(JOB, /datum/job/command/head_of_security))
-				picks = FindPromotionCandidates(security_officers, JOB)
+			if (istype(command_job, /datum/job/command/chief_engineer))
+				picks = FindPromotionCandidates(engineering_staff, command_job)
+			else if (istype(command_job, /datum/job/command/research_director))
+				picks = FindPromotionCandidates(research_staff, command_job)
+			else if (istype(command_job, /datum/job/command/medical_director))
+				picks = FindPromotionCandidates(medical_staff, command_job)
+			else if (istype(command_job, /datum/job/command/head_of_security))
+				picks = FindPromotionCandidates(security_officers, command_job)
 			if (!length(picks))
 				continue
 			var/mob/new_player/candidate = pick(picks)
-			logTheThing(LOG_DEBUG, null, "<b>kyle:</b> [candidate] took [JOB.name] from Job Promotion Picker")
-			candidate.mind.assigned_role = JOB.name
+			logTheThing(LOG_DEBUG, null, "<b>kyle:</b> [candidate] took [command_job.name] from Job Promotion Picker")
+			candidate.mind.assigned_role = command_job.name
 			logTheThing(LOG_DEBUG, candidate, "reassigned job: [candidate.mind.assigned_role]")
-			JOB.assigned++
-
-
-	// If there's anyone left without a job after this, lump them with a randomly
-	// picked low priority role and be done with it
-	if (!length(low_priority_jobs))
-		// we really need to fix this or it'll be some kinda weird inf loop shit
-		low_priority_jobs += "Staff Assistant"
-	for (var/mob/new_player/player in unassigned)
-		if(!player?.mind) continue
-		logTheThing(LOG_DEBUG, null, "<b>I Said No/Jobs:</b> [player] given a low priority role")
-		player.mind.assigned_role = pick(low_priority_jobs)
-		logTheThing(LOG_DEBUG, player, "assigned job: [player.mind.assigned_role]")
-
-	return 1
+			command_job.assigned++
+	return TRUE
 
 //Given a list of candidates returns candidates that are acceptable to be promoted based on their medium/low priorities
 //ideally JOB should only be a command position. eg. CE, RD, MD
@@ -432,7 +284,7 @@ else if (istype(JOB, /datum/job/security/security_officer))\
 	//#endif
 
 //hey i changed this from a /human/proc to a /living/proc so that critters (from the job creator) would latejoin properly	-- MBC
-/mob/living/proc/Equip_Rank(rank, joined_late, no_special_spawn)
+/mob/living/proc/Equip_Rank(rank, joined_late, no_special_spawn, skip_manifest = FALSE)
 	var/datum/job/JOB = find_job_in_controller_by_string(rank)
 	if (!JOB)
 		boutput(src, SPAN_ALERT("<b>Something went wrong setting up your rank and equipment! Report this to a coder.</b>"))
@@ -483,7 +335,7 @@ else if (istype(JOB, /datum/job/security/security_officer))\
 		src = possible_new_mob // let's hope this breaks nothing
 
 
-	if (ishuman(src) && JOB.add_to_manifest && !src.traitHolder.hasTrait("stowaway"))
+	if (!skip_manifest && ishuman(src) && JOB.add_to_manifest)
 		// Manifest stuff
 		var/sec_note = ""
 		var/med_note = ""
@@ -497,16 +349,7 @@ else if (istype(JOB, /datum/job/security/security_officer))\
 
 	if (ishuman(src))
 		var/mob/living/carbon/human/H = src
-		if (src.traitHolder && !src.traitHolder.hasTrait("stowaway"))
-			H.spawnId(JOB)
-		if (src.traitHolder && src.traitHolder.hasTrait("stowaway"))
-			//Has the stowaway trait - they're hiding in a random locker
-			var/list/obj/storage/SL = get_random_station_storage_list(closed=TRUE, breathable=TRUE)
-
-			if(length(SL) > 0)
-				src.set_loc(pick(SL))
-				logTheThing(LOG_STATION, src, "has the Stowaway trait and spawns in storage at [log_loc(src)]")
-
+		H.spawnId(JOB)
 		if (src.traitHolder && src.traitHolder.hasTrait("pilot"))		//Has the Pilot trait - they're drifting off-station in a pod. Note that environmental checks are not needed here.
 			SPAWN(0) //pod creation sleeps for... reasons
 				#define MAX_ALLOWED_ITERATIONS 300
@@ -583,12 +426,12 @@ else if (istype(JOB, /datum/job/security/security_officer))\
 
 			logTheThing(LOG_STATION, src, "has the Party Animal trait and has finished iterating through spots.")
 
-			if(!joined_late) // We got special late-join handling
+			if(!joined_late && length(valid_stools) > 0) // We got special late-join handling
 				var/obj/stool/stool = pick(valid_stools)
 				if (stool)
 					var/list/spawn_range = orange(1, get_turf(stool)) // Skip the actual stool
 					for (var/turf/spot in spawn_range)
-						if (!jpsTurfPassable(spot, source=get_turf(H), passer=H)) // Make sure we can walk there
+						if (!jpsTurfPassable(spot, source=get_turf(stool), passer=H)) // Make sure we can walk there
 							continue
 						if (locate(/mob/living/carbon/human) in spot)
 							continue
@@ -648,6 +491,9 @@ else if (istype(JOB, /datum/job/security/security_officer))\
 			sleep(0.1 SECONDS)
 			if(!QDELETED(current_mob))
 				current_mob.update_icons_if_needed()
+
+		if (src.traitHolder?.hasTrait("jailbird"))
+			create_jailbird_wanted_poster(H)
 
 		if (joined_late == 1 && map_settings && map_settings.arrivals_type != MAP_SPAWN_CRYO && JOB.radio_announcement)
 			if (src.mind && src.mind.assigned_role) //ZeWaka: I'm adding this back here because hell if I know where it goes.
@@ -730,7 +576,7 @@ else if (istype(JOB, /datum/job/security/security_officer))\
 				B.badge_owner_name = src.real_name
 				B.badge_owner_job = src.job
 
-	if (src.traitHolder && src.traitHolder.hasTrait("pilot"))
+	if (src.traitHolder?.hasTrait("pilot"))
 		var/obj/item/tank/mini_oxygen/E = new /obj/item/tank/mini_oxygen(src.loc)
 		src.force_equip(E, SLOT_IN_BACKPACK, TRUE)
 		#ifdef UNDERWATER_MAP
@@ -747,8 +593,6 @@ else if (istype(JOB, /datum/job/security/security_officer))\
 		src.equip_new_if_possible(/obj/item/clothing/mask/breath, SLOT_WEAR_MASK)
 		var/obj/item/device/gps/GPSDEVICE = new /obj/item/device/gps(src.loc)
 		src.force_equip(GPSDEVICE, SLOT_IN_BACKPACK, TRUE)
-
-	if (src.traitHolder?.hasTrait("stowaway") || src.traitHolder?.hasTrait("pilot"))
 		var/obj/item/device/pda2/pda = locate() in src
 		src.u_equip(pda)
 		qdel(pda)
@@ -760,10 +604,6 @@ else if (istype(JOB, /datum/job/security/security_officer))\
 		trinket = null //You better stay null, you hear me!
 	else if (src.traitHolder && src.traitHolder.hasTrait("bald"))
 		trinket = src.create_wig()
-		src.bioHolder.mobAppearance.customization_first = new /datum/customization_style/none
-		src.bioHolder.mobAppearance.customization_second = new /datum/customization_style/none
-		src.bioHolder.mobAppearance.customization_third = new /datum/customization_style/none
-		src.update_colorful_parts()
 	else if (src.traitHolder && src.traitHolder.hasTrait("loyalist"))
 		trinket = new/obj/item/clothing/head/NTberet(src)
 	else if (src.traitHolder && src.traitHolder.hasTrait("petasusaphilic"))
@@ -831,12 +671,12 @@ else if (istype(JOB, /datum/job/security/security_officer))\
 
 	if (src.traitHolder && src.traitHolder.hasTrait("nolegs"))
 		if (src.limbs)
-			SPAWN(6 SECONDS)
-				if (src.limbs.l_leg)
-					src.limbs.l_leg.delete()
-				if (src.limbs.r_leg)
-					src.limbs.r_leg.delete()
-			new /obj/stool/chair/comfy/wheelchair(get_turf(src))
+			if (src.limbs.l_leg)
+				src.limbs.l_leg.delete()
+			if (src.limbs.r_leg)
+				src.limbs.r_leg.delete()
+			var/obj/stool/chair/comfy/chair = new /obj/stool/chair/comfy/wheelchair(get_turf(src))
+			chair.buckle_in(src, src)
 
 	if (src.traitHolder && src.traitHolder.hasTrait("plasmalungs"))
 		if (src.wear_mask && !(src.wear_mask.c_flags & MASKINTERNALS)) //drop non-internals masks
@@ -1001,6 +841,7 @@ var/list/trinket_safelist = list(
 	/obj/item/instrument/vuvuzela,
 	/obj/item/wrench,
 	/obj/item/device/light/zippo,
+	/obj/item/device/speech_pro,
 	/obj/item/reagent_containers/food/drinks/bottle/beer,
 	/obj/item/reagent_containers/food/drinks/bottle/vintage,
 	/obj/item/reagent_containers/food/drinks/bottle/vodka,

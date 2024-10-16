@@ -195,10 +195,7 @@
 		selected_biome = biomes[selected_biome]
 		selected_biome.generate_turf(gen_turf, flags)
 
-		if (current_state >= GAME_STATE_PLAYING)
-			LAGCHECK(LAG_LOW)
-		else
-			LAGCHECK(LAG_HIGH)
+		src.lag_check()
 
 
 /turf/simulated/wall/auto/asteroid/mountain/cave
@@ -210,9 +207,9 @@
 	nitrogen = MOLES_N2STANDARD
 	temperature = 330
 	default_ore = null
-	replace_type = /turf/simulated/floor/plating/airless/asteroid/cave
+	replace_type = /turf/unsimulated/floor/plating/asteroid/cave
 
-/turf/simulated/floor/plating/airless/asteroid/cave
+/turf/unsimulated/floor/plating/asteroid/cave
 	name = "cave"
 	desc = "cave floor"
 	color = "#7c5855"

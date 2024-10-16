@@ -55,14 +55,18 @@ ABSTRACT_TYPE(/datum/bioEffect/hidden)
 	can_copy = 0
 
 	OnMobDraw()
+		if (..())
+			return
 		if(ishuman(owner))
 			owner:body_standing:overlays += image('icons/mob/human.dmi', "husk")
 
 	OnAdd()
 		if (ishuman(owner))
 			owner:set_body_icon_dirty()
+		. = ..()
 
 	OnRemove()
+		. = ..()
 		if (ishuman(owner))
 			owner:set_body_icon_dirty()
 
@@ -75,18 +79,21 @@ ABSTRACT_TYPE(/datum/bioEffect/hidden)
 	can_copy = 0
 
 	OnMobDraw()
+		if (..())
+			return
 		if (ishuman(owner) && !owner:decomp_stage)
 			if (isskeleton(owner))
 				owner:body_standing:overlays += image('icons/mob/human_decomp.dmi', "decomp4")
 			else
 				owner:body_standing:overlays += image('icons/mob/human_decomp.dmi', "decomp1")
-		return
 
 	OnAdd()
 		if (ishuman(owner))
 			owner:set_body_icon_dirty()
+		. = ..()
 
 	OnRemove()
+		. = ..()
 		if (ishuman(owner))
 			owner:set_body_icon_dirty()
 
@@ -110,13 +117,14 @@ ABSTRACT_TYPE(/datum/bioEffect/hidden)
 	msgLose = "You are no longer rotting."
 
 	OnAdd()
+		. = ..()
 		owner.set_mutantrace(/datum/mutantrace/zombie)
-		return
+
 
 	OnRemove()
 		if (istype(owner:mutantrace, /datum/mutantrace/zombie))
 			owner.set_mutantrace(null)
-		return
+		. = ..()
 
 	OnLife()
 		if(..()) return
@@ -198,11 +206,6 @@ ABSTRACT_TYPE(/datum/bioEffect/hidden)
 	occur_in_genepools = 0
 	var/personalized_stink = null
 
-	New()
-		..()
-		if (prob(5))
-			src.personalized_stink = stinkString()
-
 	OnAdd()
 		. = ..()
 		holder.owner?.UpdateParticles(new/particles/stink_lines, "stink_lines", KEEP_APART | RESET_TRANSFORM)
@@ -214,11 +217,9 @@ ABSTRACT_TYPE(/datum/bioEffect/hidden)
 				if (C == owner)
 					continue
 				if (ispug(C))
-					boutput(C, SPAN_ALERT("Wow, [owner] sure [pick("stinks", "smells", "reeks")]!"))
-				else if (src.personalized_stink)
-					boutput(C, SPAN_ALERT("[src.personalized_stink]"))
+					boutput(C, SPAN_ALERT("Wow, [owner] sure [pick("stinks", "smells", "reeks")]!"), "stink_message")
 				else
-					boutput(C, SPAN_ALERT("[stinkString()]"))
+					boutput(C, SPAN_ALERT("[stinkStringHygiene(owner)]"), "stink_message")
 	OnRemove()
 		holder.owner?.ClearSpecificParticles("stink_lines")
 		. = ..()

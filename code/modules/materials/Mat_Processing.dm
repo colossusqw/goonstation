@@ -31,8 +31,8 @@
 			taken_piece = I.split_stack(1)
 		taken_piece.set_loc(src)
 		src.working = TRUE
-		playsound(src, 'sound/machines/hydraulic.ogg', 40, TRUE)
-		boutput(user, "You load [I] into [src].")
+		playsound(src, 'sound/machines/hiss.ogg', 50, TRUE, -1)
+		boutput(user, "You load [taken_piece] into [src].")
 		SPAWN(2 SECONDS)
 			flick("fab3-work", src)
 			sleep(0.5 SECONDS)
@@ -248,7 +248,7 @@ TYPEINFO(/obj/item/device/matanalyzer)
 	icon_state = "matanalyzer"
 	name = "material analyzer"
 	desc = "This piece of equipment can detect and analyze materials."
-	flags = FPRINT | EXTRADELAY | TABLEPASS | CONDUCT
+	flags = EXTRADELAY | TABLEPASS | CONDUCT
 	w_class = W_CLASS_SMALL
 
 	afterattack(atom/target as mob|obj|turf|area, mob/user as mob)

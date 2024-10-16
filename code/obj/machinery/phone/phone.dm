@@ -18,6 +18,7 @@ TYPEINFO(/obj/machinery/phone)
 	var/phone_icon = "phone"
 	var/ringing_icon = "phone_ringing"
 	var/last_called = null
+	var/caller_id_message = null
 	var/phone_category = null
 	var/phone_id = null
 	var/stripe_color = null
@@ -77,6 +78,8 @@ TYPEINFO(/obj/machinery/phone)
 				temp_name = "[temp_name] [name_counter]"
 			src.phone_id = temp_name
 
+		RegisterSignal(src, COMSIG_CORD_RETRACT, PROC_REF(hang_up))
+
 		START_TRACKING
 
 	disposing()
@@ -90,6 +93,7 @@ TYPEINFO(/obj/machinery/phone)
 		handset = null
 
 		STOP_TRACKING
+		UnregisterSignal(src, COMSIG_CORD_RETRACT)
 		..()
 
 	get_desc()
@@ -103,8 +107,6 @@ TYPEINFO(/obj/machinery/phone)
 		if(istype(P, /obj/item/phone_handset))
 			var/obj/item/phone_handset/PH = P
 			if(PH.parent == src)
-				user.drop_item(PH)
-				qdel(PH)
 				hang_up()
 			return
 		if(issnippingtool(P))
@@ -154,6 +156,7 @@ TYPEINFO(/obj/machinery/phone)
 			return
 
 		src.handset = new /obj/item/phone_handset(src,user)
+		src.AddComponent(/datum/component/cord, src.handset, base_offset_x = -4, base_offset_y = -1)
 		user.put_in_hand_or_drop(src.handset)
 		src.answered = TRUE
 
@@ -181,6 +184,16 @@ TYPEINFO(/obj/machinery/phone)
 			if(user)
 				boutput(user, SPAN_ALERT("You short out the ringer circuit on the [src]."))
 			src.emagged = TRUE
+			// pick a random phone
+			src.caller_id_message = "<span style='color: #cccccc;'>???</span>"
+			var/list/phonebook = list()
+			for_by_tcl(P, /obj/machinery/phone)
+				if(P.unlisted)
+					continue
+				phonebook += P
+			if (length(phonebook))
+				var/obj/machinery/phone/prank = pick(phonebook)
+				src.caller_id_message = "<span style='color: [prank.stripe_color];'>[prank.phone_id]</span>"
 			return TRUE
 		return FALSE
 
@@ -188,6 +201,7 @@ TYPEINFO(/obj/machinery/phone)
 		if(src.emagged)
 			playsound(src.loc,'sound/machines/phones/ring_incoming.ogg' ,100,1)
 			if(!src.answered)
+				src.obj_speak("Call from [src.caller_id_message].")
 				src.icon_state = "[ringing_icon]"
 				UpdateIcon()
 			return
@@ -211,6 +225,7 @@ TYPEINFO(/obj/machinery/phone)
 					src.icon_state = "[ringing_icon]"
 					UpdateIcon()
 					src.last_ring = 0
+					src.obj_speak("Call from [src.caller_id_message].")
 
 	ui_interact(mob/user, datum/tgui/ui)
 		ui = tgui_process.try_update_ui(user, src, ui)
@@ -222,7 +237,7 @@ TYPEINFO(/obj/machinery/phone)
 		var/list/list/list/phonebook = list()
 		for_by_tcl(P, /obj/machinery/phone)
 			var/match_found = FALSE
-			if(P.unlisted)
+			if(P.unlisted || P == src)
 				continue
 			if (!(src.can_talk_across_z_levels && P.can_talk_across_z_levels) && (get_z(P) != get_z(src)))
 				continue
@@ -286,7 +301,10 @@ TYPEINFO(/obj/machinery/phone)
 			src.linked.ringing = FALSE
 			src.linked.linked = null
 			src.linked = null
+		src.RemoveComponentsOfType(/datum/component/cord)
 		src.ringing = FALSE
+		src.handset?.force_drop(sever=TRUE)
+		qdel(src.handset)
 		src.handset = null
 		src.icon_state = "[phone_icon]"
 		tgui_process.close_uis(src)
@@ -303,6 +321,7 @@ TYPEINFO(/obj/machinery/phone)
 		if(src.handset.get_holder() && GET_DIST(src.handset,src.handset.get_holder()) < 1)
 			src.handset.get_holder()?.playsound_local(src.handset.get_holder(),'sound/machines/phones/dial.ogg' ,50,0)
 		src.last_called = target.unlisted ? "Undisclosed" : "[target.phone_id]"
+		target.caller_id_message = "<span style='color: [src.stripe_color];'>[src.phone_id]</span>"
 		SPAWN(4 SECONDS)
 			// Is it busy?
 			if(target.answered || target.linked || !target.connected || !src.answered)
@@ -324,7 +343,7 @@ TYPEINFO(/obj/machinery/phone)
 	if (!src.user_can_suicide(user))
 		return FALSE
 	if (ishuman(user))
-		user.visible_message(SPAN_ALERT("<b>[user] bashes the [src] into their head repeatedly!</b>"))
+		user.visible_message(SPAN_ALERT("<b>[user] bashes the [src] into [his_or_her(user)] head repeatedly!</b>"))
 		user.TakeDamage("head", 150, 0)
 		return TRUE
 
@@ -374,10 +393,8 @@ TYPEINFO(/obj/machinery/phone)
 		if(src.parent.answered && BOUNDS_DIST(src, src.parent) > 0)
 			if(src.get_holder())
 				boutput(src.get_holder(),SPAN_ALERT("The phone cord reaches it limit and the handset is yanked back to its base!"))
-			src.force_drop(sever=TRUE)
 			src.parent.hang_up()
 			processing_items.Remove(src)
-			qdel(src)
 
 
 	talk_into(mob/M as mob, text, secure, real_name, lang_id)
@@ -414,6 +431,14 @@ TYPEINFO(/obj/machinery/phone)
 			// intercoms overhear phone conversations
 			for (var/obj/item/device/radio/intercom/I in range(3, listener))
 				I.talk_into(M, text, null, M.get_heard_name(just_name_itself=TRUE), lang_id)
+
+	// attack_hand(mob/user)
+	// 	. = ..()
+	// 	src.parent?.draw_cord()
+
+	// dropped(mob/user)
+	// 	. = ..()
+	// 	src.parent?.draw_cord()
 
 TYPEINFO(/obj/machinery/phone/wall)
 	mats = 25

@@ -6,7 +6,6 @@
 // Outpost self-destruct !nuke!
 // A wirenet -> wireless link thing.
 // A printer! All the fun of printing, now in SS13!
-// Pathogen manipulator TO-DO
 // Security system monitor
 // A dangerous teleportation-oriented testing apparatus.
 // Generic testing appartus
@@ -795,6 +794,7 @@ TYPEINFO(/obj/machinery/networked/storage)
 			boutput(user, "You insert \the [I].")
 
 	ui_act(action, params)
+		. = ..()
 		switch(action)
 			if ("add_item")
 				src.add_tank(usr, usr.equipped(), params["tank"])
@@ -1027,8 +1027,10 @@ TYPEINFO(/obj/machinery/networked/storage)
 
 
 TYPEINFO(/obj/machinery/networked/nuclear_charge)
-	mats = list("POW-3" = 27, "MET-3" = 25, "CON-2" = 13, "CRY-2" = 15) //haha this is a bad idea
-
+	mats = list("energy_extreme" = 27,
+				"metal_superdense" = 25,
+				"conductive_high" = 13,
+				"crystal_dense" = 15) //haha this is a bad idea
 /obj/machinery/networked/nuclear_charge
 	name = "Nuclear Charge"
 	anchored = ANCHORED_ALWAYS

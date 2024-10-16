@@ -21,6 +21,9 @@
 	var/_health = 100
 	var/_max_health = 100
 
+	/// if gun/bullet related, forensic profile of it
+	var/forensic_ID = null
+
 	New()
 		. = ..()
 		if (HAS_FLAG(object_flags, HAS_DIRECTIONAL_BLOCKING))
@@ -103,7 +106,6 @@
 			pressure_resistance = max(20, (src.material.getProperty("density") - 5) * ONE_ATMOSPHERE)
 			throwforce = src.material.getProperty("hard")
 			throwforce = max(throwforce, initial(throwforce))
-			quality = src.material.getQuality()
 			if(initial(src.opacity) && src.material.getAlpha() <= MATERIAL_ALPHA_OPACITY)
 				set_opacity(0)
 			else if(initial(src.opacity) && !src.opacity && src.material.getAlpha() > MATERIAL_ALPHA_OPACITY)
@@ -178,6 +180,9 @@
 	proc/pixelaction(atom/target, params, mob/user, reach)
 		return 0
 
+	proc/can_arm_attach()
+		return !(src.object_flags & NO_ARM_ATTACH )
+
 	assume_air(datum/air_group/giver)
 		if (loc)
 			return loc.assume_air(giver)
@@ -190,8 +195,8 @@
 		else
 			return null
 
-	return_air()
-		if (loc)
+	return_air(direct = FALSE)
+		if (loc && !direct)
 			return loc.return_air()
 		else
 			return null
@@ -211,7 +216,8 @@
 		else
 			return null
 
-	proc/initialize()
+	proc/initialize(player_caused_init) // Did a player cause the init of this object? Currently needed so atmos knows whether or not to call its neighbors, avoiding infinite loops.
+
 
 	proc/shatter_chemically(var/projectiles = TRUE) //!shatter effect, caused by chemicals inside object, should return TRUE if object actually shatters
 		return FALSE
@@ -386,9 +392,10 @@
 		replica.set_dir(O.dir)
 		qdel(O)
 
-/obj/proc/place_on(obj/item/W as obj, mob/user as mob, params)
+/obj/proc/place_on(obj/item/W as obj, mob/user as mob, params, imprecise = FALSE)
 	. = FALSE
-	if (W && !isghostdrone(user)) // im allowing borgs to do this when its specifically overridden into a mousedrop - mylie
+	if (!islist(params)) params = params2list(params)
+	if (W && !isghostdrone(user) && W.should_place_on(src, params)) // im allowing borgs to do this when its specifically overridden into a mousedrop - mylie
 		var/dirbuffer //*hmmpf* it's not like im a hacky coder or anything... (＃￣^￣)
 		dirbuffer = W.dir //though actually this will preserve item rotation when placed on tables so they don't rotate when placed. (this is a niche bug with silverware, but I thought I might as well stop it from happening with other things <3)
 		if (user)
@@ -398,10 +405,13 @@
 		if(W.dir != dirbuffer)
 			W.set_dir(dirbuffer)
 		W.set_loc(src.loc)
-		if (islist(params) && params["icon-y"] && params["icon-x"])
+		if (imprecise) // place item imprecisely by randomising offset
+			W.pixel_x = rand(-10, 10) // offsets avoid the edges just for niceness
+			W.pixel_y = rand(-10, 10)
+		else if (islist(params) && params["icon-y"] && params["icon-x"])
 			W.pixel_x = text2num(params["icon-x"]) - 16
 			W.pixel_y = text2num(params["icon-y"]) - 16
-		if(W.layer < src.layer)
+		if(W.layer <= src.layer)
 			W.layer = src.layer + 0.1
 		. = TRUE
 
@@ -472,3 +482,12 @@ ADMIN_INTERACT_PROCS(/obj, proc/admin_command_obj_speak)
 		return TRUE
 
 /obj/proc/after_abcu_spawn()
+
+/// creates an id profile for any forenics purpose. override as needed
+/obj/proc/CreateID()
+	. = ""
+
+	do
+		for(var/i = 1 to 10) // 20 characters are way too fuckin' long for anyone to care about
+			. += "[pick(numbersAndLetters)]"
+	while(. in forensic_IDs)

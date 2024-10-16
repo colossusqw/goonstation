@@ -2,8 +2,6 @@
 
 [ToC]
 
-{%hackmd @ZeWaka/dark-theme %}
-
 ## :exclamation: Disclaimer
 
 This guide is the one to follow to get started developing and making changes to Goonstation.<br>
@@ -34,6 +32,8 @@ If this is your first time using VSCode, take a minute to familiarize yourself w
 3. These are the tabs and files you have open. From here, you can see any files you've changed, and see any unsaved or modified files
 4. This is the current file that you've selected's contents.
 5. This is the output terminal. If and when you have any bugs, you'll see them here, and you can track your code compiling from here, as well as being able to interface with git directly through command-line prompts.
+
+<u>You'll also want to ensure BYOND is installed in the **default location** for ease of use.</u>
 
 
 Now, we need to create our own repository to contribute to! :rocket:
@@ -79,6 +79,8 @@ If this does not work, search for the following extensions:
  - GitHub Pull Requests - Lets you make a pull request directly from the editor for the purposes of this tutorial.
 :::
 
+For the DreamMaker extension that is installed, be sure you turn on auto-updates.
+
 For the GitHub Pull Requests extension, you'll have to sign in to GitHub to link it properly. Also, sometime it just breaks. :shrug:
 
 :::warning
@@ -111,14 +113,8 @@ git branch -u upstream/master
 ```
 After doing this you can synchronize your master branch with the main Goonstation one simply by pressing the ![](https://i.imgur.com/WFbG8w3.png) button at the bottom left.
 
-You're just about done with that! Just one last thing you need to manually do.
-
-### Step 6: Fixing Up :wrench: 
-
-++**This step is required.**++ You'll need to create a file named `__secret.dme` in the `+secret` subdirectory. **It should be blank and have no contents.** You can run the `initial_setup.bat` file at the root of the repository to do this automatically.
-
 :::info
-If you're a Goonstation dev, run `git submodule update --init` instead of the prior step.
+If you're a Goonstation Developer (Admin), run `git submodule update --init` at this point.
 :::
 
 That's it! Your local codebase is all set up to contribute now.
@@ -176,7 +172,7 @@ Now, save your changes. If we look at the Source Control tab, we'll see that we 
 
 ### Step 3: Testing your code :game_die:
 
-The easiest way to test your changes is to press <kbd>F5</kbd>. This compiles your code, runs the server and connects you to it, as well as automatically giving you admin permissions. It also starts a debugger that will let you examine what went wrong when a runtime error happens. If you want to avoid the debugger press <kbd>Ctrl + F5</kbd> instead. **Keep in mind that this can take anywhere from 2 to 10 minutes**. Be patient, and while waiting, you may want to pay attention to your pets, stand up and walk around, or drink some water.
+<u>The easiest way to test your changes is to press <kbd>F5</kbd>.</u> This compiles your code, runs the server and connects you to it, as well as automatically giving you admin permissions. It also starts a debugger that will let you examine what went wrong when a runtime error happens. If you want to avoid the debugger press <kbd>Ctrl + F5</kbd> instead. **Keep in mind that this can take anywhere from 1 to 10 minutes**. Be patient, and while waiting, you may want to pay attention to your pets, stand up and walk around, or drink some water.
 
 :::warning
 If you are on a version of BYOND different from the one specified in buildByond.conf the debugger might be somewhat unstable and not work properly.
@@ -199,7 +195,7 @@ This compiles the code to a dmb file. Then you can run Dream Daemon, select the 
 Be sure to always test not only if your changes work, but also if you didn't actually break something else that might be related- Dream Maker is a very old and occasionally fickle language, and sometimes it happens that things will just refuse to work.
 
 :::info
-It's also recommended that you set up some build settings before you press <kbd>F5</kbd>. Within the `_std` folder, there exists the file `__build.dm`, which can provide many helpful options for your testing, such as picking certain maps and disabling certain features to make the game boot faster. Be careful to save the uncommented lines you want in your vsc workspace but **NOT** actually commit these changes to the branch. More information about building a server is provided [here](#Using-__build.dm).
+It's also recommended that you set up some build settings before you press <kbd>F5</kbd>. Within the `_std` folder, there exists the file `__build.dm`, which can provide many helpful options for your testing, such as picking certain maps and disabling certain features to make the game boot faster. Be careful to save the uncommented lines you want in your vsc workspace but **NOT** actually commit these changes to the branch. More information about building a server is provided [here](#Using-__builddm).
 :::
 :::info
 If you need to inspect exactly what the game is doing, the VS code debugger can be very useful- see [a guide to using it here](#How-to-use-the-VS-Code-Debugger).

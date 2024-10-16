@@ -151,6 +151,7 @@
 	O.verbs += /mob/living/silicon/ai/proc/ai_station_announcement
 	O.verbs += /mob/living/silicon/ai/proc/view_messageLog
 	O.verbs += /mob/living/silicon/ai/verb/rename_self
+	O.verbs += /mob/living/silicon/ai/verb/go_offline
 	O.job = "AI"
 
 	SPAWN(0)
@@ -183,7 +184,7 @@
 	newmob.gender = src.gender
 	if (src.bioHolder)
 		var/datum/bioHolder/original = new/datum/bioHolder(newmob)
-		original.CopyOther(src.bioHolder)
+		original.CopyOther(src.bioHolder, copyPool=FALSE, copyActiveEffects=FALSE)
 		qdel(newmob.bioHolder)
 		newmob.bioHolder = original
 
@@ -608,7 +609,7 @@ var/list/antag_respawn_critter_types =  list(/mob/living/critter/small_animal/fl
 	if (current_state < GAME_STATE_PLAYING)
 		boutput(src, "It's too early to go to the bar!")
 		return
-	if(!isdead(src) || !src.mind || !ticker || !ticker.mode)
+	if(!isobserver(src) || !src.mind || !ticker || !ticker.mode)
 		return
 	if (ticker?.mode && istype(ticker.mode, /datum/game_mode/football))
 		boutput(src, "Sorry, respawn options aren't available during football mode.")
@@ -634,6 +635,9 @@ var/list/antag_respawn_critter_types =  list(/mob/living/critter/small_animal/fl
 		role_override = "Staff Assistant"
 	newbody.JobEquipSpawned(role_override || src.mind.assigned_role, no_special_spawn = 1)
 
+	if (newbody.traitHolder && newbody.traitHolder.hasTrait("bald"))
+		newbody.stow_in_available(newbody.create_wig())
+
 	// No contact between the living and the dead.
 	var/obj/to_del = newbody.ears
 	if(to_del)
@@ -655,10 +659,18 @@ var/list/antag_respawn_critter_types =  list(/mob/living/critter/small_animal/fl
 	if(to_del)
 		newbody.remove_item(to_del)
 		qdel(to_del)
+	if(!newbody.w_uniform)
+		// you get some random clothes if you don't have any
+		newbody.equip_new_if_possible(pick(concrete_typesof(/obj/item/clothing/under/color)), SLOT_W_UNIFORM)
 	if(newbody.wear_id)
 		newbody.wear_id:access = get_access("Captain")
-		newbody.wear_id:assignment = bar_role_name
-		newbody.wear_id:update_name()
+	else
+		// if you dont have an id, you get one anyway
+		newbody.spawnId(new /datum/job/command/captain)
+
+	var/obj/item/card/id/newID = newbody.wear_id
+	newID?.assignment = bar_role_name
+	newID?.update_name()
 
 	if (!newbody.bioHolder)
 		newbody.bioHolder = new bioHolder(newbody)

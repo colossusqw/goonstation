@@ -20,8 +20,8 @@ datum
 				..()
 				return
 
-			on_plant_life(var/obj/machinery/plantpot/P)
-				P.HYPdamageplant("poison", 3 * damage_factor)
+			on_plant_life(var/obj/machinery/plantpot/P, var/datum/plantgrowth_tick/growth_tick)
+				growth_tick.poison_damage += 3 * damage_factor
 
 			nitrogen_dioxide
 				name = "nitrogen dioxide"
@@ -43,8 +43,8 @@ datum
 				..()
 				return
 
-			on_plant_life(var/obj/machinery/plantpot/P)
-				P.HYPdamageplant("poison", 3 * damage_factor)
+			on_plant_life(var/obj/machinery/plantpot/P, var/datum/plantgrowth_tick/growth_tick)
+				growth_tick.poison_damage += 3 * damage_factor
 
 		harmful/acid // COGWERKS CHEM REVISION PROJECT. give this a reaction and remove it from the dispenser machine, hydrogen (2) + sulfur (1) + oxygen (4)
 			name = "sulfuric acid"
@@ -122,9 +122,9 @@ datum
 					else
 						O.visible_message("The acidic substance slides off \the [O] harmlessly.")
 
-			on_plant_life(var/obj/machinery/plantpot/P)
-				P.HYPdamageplant("acid",5)
-				P.growth -= 3
+			on_plant_life(var/obj/machinery/plantpot/P, var/datum/plantgrowth_tick/growth_tick)
+				growth_tick.acid_damage += 5
+				growth_tick.growth_rate -= 3
 
 			reaction_blob(var/obj/blob/B, var/volume)
 				. = ..()
@@ -185,8 +185,8 @@ datum
 						random_burn_damage(M, 2)
 						M.emote("scream")
 
-			on_plant_life(var/obj/machinery/plantpot/P)
-				P.HYPdamageplant("acid", 1)
+			on_plant_life(var/obj/machinery/plantpot/P, var/datum/plantgrowth_tick/growth_tick)
+				growth_tick.acid_damage += 1
 
 			reaction_blob(var/obj/blob/B, var/volume)
 				. = ..()
@@ -427,12 +427,12 @@ datum
 				if (!M) M = holder.my_atom
 				M.take_toxin_damage(1 * mult)
 				if (prob(10))
-					M.reagents.add_reagent("histamine", rand(5,15) * mult)
+					M.reagents.add_reagent("histamine", randfloat(12.5 , 37.5) * src.calculate_depletion_rate(M, mult))
 				..()
 				return
 
-			on_plant_life(var/obj/machinery/plantpot/P)
-				P.HYPdamageplant("poison",4)
+			on_plant_life(var/obj/machinery/plantpot/P, var/datum/plantgrowth_tick/growth_tick)
+				growth_tick.acid_damage += 4
 
 		harmful/acetaldehyde
 			name = "acetaldehyde"
@@ -454,8 +454,8 @@ datum
 				..()
 				return
 
-			on_plant_life(var/obj/machinery/plantpot/P)
-				P.HYPdamageplant("poison",4)
+			on_plant_life(var/obj/machinery/plantpot/P, var/datum/plantgrowth_tick/growth_tick)
+				growth_tick.acid_damage += 4
 
 		harmful/lipolicide
 			name = "lipolicide"
@@ -756,6 +756,71 @@ datum
 					holder.my_atom.color = "#ffffff"
 				return ..()
 
+		harmful/hyper_vomitium // vomit your heart out
+			name = "hyper vomitium"
+			id = "hyper_vomitium"
+			description = "A highly potent variant of space ipecac, sufficient to make someone vomit out everything in them. Literally."
+			reagent_state = LIQUID
+			fluid_r = 2
+			fluid_g = 50
+			fluid_b = 25
+			transparency = 200
+			depletion_rate = 0.2
+			/// how much cycles this has been in the target's system.
+			var/cycles = 0
+			/// a list with vital organs the person should, additionally to non_vital_organ_strings, loose on cycle 40 and upwards
+			var/list/vital_organs = list("brain", "heart")
+
+			on_mob_life(var/mob/M, var/mult = 1)
+				src.cycles += mult
+				if(probmult(50))
+					if (src.cycles > 10 && prob(35) && !ON_COOLDOWN(M, "hyper_vomitium_blood_vomit", 9 SECONDS)) //when after the 10th cycle, you have a chance of vomiting blood and suffering high toxin damage
+						M.visible_message(SPAN_ALERT("[M] vomits a concerning amount of blood all over themselves!"))
+						playsound(M, 'sound/impact_sounds/Slimy_Splat_1.ogg', 30, TRUE)
+						var/blood_loss = rand(10,20) * mult
+						bleed(M, blood_loss, blood_loss)
+						M.take_toxin_damage(6 * mult)
+						M.change_misstep_chance(10 * mult)
+						M.stuttering += rand(3,6)
+					else
+						var/vomit_message = SPAN_ALERT("[M] pukes all over [himself_or_herself(M)].")
+						M.vomit(0, null, vomit_message)
+						M.stuttering += rand(0,2)
+						M.change_misstep_chance(6 * mult)
+						M.take_toxin_damage(3 * mult)
+					if(src.cycles > 20 && isliving(M) && !ON_COOLDOWN(M, "hyper_vomitium_organ_loss", 6 SECONDS))
+						var/mob/living/victim = M
+						var/datum/organHolder/vomitable_organHolder = victim.organHolder
+						var/picked_organ = src.grab_available_organ(vomitable_organHolder, src.cycles)
+						if(picked_organ)
+							var/obj/item/organ/organ_to_loose = vomitable_organHolder.get_organ(picked_organ)
+							vomitable_organHolder.drop_organ(picked_organ, get_turf(victim))
+							M.visible_message(SPAN_ALERT("[M] also vomits out [his_or_her(M)] [organ_to_loose.name]! [pick("WHAT THE FUCK!", "HOLY HECK!", "FRIGGING HELL!")]"))
+							var/organ_blood_loss = rand(15,25) * mult
+							bleed(M, organ_blood_loss, organ_blood_loss)
+							M.change_misstep_chance(5 * mult)
+							M.setStatusMin("stunned", 2 SECOND * mult)
+				..()
+
+			proc/grab_available_organ(var/datum/organHolder/vomitable_organHolder, var/cycles_elapsed)
+				var/cycles_for_vital_organs = 40 //! the amount of cycles that need to have passed until the target looses a vital organ
+				if(!vomitable_organHolder)
+					return
+				//we a start to build a list with the organs we're able to throw out of our victim
+				var/list/available_organs = list()
+				available_organs += non_vital_organ_strings
+				if(src.cycles > cycles_for_vital_organs)
+					//after 40 cycles (8u) this chem has a very high chance to kill by straight out vomiting out the brain or heart
+					available_organs += src.vital_organs
+				//now, we go through each organ and kick out every already missing organ from the list
+				for (var/organ in available_organs)
+					if(!vomitable_organHolder.get_organ(organ))
+						available_organs -= organ
+				//after we are finished, we look if organs are left (to account for changelings emptying all out of themselves) and then return out the ejectable organ
+				if(length(available_organs))
+					return pick(available_organs)
+
+
 		harmful/cholesterol
 			name = "cholesterol"
 			id = "cholesterol"
@@ -837,7 +902,7 @@ datum
 					boutput(M, SPAN_ALERT("<b>So itchy!</b>"))
 					random_brute_damage(M, 2 * mult)
 				if (prob(6))
-					M.reagents.add_reagent("histamine", rand(1,3) * mult)
+					M.reagents.add_reagent("histamine", randfloat(11 , 33.4) * src.calculate_depletion_rate(M, mult))
 				if (prob(2))
 					boutput(M, SPAN_ALERT("<b><font size='[rand(2,5)]'>AHHHHHH!</font></b>"))
 					random_brute_damage(M,5 * mult)
@@ -935,9 +1000,9 @@ datum
 					else
 						O.visible_message("The blueish acidic substance slides off \the [O] harmlessly.")
 
-			on_plant_life(var/obj/machinery/plantpot/P)
-				P.HYPdamageplant("acid",10)
-				P.growth -= 5
+			on_plant_life(var/obj/machinery/plantpot/P, var/datum/plantgrowth_tick/growth_tick)
+				growth_tick.acid_damage += 10
+				growth_tick.growth_rate -= 5
 
 			reaction_blob(var/obj/blob/B, var/volume)
 				. = ..()
@@ -1083,15 +1148,21 @@ datum
 						M.TakeDamage("All", 0, volume / 6, 0, DAMAGE_BURN)
 					boutput(M, SPAN_ALERT("The blueish acidic substance stings[volume < 6 ? " you, but isn't concentrated enough to harm you" : null]!"))
 
-			on_plant_life(var/obj/machinery/plantpot/P)
-				P.HYPdamageplant("acid",8)
-				P.growth -= 4
+			on_plant_life(var/obj/machinery/plantpot/P, var/datum/plantgrowth_tick/growth_tick)
+				growth_tick.acid_damage += 8
+				growth_tick.growth_rate -= 4
 
 			reaction_blob(var/obj/blob/B, var/volume)
 				. = ..()
 				if (!blob_damage)
 					return
 				B.take_damage(blob_damage * min(volume, 10), 1, "mixed")
+
+			reaction_obj(obj/item/clothing/item)
+				if (istype(item) && !(item.item_function_flags & IMMUNE_TO_ACID))
+					var/datum/component/gear_corrosion/corroder = item.LoadComponent(/datum/component/gear_corrosion)
+					corroder.apply_decay()
+
 
 		harmful/pancuronium
 			name = "pancuronium"
@@ -1166,9 +1237,9 @@ datum
 				..()
 				return
 
-			on_plant_life(var/obj/machinery/plantpot/P)
-				if (prob(80)) P.HYPdamageplant("radiation",5)
-				if (prob(25)) P.HYPmutateplant(1)
+			on_plant_life(var/obj/machinery/plantpot/P, var/datum/plantgrowth_tick/growth_tick)
+				growth_tick.radiation_damage += 4
+				growth_tick.mutation_severity += 0.25
 
 		harmful/sodium_thiopental // COGWERKS CHEM REVISION PROJECT. idk some sort of potent opiate or sedative. chloral hydrate? ketamine
 			name = "sodium thiopental"
@@ -1249,7 +1320,7 @@ datum
 			on_mob_life(var/mob/M, var/mult = 1) // sped this up a bit due to mob loop changes
 				if (!M) M = holder.my_atom
 				if (!counter) counter = 1
-				switch(counter += 1)
+				switch(counter += 1 * mult)
 					if (1 to 5)
 						if (probmult(25)) M.emote("yawn")
 					if (6 to 9)
@@ -1334,8 +1405,8 @@ datum
 				..()
 				return
 
-			on_plant_life(var/obj/machinery/plantpot/P)
-				P.HYPdamageplant("poison",1)
+			on_plant_life(var/obj/machinery/plantpot/P, var/datum/plantgrowth_tick/growth_tick)
+				growth_tick.poison_damage += 1
 
 		harmful/cytotoxin
 			name = "cytotoxin"
@@ -1355,7 +1426,7 @@ datum
 
 				var/our_amt = holder.get_reagent_amount(src.id)
 				if (prob(25))
-					M.reagents.add_reagent("histamine", rand(5,10) * mult)
+					M.reagents.add_reagent("histamine", rand(125, 250) * src.calculate_depletion_rate(M, mult))
 				if (our_amt < 20)
 					M.take_toxin_damage(0.75 * mult)
 					random_brute_damage(M, 0.75 * mult)
@@ -1586,13 +1657,10 @@ datum
 				..()
 				return
 
-			on_plant_life(var/obj/machinery/plantpot/P)
-				/*if (prob(80)) P.growth -= rand(1,2)
-				if (prob(16)) P.HYPmutateplant(1)*/
-				if (prob(40) && P.growth > 1)
-					P.growth--
-				if (prob(24))
-					P.HYPmutateplant(1)
+			on_plant_life(var/obj/machinery/plantpot/P, var/datum/plantgrowth_tick/growth_tick)
+				if (P.growth > 1)
+					growth_tick.growth_rate -= 0.4
+				growth_tick.mutation_severity += 0.24
 
 		////////////// work in progress. new mutagen for omega slurrypods - cogwerks
 
@@ -1628,9 +1696,9 @@ datum
 				..()
 				return
 
-			on_plant_life(var/obj/machinery/plantpot/P)
-				P.growth -= rand(1,2)
-				P.HYPmutateplant(1)
+			on_plant_life(var/obj/machinery/plantpot/P, var/datum/plantgrowth_tick/growth_tick)
+				growth_tick.growth_rate -= 1.5
+				growth_tick.mutation_severity += 1
 
 		harmful/formaldehyde/werewolf_serum_fake1
 			name = "Werewolf Serum Precursor Alpha"
@@ -1872,6 +1940,53 @@ datum
 				..()
 				return
 
+		harmful/tetrodotoxin
+			name = "tetrodotoxin"
+			id = "tetrodotoxin"
+			description = "An extremely dangerous neurotoxin which paralyses the heart, most commonly found in incorrectly prepared pufferfish."
+			reagent_state = LIQUID
+			fluid_r = 255
+			fluid_g = 180
+			fluid_b = 240
+			transparency = 10
+			depletion_rate = 0.2
+			var/progression_speed = 1
+			var/counter = 1
+
+			on_mob_life(var/mob/M, var/mult = 1)
+				if (!M) M = holder.my_atom
+
+				switch(src.counter+= (mult * src.progression_speed))
+					if (10 to 28) // Small signs of trouble
+						if (prob(15))
+							M.change_misstep_chance(15 * mult)
+						if (probmult(13))
+							boutput(M, SPAN_NOTICE("<b>You feel a [pick("sudden palpitation", "numbness", "slight burn")] in your chest.</b>"))
+							M.stuttering = max(M.stuttering, 10)
+						if (probmult(13))
+							M.emote(pick("twitch","drool","tremble"))
+							M.change_eye_blurry(2, 2)
+					if (28 to 40) // Effects ramp up, breathlessness, early paralysis signs and heartache
+						M.change_eye_blurry(5, 5)
+						M.stuttering = max(M.stuttering, 5)
+						M.setStatusMin("slowed", 40 SECONDS)
+						if (prob(35))
+							M.losebreath = max(5, M.losebreath + (5 * mult))
+						if (prob(20))
+							boutput(M, SPAN_ALERT("<b>Your chest [pick("burns", "hurts", "stings")] like hell.</b>"))
+							M.change_misstep_chance(15 * mult)
+						if (!ON_COOLDOWN(M, "heartbeat_hallucination", 30 SECONDS))
+							M.playsound_local(get_turf(M), 'sound/effects/HeartBeatLong.ogg', 30, 1, pitch = 2)
+					if (40 to INFINITY) // Heart effects kick in
+						M.setStatusMin("slowed", 40 SECONDS)
+						M.change_eye_blurry(15, 15)
+						M.losebreath = max(5, M.losebreath + (5 * mult))
+						if(isliving(M))
+							var/mob/living/L = M
+							L.contract_disease(/datum/ailment/malady/flatline, null, null, 1)
+				..()
+				return
+
 		harmful/dna_mutagen
 			name = "stable mutagen"
 			id = "dna_mutagen"
@@ -1882,7 +1997,6 @@ datum
 			fluid_b = 0
 			transparency = 255
 			depletion_rate = 2
-			pathogen_nutrition = list("dna_mutagen")
 
 			var/tmp/progress_timer = 1
 
@@ -1919,9 +2033,9 @@ datum
 				..()
 				return
 
-			on_plant_life(var/obj/machinery/plantpot/P)
-				if (prob(80)) P.growth -= rand(1,3)
-				if (prob(16)) P.HYPmutateplant(1)
+			on_plant_life(var/obj/machinery/plantpot/P, var/datum/plantgrowth_tick/growth_tick)
+				growth_tick.growth_rate -= 1.6
+				growth_tick.mutation_severity += 0.16
 
 		harmful/madness_toxin
 			name = "Rajaijah"

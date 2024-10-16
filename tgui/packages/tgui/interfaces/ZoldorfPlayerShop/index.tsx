@@ -5,18 +5,19 @@
  * @license MIT
  */
 
-import { InfernoNode } from 'inferno';
-import { useBackend } from '../../backend';
-import { Box, Button, Flex, Image, Section, Stack } from '../../components';
-import { Window } from '../../layouts';
-import { isSoulProductData } from './type';
-import type { ZoldorfCommonProductData, ZoldorfPlayerShopData } from './type';
+import { ReactNode } from 'react';
+import { Box, Button, Image, Section, Stack } from 'tgui-core/components';
 
-export const ZoldorfPlayerShop = (_, context) => {
-  const { act, data } = useBackend<ZoldorfPlayerShopData>(context);
+import { useBackend } from '../../backend';
+import { Window } from '../../layouts';
+import type { ZoldorfCommonProductData, ZoldorfPlayerShopData } from './type';
+import { isSoulProductData } from './type';
+
+export const ZoldorfPlayerShop = () => {
+  const { act, data } = useBackend<ZoldorfPlayerShopData>();
   const { products, credits } = data;
   return (
-    <Window width="500" height="600">
+    <Window width={500} height={600}>
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item grow>
@@ -28,21 +29,27 @@ export const ZoldorfPlayerShop = (_, context) => {
                       {isSoulProductData(product) ? (
                         <Button
                           color="red"
-                          content={`${product.soul_percentage}%`}
                           disabled={product.soul_percentage > data.user_soul}
-                          onClick={() => act('soul_purchase', { 'item': product.name })}
+                          onClick={() =>
+                            act('soul_purchase', { item: product.name })
+                          }
                           align="center"
                           width="50px"
-                        />
+                        >
+                          {`${product.soul_percentage}%`}
+                        </Button>
                       ) : (
                         <Button
                           color="green"
-                          content={`${product.price}⪽`}
                           disabled={product.price > credits}
-                          onClick={() => act('credit_purchase', { 'item': product.name })}
+                          onClick={() =>
+                            act('credit_purchase', { item: product.name })
+                          }
                           align="center"
                           width="50px"
-                        />
+                        >
+                          {`${product.price}⪽`}
+                        </Button>
                       )}
                     </ZoldorfProductListItem>
                   );
@@ -53,7 +60,9 @@ export const ZoldorfPlayerShop = (_, context) => {
           {credits !== 0 && (
             <Stack.Item bold>
               <Box inline>{`Cash: ${credits}⪽`}</Box>
-              <Button ml="5px" icon="eject" content={'eject'} onClick={() => act('returncash')} />
+              <Button ml={1} icon="eject" onClick={() => act('returncash')}>
+                Eject
+              </Button>
             </Stack.Item>
           )}
         </Stack>
@@ -63,39 +72,41 @@ export const ZoldorfPlayerShop = (_, context) => {
 };
 
 interface ZoldorfProductListItemProps extends ZoldorfCommonProductData {
-  children: InfernoNode;
+  children: ReactNode;
 }
 
 const ZoldorfProductListItem = (props: ZoldorfProductListItemProps) => {
   const { name, img, stock, infinite, children } = props;
   return (
-    <Section height="20px">
-      <Flex
+    <Stack.Item height="20px">
+      <Stack
         align="center"
         style={{
-          "border-bottom": "1px solid #555", // match vending machine border
-          "padding-bottom": "2px", // align border between buttons
+          borderBottom: '1px solid #555', // match vending machine border
+          paddingBottom: '2px', // align border between buttons
         }}
       >
-        <Flex.Item>
+        <Stack.Item>
           <Box
             position="relative" // don't increase line-height, but keep image size
             height="20px" // 20 px height - 32 px sprite = -12 px of offset
             top="-6px" // -12px / 2 = -6px top offset to keep them centered
           >
-            {img && <Image pixelated src={`data:image/png;base64,${img}`} />}
+            {img && <Image src={`data:image/png;base64,${img}`} />}
           </Box>
-        </Flex.Item>
-        <Flex.Item grow>
+        </Stack.Item>
+        <Stack.Item grow>
           <>
-            {!infinite && <Box inline italic>{`${stock} x`}&nbsp;</Box>}
+            {!infinite && (
+              <Box inline italic>
+                {`${stock} x`}&nbsp;
+              </Box>
+            )}
             <Box inline>{name}</Box>
           </>
-        </Flex.Item>
-        <Flex.Item bold>
-          {children}
-        </Flex.Item>
-      </Flex>
-    </Section>
+        </Stack.Item>
+        <Stack.Item bold>{children}</Stack.Item>
+      </Stack>
+    </Stack.Item>
   );
 };

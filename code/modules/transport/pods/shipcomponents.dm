@@ -3,7 +3,7 @@
 	name = "Ship Component"
 	icon = 'icons/obj/ship.dmi'
 	icon_state = "default"
-	flags = FPRINT | TABLEPASS| CONDUCT
+	flags = TABLEPASS | CONDUCT
 	/// How much of the engine's capacity the part takes up
 	var/power_used = 0
 	/// The owner of the part
@@ -21,7 +21,7 @@
 
 // Code to clean up a shipcomponent that is no longer in use
 /obj/item/shipcomponent/disposing()
-	if(src.loc == ship)
+	if(ship && src.loc == ship)
 		ship.components -= src
 	ship = null
 	..()

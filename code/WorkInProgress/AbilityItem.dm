@@ -338,7 +338,7 @@
 		if (the_item.temp_flags & IS_LIMB_ITEM)
 			boutput(usr, SPAN_ALERT("The saw is already attached as an arm."))
 			return
-		switch (alert(usr, "Which arm would you like to replace with [the_item]?",,"Left","Right","Cancel"))
+		switch (tgui_alert(usr, "Which arm would you like to replace with [the_item]?", "Replace Arm", list("Left", "Right", "Cancel"), theme = "syndicate"))
 			if ("Cancel")
 				return
 			if ("Right")
@@ -676,14 +676,17 @@
 
 //cancel-camera-view, but as a button
 /obj/ability_button/reset_view
-	name = "Reset view"
-	icon_state = "jeton"
+	name = "Exit camera view"
+	icon_state = "cancel_camera"
 
 	execute_ability()
-		//var/mob/M = holder.owner
-		usr.set_eye(null)
-		usr.client.view = world.view
+		usr.cancel_camera()
 		..()
+
+	ability_allowed()
+		return TRUE //yea
+
+/obj/ability_button/reset_view/console //just.. don't ask
 
 //////////////////////////////////////////////////////////////////////////////
 /mob/var/list/item_abilities = new/list()

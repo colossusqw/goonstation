@@ -71,7 +71,7 @@ datum
 			fluid_g = 251
 			fluid_b = 251
 			transparency = 30
-			addiction_prob = 10//50
+			addiction_prob = 10
 			addiction_min = 15
 			overdose = 15
 			var/counter = 1 //Data is conserved...so some jerkbag could inject a monkey with this, wait for data to build up, then extract some instant KO juice.  Dumb.
@@ -127,9 +127,9 @@ datum
 			fluid_g = 251
 			fluid_b = 251
 			transparency = 30
-			addiction_prob = 10//50
+			addiction_prob = 10
 			addiction_min = 15
-			depletion_rate = 0.2
+			depletion_rate = 0.3
 			overdose = 40   //Ether is known for having a big difference in effective to toxic dosage
 			var/counter = 1 //Data is conserved...so some jerkbag could inject a monkey with this, wait for data to build up, then extract some instant KO juice.  Dumb.
 			flammable = TRUE
@@ -170,18 +170,18 @@ datum
 					M.changeStatus("recent_trauma", -2 SECONDS * mult)
 				if(holder.has_reagent(src.id,10)) // large doses progress somewhat faster than small ones
 					counter += mult
-					depletion_rate = 0.4 // depletes faster in large doses as well
+					depletion_rate = 0.6 // depletes faster in large doses as well
 				else
-					depletion_rate = 0.2
+					depletion_rate = 0.3
 
 				switch(counter += 1 * mult)
-					if(1 to 12)
+					if(1 to 7)
 						if(probmult(7)) M.emote("yawn")
-					if(12 to 40)
+					if(7 to 30)
 						M.setStatus("drowsy", 40 SECONDS)
 						if(probmult(9)) M.emote(pick("smile","giggle","yawn"))
-					if(40 to INFINITY)
-						depletion_rate = 0.4
+					if(30 to INFINITY)
+						depletion_rate = 0.6
 						M.setStatusMin("unconscious", 6 SECONDS * mult)
 						M.setStatus("drowsy", 40 SECONDS)
 				..()
@@ -249,8 +249,7 @@ datum
 			fluid_g = 100
 			fluid_b = 225
 			transparency = 200
-			addiction_prob = 1//20
-			addiction_prob2 = 10
+			addiction_prob = 0.1
 			addiction_min = 10
 			overdose = 50
 			value = 7 // 5c + 1c + 1c
@@ -383,8 +382,7 @@ datum
 			fluid_g = 0
 			fluid_b = 0
 			transparency = 255
-			addiction_prob = 1//20
-			addiction_prob2 = 20
+			addiction_prob = 0.2
 			addiction_min = 5
 			value = 13
 
@@ -524,7 +522,7 @@ datum
 					else if (effect <= 5)
 						M.visible_message(SPAN_ALERT("<b>[M.name]</b> staggers and drools, their eyes crazed and bloodshot!"))
 						M.dizziness += 8
-						M.reagents.add_reagent("madness_toxin", rand(1,2) * mult)
+						M.reagents.add_reagent("madness_toxin", randfloat(2.5 , 5) * src.calculate_depletion_rate(M, mult))
 					if (effect <= 15)
 						M.take_toxin_damage(1 * mult)
 
@@ -537,8 +535,7 @@ datum
 			fluid_g = 220
 			fluid_b = 220
 			transparency = 40
-			addiction_prob = 1//5
-			addiction_prob2 = 20
+			addiction_prob = 0.2
 			addiction_min = 5
 			depletion_rate = 0.2
 			overdose = 30
@@ -845,7 +842,7 @@ datum
 				M.changeStatus("drowsy", -10 SECONDS)
 				if(M.sleeping && probmult(5)) M.sleeping = 0
 				if(M.get_brain_damage() && prob(5)) M.take_brain_damage(-1 * mult)
-				flush(holder, 2 * mult, flushed_reagents) //combats symptoms not source //ok combats source a bit more
+				flush(holder, 3 * mult, flushed_reagents) //combats symptoms not source //ok combats source a bit more
 				if(M.losebreath > 3)
 					M.losebreath -= (1 * mult)
 				if(M.get_oxygen_deprivation() > 35)
@@ -1103,22 +1100,22 @@ datum
 				..()
 				return
 
-			on_plant_life(var/obj/machinery/plantpot/P)
+			on_plant_life(var/obj/machinery/plantpot/P, var/datum/plantgrowth_tick/growth_tick)
 				var/datum/plantgenes/DNA = P.plantgenes
-				if (!prob(20) && P.growth > 5)
-					P.growth -= 5
-				if (DNA.growtime < 0 && prob(50))
-					DNA.growtime++
-				if (DNA.harvtime < 0 && prob(50))
-					DNA.harvtime++
-				if (DNA.harvests < 0 && prob(50))
-					DNA.harvests++
-				if (DNA.cropsize < 0 && prob(50))
-					DNA.cropsize++
-				if (DNA.potency < 0 && prob(50))
-					DNA.potency++
-				if (DNA.endurance < 0 && prob(50))
-					DNA.endurance++
+				if (P.growth > 5)
+					growth_tick.growth_rate -= 4
+				if (DNA.growtime < 0)
+					growth_tick.growtime_bonus += 0.5
+				if (DNA.harvtime < 0)
+					growth_tick.harvtime_bonus += 0.5
+				if (DNA.harvests < 0)
+					growth_tick.harvests_bonus += 0.5
+				if (DNA.cropsize < 0)
+					growth_tick.cropsize_bonus += 0.5
+				if (DNA.potency < 0)
+					growth_tick.potency_bonus += 0.5
+				if (DNA.endurance < 0)
+					growth_tick.endurance_bonus += 0.5
 
 		medical/promethazine // This stops you from vomiting
 			name = "promethazine"
@@ -1160,8 +1157,7 @@ datum
 			fluid_b = 250
 			depletion_rate = 0.3
 			overdose = 35
-			addiction_prob = 1//25
-			addiction_prob2 = 10
+			addiction_prob = 0.1
 			addiction_min = 10
 			value = 9 // 4c + 3c + 1c + 1c
 			var/remove_buff = 0
@@ -1254,7 +1250,7 @@ datum
 			fluid_b = 255
 			fluid_g = 230
 			transparency = 220
-			addiction_prob = 1//10
+			addiction_prob = 1
 			addiction_min = 10
 			value = 10 // 4 3 1 1 1
 			threshold = THRESHOLD_INIT
@@ -1488,8 +1484,7 @@ datum
 			fluid_g = 100
 			fluid_b = 100
 			transparency = 40
-			addiction_prob = 1//20
-			addiction_prob2 = 20
+			addiction_prob = 0.2
 			addiction_min = 10
 			value = 6 // 3 1 1 heat
 			target_organs = list("left_lung", "right_lung", "spleen")
@@ -1552,7 +1547,7 @@ datum
 				..()
 				return
 
-			on_plant_life(var/obj/machinery/plantpot/P)
+			on_plant_life(var/obj/machinery/plantpot/P, var/datum/plantgrowth_tick/growth_tick)
 				if(P.reagents.has_reagent("toxin"))
 					P.reagents.remove_reagent("toxin", 2)
 				if(P.reagents.has_reagent("toxic_slurry"))

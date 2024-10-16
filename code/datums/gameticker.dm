@@ -28,7 +28,10 @@ var/global/current_state = GAME_STATE_INVALID
 	var/tmp/useTimeDilation = TIME_DILATION_ENABLED
 	var/tmp/timeDilationLowerBound = MIN_TICKLAG
 	var/tmp/timeDilationUpperBound = OVERLOADED_WORLD_TICKLAG
-	var/tmp/highMapCpuCount = 0 // how many times in a row has the map_cpu been high
+	/// how many times in a row has the cpu been high
+	var/tmp/highCpuCount = 0
+	/// how many times in a row has the map_cpu been high
+	var/tmp/highMapCpuCount = 0
 
 /datum/controller/gameticker/proc/pregame()
 
@@ -59,8 +62,7 @@ var/global/current_state = GAME_STATE_INVALID
 	var/did_reminder = FALSE
 
 	#ifdef LIVE_SERVER
-	if (!player_capa)
-		new /obj/overlay/zamujasa/round_start_countdown/encourage()
+	new /obj/overlay/zamujasa/round_start_countdown/encourage()
 	#endif
 	var/obj/overlay/zamujasa/round_start_countdown/timer/title_countdown = new()
 	while (current_state <= GAME_STATE_PREGAME)
@@ -115,8 +117,8 @@ var/global/current_state = GAME_STATE_INVALID
 #endif
 #endif
 
-
-	SPAWN(0) setup()
+	SPAWN(0)
+		setup()
 
 /datum/controller/gameticker/proc/setup()
 	set background = 1
@@ -294,26 +296,18 @@ var/global/current_state = GAME_STATE_INVALID
 		qdel(monke)
 #endif
 
-#ifdef MAP_OVERRIDE_NADIR
-	SPAWN(30 MINUTES) // special catalytic engine warning
-		for(var/obj/machinery/power/catalytic_generator/CG in machine_registry[MACHINES_POWER])
-			LAGCHECK(LAG_LOW)
-			if(CG?.gen_rate < 70000 WATTS)
-				command_alert("Reports indicate that one or more catalytic generators on [station_name()] may require replacement rods for continued operation. If catalytic rods are not replaced, this may result in sitewide power failures.", "Power Grid Warning")
-			break
-#else
 	SPAWN(10 MINUTES) // standard engine warning
-		for(var/obj/machinery/computer/power_monitor/smes/E in machine_registry[MACHINES_POWER])
+		for_by_tcl(E, /obj/machinery/computer/power_monitor/smes)
 			LAGCHECK(LAG_LOW)
 			var/datum/powernet/PN = E.get_direct_powernet()
 			if(PN?.avail <= 0)
 				command_alert("Reports indicate that the engine on-board [station_name()] has not yet been started. Setting up the engine is strongly recommended, or else stationwide power failures may occur.", "Power Grid Warning", alert_origin = ALERT_STATION)
 			break
-#endif
 
 	if(!countJob("AI")) // There is no roundstart AI, spawn in a Latejoin AI on the spawn landmark.
 		for(var/turf/T in job_start_locations["AI"])
 			new /mob/living/silicon/ai/latejoin(T)
+
 	if(!processScheduler.isRunning)
 		processScheduler.start()
 
@@ -457,6 +451,13 @@ var/global/current_state = GAME_STATE_INVALID
 				last_try_dilate = world.time
 
 				// adjust the counter up or down and keep it within the set boundaries
+				if (world.cpu >= TICKLAG_CPU_MAX)
+					if (highCpuCount < TICKLAG_INCREASE_THRESHOLD)
+						highCpuCount++
+				else if (world.cpu <= TICKLAG_CPU_MIN)
+					if (highCpuCount > -TICKLAG_DECREASE_THRESHOLD)
+						highCpuCount--
+
 				if (world.map_cpu >= TICKLAG_MAPCPU_MAX)
 					if (highMapCpuCount < TICKLAG_INCREASE_THRESHOLD)
 						highMapCpuCount++
@@ -465,17 +466,18 @@ var/global/current_state = GAME_STATE_INVALID
 						highMapCpuCount--
 
 				// adjust the tick_lag, if needed
-				var/dilated_tick_lag = world.tick_lag
-				if (highMapCpuCount >= TICKLAG_INCREASE_THRESHOLD)
-					dilated_tick_lag = min(world.tick_lag + TICKLAG_DILATION_INC,	timeDilationUpperBound)
-				else if (highMapCpuCount <= -TICKLAG_DECREASE_THRESHOLD)
-					dilated_tick_lag = max(world.tick_lag - TICKLAG_DILATION_DEC, timeDilationLowerBound)
+				var/dilated_tick_lag
+				if (max(highCpuCount, highMapCpuCount) >= TICKLAG_INCREASE_THRESHOLD)
+					dilated_tick_lag = round(min(world.tick_lag + TICKLAG_DILATION_INC,	timeDilationUpperBound), min(TICKLAG_DILATION_INC, TICKLAG_DILATION_DEC))
+				else if (max(highCpuCount, highMapCpuCount) <= -TICKLAG_DECREASE_THRESHOLD)
+					dilated_tick_lag = round(max(world.tick_lag - TICKLAG_DILATION_DEC, timeDilationLowerBound), min(TICKLAG_DILATION_INC, TICKLAG_DILATION_DEC))
 
 				// only set the value if it changed! earlier iteration of this was
 				// setting world.tick_lag very often, which caused instability with
 				// the networking. do not spam change world.tick_lag! you will regret it!
-				if (world.tick_lag != dilated_tick_lag)
+				if (dilated_tick_lag && (round(world.tick_lag, 0.1) != dilated_tick_lag))
 					world.tick_lag = dilated_tick_lag
+					highCpuCount = 0
 					highMapCpuCount = 0
 
 		// Minds are sometimes kicked out of the global list, hence the fallback (Convair880).
@@ -541,6 +543,10 @@ var/global/current_state = GAME_STATE_INVALID
 					var/ircmsg[] = new()
 					ircmsg["msg"] = "Server would have restarted now, but the restart has been delayed[game_end_delayer ? " by [game_end_delayer]" : null]."
 					ircbot.export_async("admin", ircmsg)
+
+					if (game_end_delayer)
+						var/client/delayerClient = find_client(ckey(game_end_delayer))
+						if (delayerClient) delayerClient.flash_window()
 				else
 					ircbot.event("roundend")
 					//logTheThing(LOG_DEBUG, null, "Zamujasa: [world.timeofday] REBOOTING THE SERVER!!!!!!!!!!!!!!!!!")
