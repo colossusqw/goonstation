@@ -88,17 +88,15 @@ datum
 			transparency = 150
 			viscosity = 0.8
 			minimum_reaction_temperature = T0C + 100
+			flammable = TRUE
+			combusts_on_fire_contact = TRUE
+			burn_speed = 1 //Napalm burns SLOWLY
+			burn_temperature = 2120 + T0C
+			burn_volatility = 10 // Dangerous enough to stand back
 			var/temp_reacted = 0
 
 			reaction_temperature(exposed_temperature, exposed_volume)
-				if(!temp_reacted)
-					temp_reacted = 1
-					var/radius = clamp(volume*0.15, 0, 8)
-					var/list/covered = holder.covered_turf()
-					for(var/turf/t in covered)
-						radius = clamp((volume/covered.len)*0.15, 0, 8)
-						fireflash(t, radius, rand(3000, 6000), 500, chemfire = CHEM_FIRE_RED)
-				holder?.del_reagent(id)
+				is_burning = TRUE
 				return
 
 			reaction_mob(var/mob/M, var/method=TOUCH, var/volume, var/paramslist = 0, var/raw_volume)
