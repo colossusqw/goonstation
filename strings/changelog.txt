@@ -1,5 +1,19 @@
 
+(t)sat jun 07 25
+(u)bork
+(p)23554
+(e)🆕🎨🍝|C-Feature, C-Sprites, A-Catering
+(*)Added vanilla extract and a new recipe, flan!
+(u)Cheekybrdy
+(p)23699
+(e)💅🐁|C-QoL, A-Critters
+(+)Senior ranch animals can now be determined through their description.
 (t)fri jun 06 25
+(u)JORJ949 & RSOD
+(p)23469
+(e)🗺💅📦|A-Mapping, C-QoL, A-Game-Objects
+(*)Spatial interdictors can now be unlocked by swiping an ID with access. They can also have their access changed by the AccessPro
+(+)The Interdictor in the ranch now requires ranch access.
 (u)Avanth
 (p)23701
 (e)🪲💅📦|C-Bug, C-QoL, A-Game-Objects
