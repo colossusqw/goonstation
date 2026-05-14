@@ -1,5 +1,9 @@
 
 (t)thu may 14 26
+(u)iDESTROYkibble
+(p)26589
+(e)|
+(+)You can now print roller beds and IV stands with the medical fabricator.
 (u)JORJ949
 (p)26476
 (e)⚖🧑‍✈️|C-Balance, A-Command
