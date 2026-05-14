@@ -1,6 +1,10 @@
 
 (t)thu may 14 26
 (u)JORJ949
+(p)26476
+(e)⚖🧑‍✈️|C-Balance, A-Command
+(*)The HoP now has all access minus command offices, the brig, security equipment, forensics, medical equipment and APCs.
+(u)JORJ949
 (p)26508
 (e)⚖📨|C-Balance, A-Logistics
 (*)The listening post trader now sells voice anonymizers (makes you appear as "Unknown") instead of voice changers.
