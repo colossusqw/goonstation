@@ -1,5 +1,9 @@
 
 (t)thu may 14 26
+(u)CalliopeSoups
+(p)26573
+(e)💅🧛|C-QoL, A-Gamemodes
+(+)Wraith's Whisper and Mass Whisper now both have no cooldown.
 (u)glowbold
 (e)🆕🔨|C-Feature, A-Player-Actions
 (*)Observers can toggle examine-on-click with a new button in the top-right HUD.
