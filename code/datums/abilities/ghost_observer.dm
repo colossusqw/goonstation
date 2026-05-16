@@ -306,19 +306,6 @@ var/global/datum/spooktober_ghost_handler/spooktober_GH = new()
 			var/mob/dead/observer/ghost = holder.owner
 			ghost.show_health()
 
-/datum/targetable/ghost_observer/toggle_examine
-	name = "Toggle Examine"
-	desc = "Toggle examining on left-click."
-	icon_state = "toggle-examine"
-	targeted = 0
-	cooldown = 0
-
-	cast(atom/target, params)
-		. = ..()
-		if (holder && istype(holder.owner, /mob/dead/observer))
-			var/mob/dead/observer/ghost = holder.owner
-			ghost.click_to_examine = !ghost.click_to_examine
-
 /datum/targetable/ghost_observer/toggle_HUD
 	name = "Hide HUD"
 	desc = "Hide all HUD buttons."
