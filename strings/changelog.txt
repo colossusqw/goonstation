@@ -1,4 +1,7 @@
 
+(t)sun may 17 26
+(u)JORJ949
+(*)The "Fun Times" medal reward for a participation ribbon now puts one in your hand (or the floor under you) instead of spawning you as a possessed one.
 (t)sat may 16 26
 (u)glowbold
 (*) Announcements from the Syndicate Announcement computer have an option for toggling anonymous

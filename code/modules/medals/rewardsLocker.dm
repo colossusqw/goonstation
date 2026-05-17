@@ -1082,23 +1082,15 @@
 	pixel_x = -16
 	pixel_y = -16
 
-// /datum/achievementReward/participantribbon
-// 	title = "(Transformation) Participation Ribbon"
-// 	desc = "Turn into a living participation ribbon. No refunds!"
-// 	required_medal = "Fun Times"
-// 	mobonly = 0
+/datum/achievementReward/participantribbon
+	title = "(Item) Participation Ribbon"
+	desc = "Receive a participation ribbon. No refunds!"
+	required_medal = "Fun Times"
 
-// 	rewardActivate(var/mob/activator)
-// 		if (!isobserver(activator))
-// 			boutput(activator, SPAN_ALERT("You gotta be dead to use this, you goof!"))
-// 			return
-// 		if(istype(activator, /mob/dead/target_observer) && !istype_exact(activator, /mob/dead/target_observer))
-// 			boutput(activator, SPAN_ALERT("You gotta be a ghost to use this, you goof!"))
-// 			return
-// 		var/mob/living/object/O = new /mob/living/object(get_turf(usr), new /obj/item/sticker/ribbon/participant, usr)
-// 		O.say_language = LANGUAGE_ANIMAL
-// 		O.literate = 0
-// 		return 1
+	rewardActivate(var/mob/activator)
+		var/ribbon = new/obj/item/sticker/ribbon/participant(get_turf(activator))
+		activator.put_in_hand_or_drop(ribbon)
+		return 1
 
 /datum/achievementReward/goldbud
 	title = "(Skin) Golden PR-4 Guardbuddy Frame"
