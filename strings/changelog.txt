@@ -1,5 +1,9 @@
 
 (t)sun may 17 26
+(u)Cheekybrdy
+(p)26615
+(e)🆕🐁|C-Feature, A-Critters
+(+)Gorillas now have some genes if put in a scanner
 (u)JORJ949
 (*)The "Fun Times" medal reward for a participation ribbon now puts one in your hand (or the floor under you) instead of spawning you as a possessed one.
 (t)sat may 16 26
