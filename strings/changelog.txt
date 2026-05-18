@@ -1,5 +1,9 @@
 
 (t)mon may 18 26
+(u)JORJ949
+(p)26605
+(e)🆕💅📦🍝|C-Feature, C-QoL, A-Game-Objects, A-Catering
+(*)Many stealthy syndicate items now have special syndicate-only (indicated by being bold and red) descriptive pieces to tell syndies that the item is in fact the sneaky crime version. See the PR for the full list of items.
 (u)FlameArrow57 & Mr. Moriarty
 (p)26581
 (e)💅📄🚨|C-QoL, A-UI, A-Admin
