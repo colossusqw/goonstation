@@ -1,4 +1,10 @@
 
+(t)mon may 18 26
+(u)LorrMaster
+(p)26347
+(e)🎨🧛🧱⏰📨|C-Sprites, A-Gamemodes, A-Materials, A-Status-Effects, A-Logistics
+(*)Added batiline, a new ore with anti-radioactive properties.
+(*)Custom spacesuits and large containers may now provide some protection from radiation based on materials.
 (t)sun may 17 26
 (u)Cheekybrdy
 (p)26615
