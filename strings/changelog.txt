@@ -1,5 +1,9 @@
 
 (t)mon may 18 26
+(u)FlameArrow57 & Mr. Moriarty
+(p)26581
+(e)💅📄🚨|C-QoL, A-UI, A-Admin
+(*)The changelog has been converted to TGUI.
 (u)LorrMaster
 (p)26347
 (e)🎨🧛🧱⏰📨|C-Sprites, A-Gamemodes, A-Materials, A-Status-Effects, A-Logistics
