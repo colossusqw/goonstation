@@ -1,4 +1,12 @@
 
+(t)wed may 20 26
+(u)glowbold
+(p)26641
+(e)⚖⚗|C-Balance, A-Chemistry
+(*)Craft Glue is a weaker version of Space Glue that is always temporary.
+(*)Space Glue and Craft Glue only apply to un-anchored items.
+(*)Super Glue is a stronger version of space glue that applies to everything. It has a secret recipe.
+(+)Josh has a chance to sell you Craft Glue instead of Super Glue.
 (t)mon may 18 26
 (u)Bonnedav
 (p)26596
