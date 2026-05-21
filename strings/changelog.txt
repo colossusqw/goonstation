@@ -1,5 +1,9 @@
 
 (t)thu may 21 26
+(u)JORJ949
+(p)26528
+(e)🗺🎨🧛💡|A-Mapping, C-Sprites, A-Gamemodes, A-Station-Systems
+(*)Added a 4TC deployable hideout to traitor and spy thief uplinks. These can be used on any disposal unit to hide a small secret base inside, anything flushed into the chute will end up in the hideout, anything flushed from the hideout's special chute will end up back in the original chute.
 (u)LorrMaster
 (p)26580
 (e)🎨📦|C-Sprites, A-Game-Objects
