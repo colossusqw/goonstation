@@ -233,6 +233,9 @@ var/global/game_force_started = FALSE
 
 	add_minds()
 
+	if (length(global.job_controls.forced_assignments))
+		handle_forced_antag_assignments()
+
 	// rip collar key, nerds murdered people for you as non-antags and it was annoying
 	//implant_skull_key() //Solarium
 
@@ -392,7 +395,7 @@ var/global/game_force_started = FALSE
 				continue
 #endif
 
-			if (player.ready_play)
+			if (player.ready_play || (player.ckey in job_controls.forced_assignments))
 				var/datum/player/P
 				if (player.mind)
 					P = player.mind.get_player()
@@ -425,7 +428,8 @@ var/global/game_force_started = FALSE
 						antagWeighter.record(role = ROLE_FLOCKMIND, P = P)
 
 				else if (player.mind)
-					if (player.client.using_antag_token && ticker.mode.antag_token_support)
+					if (player.client.using_antag_token && ticker.mode.antag_token_support && \
+						!(length(job_controls.forced_assignments) && (player.ckey in job_controls.forced_assignments)))
 						player.client.use_antag_token()	//Removes a token from the player
 					player.create_character()
 					qdel(player)
