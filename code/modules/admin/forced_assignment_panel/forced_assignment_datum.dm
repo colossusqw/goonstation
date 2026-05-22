@@ -18,6 +18,11 @@
 		antags_input_valid = FALSE
 	if (antags_input_valid)
 		src.forced_antags = new_forced_antags
+	global.bypassCapCkeys |= src.ckey
+
+/datum/forced_assignment/disposing()
+	global.bypassCapCkeys -= src.ckey
+	..()
 
 /datum/forced_assignment/proc/change_job(datum/job/new_job)
 	if (!istype(new_job, /datum/job))
