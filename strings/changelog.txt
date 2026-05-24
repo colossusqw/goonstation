@@ -1,5 +1,9 @@
 
 (t)sun may 24 26
+(u)LorrMaster
+(p)26643
+(e)🆕🔬|C-Feature, A-Science
+(*)Language artifacts can be triggered by matching plural words and words within sentences.
 (u)Ikea
 (p)26652
 (e)🔄🔨|C-Rework, A-Player-Actions
