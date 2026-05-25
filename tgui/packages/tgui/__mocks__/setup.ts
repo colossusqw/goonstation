@@ -1,6 +1,6 @@
-import { vi } from 'vitest';
-
 import './byond';
+
+import { vi } from 'vitest';
 
 vi.mock('../layouts', async () => {
   const { Layout, Pane, Window } = await import('./layouts');
