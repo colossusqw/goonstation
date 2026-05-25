@@ -14,11 +14,14 @@
     "marked-smartypants": "^1.1.12",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
+    "react-json-tree": "^0.20.0",
     "remarkable": "^2.0.1",
     "tgui-core": "~5.10.0",
     "tgui-dev-server": "workspace:*"
   },
   "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.3.2",
     "@types/marked": "4.3.2",
     "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
