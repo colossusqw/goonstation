@@ -258,13 +258,13 @@
 	New()
 		. = ..()
 
-			src.AddComponent( \
-				/datum/component/reagent_overlay, \
-				reagent_overlay_icon = 'icons/obj/foodNdrink/drinks.dmi', \
-				reagent_overlay_icon_state = "fruitmilk", \
-				reagent_overlay_states = 5, \
-				reagent_overlay_scaling = RC_REAGENT_OVERLAY_SCALING_LINEAR, \
-			)
+		src.AddComponent( \
+			/datum/component/reagent_overlay, \
+			reagent_overlay_icon = 'icons/obj/foodNdrink/drinks.dmi', \
+			reagent_overlay_icon_state = "fruitmilk", \
+			reagent_overlay_states = 5, \
+			reagent_overlay_scaling = RC_REAGENT_OVERLAY_SCALING_LINEAR, \
+		)
 
 	New()
 		switch(rand(1,10))
