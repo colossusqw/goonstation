@@ -1,6 +1,9 @@
 
 (t)tue may 26 26
 (u)glowbold
+(e)🆕🤖|C-Feature, A-Silicons
+(+)The cyborg pressure visualizer upgrade is available in robotics fabricators.
+(u)glowbold
 (e)💅💡|C-QoL, A-Station-Systems
 (+)QM Supply and Order computers categories have been reworked.
 (+)Some items in QM crates arrive as hand-deployable frames.

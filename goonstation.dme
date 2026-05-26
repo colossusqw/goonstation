@@ -2034,6 +2034,7 @@
 #include "code\modules\robotics\robot\upgrade\mag_boot.dm"
 #include "code\modules\robotics\robot\upgrade\meson_scanner.dm"
 #include "code\modules\robotics\robot\upgrade\parent.dm"
+#include "code\modules\robotics\robot\upgrade\pressure_visualizer.dm"
 #include "code\modules\robotics\robot\upgrade\prodoc_scanner.dm"
 #include "code\modules\robotics\robot\upgrade\propulsion.dm"
 #include "code\modules\robotics\robot\upgrade\recharge_pack.dm"

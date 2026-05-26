@@ -162,6 +162,7 @@
 		/datum/manufacture/robup_speed,
 		/datum/manufacture/robup_mag,
 		/datum/manufacture/robup_meson,
+		/datum/manufacture/robup_pressure,
 		/datum/manufacture/robup_aware,
 		/datum/manufacture/robup_physshield,
 		/datum/manufacture/robup_fireshield,
