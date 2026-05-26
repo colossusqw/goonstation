@@ -1,5 +1,8 @@
 
 (t)tue may 26 26
+(u)JORJ949
+(e)⚖📦|C-Balance, A-Game-Objects
+(*)The syndicate disposals hideout entrance can no longer be placed in restricted z levels (e.g. in itself), health reduced from 500 > 250, and no longer has additional explosive resistance. The exit chute can no longer be damaged, any method to do so is a bug please report it.
 (u)glowbold
 (e)🆕🤖|C-Feature, A-Silicons
 (+)The cyborg pressure visualizer upgrade is available in robotics fabricators.
