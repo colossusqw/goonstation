@@ -131,6 +131,7 @@
 
 	flatpack
 		icon_state = "dbox_alt"
+		desc = "Hand-held machinery deployer with a big button on the back."
 		HELP_MESSAGE_OVERRIDE("Use in-hand to deploy.")
 
 		attack_self(mob/user)
