@@ -1,4 +1,9 @@
 
+(t)wed may 27 26
+(u)Chasu
+(p)26661
+(e)💅🧱📨|C-QoL, A-Materials, A-Logistics
+(+)Nadir's ore siphon can now extract Batiline
 (t)tue may 26 26
 (u)JORJ949
 (e)⚖📦|C-Balance, A-Game-Objects
