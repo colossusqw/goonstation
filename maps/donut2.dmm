@@ -43912,6 +43912,7 @@
 	},
 /obj/mapping_helper/firedoor_spawn,
 /obj/mapping_helper/access/maint,
+/obj/mapping_helper/access/chapel_office,
 /turf/simulated/floor/plating,
 /area/station/chapel/sanctuary)
 "sUu" = (
@@ -45577,6 +45578,7 @@
 	},
 /obj/mapping_helper/firedoor_spawn,
 /obj/mapping_helper/access/maint,
+/obj/mapping_helper/access/chapel_office,
 /turf/simulated/floor/plating,
 /area/station/chapel/sanctuary)
 "tUE" = (
