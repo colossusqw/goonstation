@@ -35317,12 +35317,6 @@
 	},
 /turf/simulated/wall/auto/reinforced/supernorn,
 /area/station/quartermaster/refinery)
-"cjZ" = (
-/obj/floorpillstatue,
-/turf/simulated/floor/shuttlebay{
-	name = "reinforced plating"
-	},
-/area/station/quartermaster/refinery)
 "cka" = (
 /obj/item/device/radio/intercom/cargo,
 /obj/machinery/light{
@@ -121536,7 +121530,7 @@ cgl
 cgH
 chE
 chH
-cjZ
+ciK
 clI
 cnq
 oVJ

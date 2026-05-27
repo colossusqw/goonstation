@@ -1017,7 +1017,6 @@
 /area/station/storage/northeast)
 "aeq" = (
 /obj/decal/cleanable/dirt,
-/obj/floorpillstatue,
 /turf/simulated/floor/plating,
 /area/station/storage/northeast)
 "aer" = (
