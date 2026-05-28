@@ -1,5 +1,8 @@
 
 (t)wed may 27 26
+(u)glowbold
+(*)Emagged cyborgs do not spark.
+(*)Emagged cyborgs can have their interface unlocked by any ID.
 (u)Sord
 (p)26477
 (e)⚖💡|C-Balance, A-Station-Systems
