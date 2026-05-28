@@ -18,7 +18,7 @@
 (u)Sord
 (p)26477
 (e)⚖💡|C-Balance, A-Station-Systems
-(*)Geneticists, Pharmacists, Psychiatrists, Botanists, and Ranchers lost their maint tunnel access
+(*)Geneticists, Pharmacists, and Psychiatrists have lost their maint tunnel access
 (u)Bonnedav
 (p)26642
 (e)⚖💡|C-Balance, A-Station-Systems
