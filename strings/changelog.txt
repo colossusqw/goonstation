@@ -1,6 +1,10 @@
 
 (t)thu may 28 26
 (u)LeahTheTech
+(p)26725
+(e)🆕🎨🔊🧛|C-Feature, C-Sprites, C-Sound, A-Gamemodes
+(*)Added inflatable gorillas as a 3TC traitor item.
+(u)LeahTheTech
 (p)26521
 (e)🗺⚖🧛|A-Mapping, C-Balance, A-Gamemodes
 (*)The listening post barracks are now locked until the syndicate codereader has scanned an authentication disk. The barracks contain the syndicate apparel vendor, 2TC, and a syndicate announcement computer.
