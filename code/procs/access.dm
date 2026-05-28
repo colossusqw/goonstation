@@ -187,14 +187,14 @@
 		if("Medical Doctor", "Medical Trainee")
 			return list(access_medical, access_medical_lockers, access_morgue, access_maint_tunnels)
 		if("Geneticist")
-			return list(access_medical, access_medical_lockers, access_morgue, access_medlab, access_maint_tunnels)
+			return list(access_medical, access_medical_lockers, access_morgue, access_medlab)
 		if("Roboticist")
-			return list(access_robotics, access_tech_storage, access_medical, access_medical_lockers, access_morgue, access_maint_tunnels)
+			return list(access_robotics, access_tech_storage, access_medical, access_medical_lockers, access_morgue)
 		if("Pharmacist")
-			return list(access_maint_tunnels, access_pharmacy,
+			return list(access_pharmacy,
 						access_medical_lockers, access_medical, access_morgue)
 		if("Psychiatrist")
-			return list(access_medical, access_maint_tunnels)
+			return list(access_medical)
 		if("Medical Specialist")
 			return list(access_robotics, access_medical, access_morgue,
 						access_maint_tunnels, access_tech_storage, access_medical_lockers,
@@ -232,7 +232,7 @@
 		if("Botanist", "Apiculturist")
 			return list(access_maint_tunnels, access_hydro)
 		if("Rancher")
-			return list(access_maint_tunnels, access_hydro, access_ranch)
+			return list(access_hydro, access_ranch)
 		if("Chef", "Sous-Chef")
 			return list(access_kitchen)
 		if("Bartender")

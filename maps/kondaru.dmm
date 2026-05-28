@@ -1017,7 +1017,6 @@
 /area/station/storage/northeast)
 "aeq" = (
 /obj/decal/cleanable/dirt,
-/obj/floorpillstatue,
 /turf/simulated/floor/plating,
 /area/station/storage/northeast)
 "aer" = (
@@ -47841,6 +47840,7 @@
 	},
 /obj/mapping_helper/firedoor_spawn,
 /obj/mapping_helper/access/maint,
+/obj/mapping_helper/access/chapel_office,
 /turf/simulated/floor/grime,
 /area/station/chapel/sanctuary)
 "reX" = (
@@ -55025,6 +55025,7 @@
 	},
 /obj/mapping_helper/firedoor_spawn,
 /obj/mapping_helper/access/maint,
+/obj/mapping_helper/access/chapel_office,
 /turf/simulated/floor/grime,
 /area/station/chapel/sanctuary)
 "wiB" = (
@@ -55347,6 +55348,7 @@
 	icon_state = "4-8"
 	},
 /obj/disposalpipe/segment/horizontal,
+/obj/mapping_helper/access/chapel_office,
 /turf/simulated/floor/plating,
 /area/station/chapel/sanctuary)
 "wrs" = (
