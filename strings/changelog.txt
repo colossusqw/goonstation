@@ -3,10 +3,11 @@
 (u)glowbold
 (*)Emagged cyborgs do not spark.
 (*)Emagged cyborgs can have their interface unlocked by any ID.
+(*)Fungus seeds can be accessed via normal Seed Vendors (no hacking required)
 (u)Sord
 (p)26477
 (e)⚖💡|C-Balance, A-Station-Systems
-(*)Geneticists, Roboticists, Pharmacists, Psychiatrists, and Ranchers lost their maint tunnel access
+(*)Geneticists, Pharmacists, Psychiatrists, Botanists, and Ranchers lost their maint tunnel access
 (u)Bonnedav
 (p)26642
 (e)⚖💡|C-Balance, A-Station-Systems
