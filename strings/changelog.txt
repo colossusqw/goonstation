@@ -1,5 +1,9 @@
 
 (t)thu may 28 26
+(u)Lord_Earthfire
+(p)26266
+(e)🆕⚗|C-Feature, A-Chemistry
+(*)Reagent extractors can be connected to fluid pipe networks by building a fluid port under them. When connected to a fluid network, they will try to pump their internal tanks into the network
 (u)LeahTheTech
 (p)26721
 (e)🎨⚖💊👽🌱|C-Sprites, C-Balance, A-Medical, A-Mutantraces, A-Hydroponics
