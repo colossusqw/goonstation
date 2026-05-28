@@ -1,5 +1,9 @@
 
 (t)thu may 28 26
+(u)Pirate-Rob
+(p)26531
+(e)|
+(+)You can now take out laptop battery cells with a screwdriver.
 (u)LeahTheTech
 (p)26725
 (e)🆕🎨🔊🧛|C-Feature, C-Sprites, C-Sound, A-Gamemodes
