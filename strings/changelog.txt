@@ -1,4 +1,11 @@
 
+(t)thu may 28 26
+(u)LeahTheTech
+(p)26721
+(e)🎨⚖💊👽🌱|C-Sprites, C-Balance, A-Medical, A-Mutantraces, A-Hydroponics
+(*)The xray gene is now an active ability that grants a temporary cone of full xray vision on activation instead of passive omni-vision.
+(+)The empower effect of the xray gene now doubles the angular width of the vision cone, since the base gene now grants full xray vision by default.
+(+)X-ray vision from genes is now blocked by dense batiline objects.
 (t)wed may 27 26
 (u)glowbold
 (*)Emagged cyborgs do not spark.
