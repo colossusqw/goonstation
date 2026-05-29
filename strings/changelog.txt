@@ -1,4 +1,6 @@
-
+(t)fri may 29 26
+(u)NoHelp
+(+)Skeletons can now have the hairy trait.
 (t)thu may 28 26
 (u)bamlord
 (p)26497
