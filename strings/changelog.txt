@@ -1,5 +1,23 @@
-
+(t)fri may 29 26
+(u)NoHelp
+(+)Skeletons can now have the hairy trait.
 (t)thu may 28 26
+(u)bamlord
+(p)26497
+(e)⚖🔄🧛|C-Balance, C-Rework, A-Gamemodes
+(*)The Space Wizard Academy has ceased teaching apprentices the wrong version of shocking touch as a joke.
+(u)Pirate-Rob
+(p)26531
+(e)|
+(+)You can now take out laptop battery cells with a screwdriver.
+(u)LeahTheTech
+(p)26725
+(e)🆕🎨🔊🧛|C-Feature, C-Sprites, C-Sound, A-Gamemodes
+(*)Added inflatable gorillas as a 3TC traitor item.
+(u)LeahTheTech
+(p)26521
+(e)🗺⚖🧛|A-Mapping, C-Balance, A-Gamemodes
+(*)The listening post barracks are now locked until the syndicate codereader has scanned an authentication disk. The barracks contain the syndicate apparel vendor, 2TC, and a syndicate announcement computer.
 (u)Lord_Earthfire
 (p)26266
 (e)🆕⚗|C-Feature, A-Chemistry
