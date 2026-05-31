@@ -3,6 +3,8 @@
 (u)glowbold
 (e)⚖💡|C-Balance, A-Station-Systems
 (*)MechComp vending machine interactions require adequate payment.
+(*)Market traders have a small chance of restocking goods on market refresh.
+(*)Payout exponent bonuses for requisitions and delivered mail have been reduced.
 (t)sat may 30 26
 (u)Studenterhue (and JORJ949)
 (p)26595
