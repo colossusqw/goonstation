@@ -1,5 +1,10 @@
 
 (t)sun may 31 26
+(u)LorrMaster
+(p)26720
+(e)🎨🧱|C-Sprites, A-Materials
+(*)Added mycelium, a new material that can be obtained from harvested mushrooms.
+(+)Combining mycelium with another edible material will remove any "on eat" effects from the resulting material.
 (u)glowbold
 (e)⚖💡|C-Balance, A-Station-Systems
 (*)MechComp vending machine interactions require adequate payment.
