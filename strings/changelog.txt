@@ -1,4 +1,8 @@
 
+(t)sun may 31 26
+(u)glowbold
+(e)⚖💡|C-Balance, A-Station-Systems
+(*)MechComp vending machine interactions require adequate payment.
 (t)sat may 30 26
 (u)Studenterhue (and JORJ949)
 (p)26595
