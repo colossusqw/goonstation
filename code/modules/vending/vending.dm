@@ -3496,6 +3496,9 @@ TYPEINFO(/obj/machinery/vending/janitor)
 		product_list += new/datum/data/vending_product(/obj/item/scripture/cluwnehb, 1, hidden=1,)
 		product_list += new/datum/data/vending_product(/obj/item/scripture/tidehb, 1, hidden=1 )
 
+TYPEINFO(/obj/machinery/vending/murderbox_gang)
+	analyser_flags = ANALYSER_BLACKLIST
+
 /obj/machinery/vending/murderbox_gang
 	name = "GANG.VEND"
 	desc = "A machine that distributes gang weaponry and ammunition, covered in patented virtual grease."
@@ -3546,7 +3549,8 @@ TYPEINFO(/obj/machinery/vending/janitor)
 		product_list += new/datum/data/vending_product(/obj/item/swords/katana/reverse, 1, infinite=TRUE)
 
 TYPEINFO(/obj/machinery/vending/murderbox_armory)
-	analyser_flags = parent_type::analyser_flags | ANALYSER_SYNDIE_ONLY
+	analyser_flags = ANALYSER_BLACKLIST
+
 /obj/machinery/vending/murderbox_armory
 	name = "RIOT.DM" //The armory computer file
 	desc = "A vendor stocked with various riot-suppressive ammunitions. Perfect for taking down cybercrime."
