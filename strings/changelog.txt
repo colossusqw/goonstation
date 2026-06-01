@@ -1,5 +1,9 @@
 
 (t)sun may 31 26
+(u)Pirate-Rob
+(p)26087
+(e)🔎🧛💊🍝🔬💡🌱🚗🐁🛠️|C-Code-Quality, A-Gamemodes, A-Medical, A-Catering, A-Science, A-Station-Systems, A-Hydroponics, A-Vehicles, A-Critters, A-Engineering
+(+)Device Analyzer now has fancy new error messages for when something is wrong.
 (u)grasswitch
 (p)26717
 (e)🆕🔬|C-Feature, A-Science
