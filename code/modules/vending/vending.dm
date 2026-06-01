@@ -1589,6 +1589,8 @@ TYPEINFO(/obj/machinery/vending/medical)
 /obj/machinery/vending/security/owlery
 	req_access = list(access_owlerysec)
 
+TYPEINFO(/obj/machinery/vending/security_ammo)
+	analyser_flags = parent_type::analyser_flags | ANALYSER_SYNDIE_ONLY
 /obj/machinery/vending/security_ammo //shitsec time yes
 	name = "AmmoTech"
 	desc = "A restricted vendor stocked with various riot-suppressive ammunitions."
@@ -1600,7 +1602,6 @@ TYPEINFO(/obj/machinery/vending/medical)
 	light_r =1
 	light_g = 0.8
 	light_b = 0.9
-	is_syndicate = 1
 
 	create_products(restocked)
 		..()
@@ -2076,6 +2077,7 @@ ABSTRACT_TYPE(/obj/machinery/vending/cola)
 
 
 TYPEINFO(/obj/item/machineboard)
+	analyser_flags = parent_type::analyser_flags | ANALYSER_ELECTRONIC
 	mats = 2
 
 /obj/item/machineboard
@@ -2096,7 +2098,7 @@ TYPEINFO(/obj/item/machineboard)
 	icon_state = "player-module"
 
 TYPEINFO(/obj/item/machineboard/vending/monkeys)
-	mats = 0 //No!!
+	analyser_flags = ANALYSER_BLACKLIST //No!!
 
 /obj/item/machineboard/vending/monkeys
 	name = "Valuchimp module"
@@ -2638,7 +2640,7 @@ TYPEINFO(/obj/item/machineboard/vending/monkeys)
 		update_desc()
 
 TYPEINFO(/obj/machinery/vending/monkey)
-	mats = 0 // >:I
+	analyser_flags = ANALYSER_BLACKLIST // >:I
 
 /obj/machinery/vending/monkey
 	name = "ValuChimp"
@@ -2794,8 +2796,9 @@ TYPEINFO(/obj/machinery/vending/monkey)
 		if (prob(25))
 			product_list += new/datum/data/vending_product(/obj/item/seed/alien, 1, hidden=1)
 
+TYPEINFO(/obj/machinery/vending/hydroponics/mean_solarium_bullshit)
+	manufactured_type = /obj/machinery/vending/hydroponics //Nice try
 /obj/machinery/vending/hydroponics/mean_solarium_bullshit
-	mechanics_type_override = /obj/machinery/vending/hydroponics
 	create_products(restocked)
 		..()
 		product_list += new/datum/data/vending_product(/obj/item/device/key/cheget,1, 954, 1)
@@ -2980,7 +2983,7 @@ TYPEINFO(/obj/machinery/vending/monkey)
 			product_list += new/datum/data/vending_product(/obj/item/ammo/bullets/abg/punchy, 2, cost=PAY_TRADESMAN, hidden=1)
 
 TYPEINFO(/obj/machinery/vending/chem)
-	mats = null
+	analyser_flags = ANALYSER_BLACKLIST
 	start_speech_modifiers = list(SPEECH_MODIFIER_VENDING_MACHINE, SPEECH_MODIFIER_ACCENT_VOID)
 
 /obj/machinery/vending/chem
@@ -3542,6 +3545,8 @@ TYPEINFO(/obj/machinery/vending/janitor)
 		product_list += new/datum/data/vending_product(/obj/item/gang_machete, 1, infinite=TRUE)
 		product_list += new/datum/data/vending_product(/obj/item/swords/katana/reverse, 1, infinite=TRUE)
 
+TYPEINFO(/obj/machinery/vending/murderbox_armory)
+	analyser_flags = parent_type::analyser_flags | ANALYSER_SYNDIE_ONLY
 /obj/machinery/vending/murderbox_armory
 	name = "RIOT.DM" //The armory computer file
 	desc = "A vendor stocked with various riot-suppressive ammunitions. Perfect for taking down cybercrime."
@@ -3551,7 +3556,6 @@ TYPEINFO(/obj/machinery/vending/janitor)
 	acceptcard = FALSE
 	pay = FALSE
 	can_fall = FALSE
-	is_syndicate = 1
 
 	create_products(restocked)
 		..()
