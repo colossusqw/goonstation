@@ -1,5 +1,9 @@
 
 (t)sun may 31 26
+(u)grasswitch
+(p)26717
+(e)🆕🔬|C-Feature, A-Science
+(+)Artifacts sometimes hint at newly developed faults. Agitator artifacts always cause hints to be displayed.
 (u)LorrMaster
 (p)26720
 (e)🎨🧱|C-Sprites, A-Materials
