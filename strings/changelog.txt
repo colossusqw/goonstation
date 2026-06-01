@@ -11,7 +11,7 @@
 (+)Combining mycelium with another edible material will remove any "on eat" effects from the resulting material.
 (u)glowbold
 (e)⚖💡|C-Balance, A-Station-Systems
-(*)MechComp vending machine interactions require adequate payment.
+(*)Using MechComp to vend items from vending machines requires adequate payment from cash or a linked card.
 (*)Market traders have a small chance of restocking goods on market refresh.
 (*)Payout exponent bonuses for requisitions and delivered mail have been reduced.
 (t)sat may 30 26
