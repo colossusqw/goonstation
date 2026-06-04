@@ -597,7 +597,8 @@ TYPEINFO(/obj/item/room_planner)
 
 	New()
 		. = ..()
-		src.inventory_counter.update_number(src.charges)
+		if(src.inventory_counter_enabled)
+			src.inventory_counter.update_number(src.charges)
 
 	attackby(obj/item/I, mob/user, params)
 		if (!istype_exact(src, /obj/item/room_planner))
