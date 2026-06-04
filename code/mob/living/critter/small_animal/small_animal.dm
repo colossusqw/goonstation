@@ -3092,7 +3092,7 @@ var/list/mob_bird_species = list("smallowl" = /mob/living/critter/small_animal/b
 
 #define SLUG_ITEM_EDIBLE(O) (istype(O, /obj/item/plant)\
 	|| istype(O, /obj/item/reagent_containers/food) && !istype(O, /obj/item/reagent_containers/food/drinks)\
-	|| istype(O, /obj/item/seed))\
+	|| istype(O, /obj/item/seed))
 
 	seek_food_target(range)
 		. = list()
