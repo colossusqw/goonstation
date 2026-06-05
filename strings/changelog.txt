@@ -1,5 +1,9 @@
 
 (t)fri jun 05 26
+(u)bamlord
+(p)26799
+(e)|
+(+)Gorillas have learned how to rip off all your limbs.
 (u)LorrMaster
 (p)26684
 (e)🎨🧱|C-Sprites, A-Materials
