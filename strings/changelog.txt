@@ -3,8 +3,9 @@
 (u)Valtsu0
 (p)26769
 (e)🆕📄🌱|C-Feature, A-UI, A-Hydroponics
-(+)A collection of all the types of fish that you have fished across rounds can be found by using the Fish Collection verb
+(*)A collection of all the types of fish that you have fished across rounds can be found by using the Fish Collection verb
 (u)LeahTheTech
+(+)Finishing the fish collection will reward you with a fancy fishing rod.
 (p)26784
 (e)🆕🔨|C-Feature, A-Player-Actions
 (+)Razors hidden in flat caps can now be used to blind people. Requires an aggressive grab and head targeting, blocked by anything that covers the eyes.
