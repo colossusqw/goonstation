@@ -1,5 +1,9 @@
 
 (t)fri jun 05 26
+(u)TemThrush & Yelloworlemons
+(p)26797
+(e)🎨|C-Sprites
+(+)Interacting with hairbows while holding them will let you re-tie them into new styles.
 (u)bamlord
 (p)26799
 (e)|
