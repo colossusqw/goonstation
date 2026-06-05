@@ -1,5 +1,9 @@
 
 (t)fri jun 05 26
+(u)Valtsu0
+(p)26769
+(e)🆕📄🌱|C-Feature, A-UI, A-Hydroponics
+(+)A collection of all the types of fish that you have fished across rounds can be found by using the Fish Collection verb
 (u)LeahTheTech
 (p)26784
 (e)🆕🔨|C-Feature, A-Player-Actions
