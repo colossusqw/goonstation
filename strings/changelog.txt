@@ -1,5 +1,10 @@
 
 (t)fri jun 05 26
+(u)LeahTheTech
+(p)26784
+(e)🆕🔨|C-Feature, A-Player-Actions
+(+)Razors hidden in flat caps can now be used to blind people. Requires an aggressive grab and head targeting, blocked by anything that covers the eyes.
+(+)Gang crates can now contain flat caps with razors hidden in them.
 (u)TemThrush & Yelloworlemons
 (p)26797
 (e)🎨|C-Sprites
