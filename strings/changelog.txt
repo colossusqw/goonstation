@@ -1,5 +1,9 @@
 
 (t)mon jun 08 26
+(u)JORJ949
+(p)26763
+(e)⚖🤖💡|C-Balance, A-Silicons, A-Station-Systems
+(*)EMPing an AI turret will now prevent it from firing for 30-45 seconds, instead of just turning it off.
 (u)RubberRats
 (p)26824
 (e)🪲📄📨|C-Bug, A-UI, A-Logistics
