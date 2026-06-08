@@ -1,5 +1,9 @@
 
 (t)mon jun 08 26
+(u)CalliopeSoups
+(p)26599
+(e)🆕🌠|C-Feature, A-Events
+(+)Sudden Sapience Disease random event that spawns an observer as a random station monkey.
 (u)JORJ949
 (p)26763
 (e)⚖🤖💡|C-Balance, A-Silicons, A-Station-Systems
