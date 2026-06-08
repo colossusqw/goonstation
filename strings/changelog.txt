@@ -1,5 +1,9 @@
 
 (t)mon jun 08 26
+(u)LeahTheTech
+(p)26830
+(e)🆕📡🍝🐁|C-Feature, A-AI, A-Catering, A-Critters
+(+)Remy will now wander back to the kitchen if he strays too far.
 (u)CalliopeSoups
 (p)26599
 (e)🆕🌠|C-Feature, A-Events
