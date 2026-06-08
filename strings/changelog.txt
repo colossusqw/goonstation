@@ -1,6 +1,10 @@
 
 (t)mon jun 08 26
 (u)LeahTheTech
+(p)26814
+(e)⚖⛔🧛|C-Balance, C-Removal, A-Gamemodes
+(+)Salvager pods no longer have a unique tint. Pods built using the purchasable salvager pod armour retain the tint.
+(u)LeahTheTech
 (p)26830
 (e)🆕📡🍝🐁|C-Feature, A-AI, A-Catering, A-Critters
 (+)Remy will now wander back to the kitchen if he strays too far.
