@@ -1,6 +1,10 @@
 
 (t)wed jun 10 26
 (u)LeahTheTech
+(p)21572
+(e)🆕🎨🔨|C-Feature, C-Sprites, A-Player-Actions
+(*)Changelings now have the ability to swap bodies with those they absorb, leaving their old body as a husk. The old absorb behaviour remains as a different button.
+(u)LeahTheTech
 (p)26852
 (e)💅⛔🧛|C-QoL, C-Removal, A-Gamemodes
 (+)Removed changeling lesser form button and moved it to the transform menu.
