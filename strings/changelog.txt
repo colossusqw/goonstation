@@ -1,4 +1,9 @@
 
+(t)wed jun 10 26
+(u)LeahTheTech
+(p)26852
+(e)💅⛔🧛|C-QoL, C-Removal, A-Gamemodes
+(+)Removed changeling lesser form button and moved it to the transform menu.
 (t)tue jun 09 26
 (u)Gomp
 (p)26809
