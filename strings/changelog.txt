@@ -1,6 +1,7 @@
 
 (t)wed jun 10 26
 (u)LeahTheTech
+(+)Chameleon projectors no longer make an obnoxious flash sound when scanning something.
 (p)21572
 (e)🆕🎨🔨|C-Feature, C-Sprites, A-Player-Actions
 (*)Changelings now have the ability to swap bodies with those they absorb, leaving their old body as a husk. The old absorb behaviour remains as a different button.
