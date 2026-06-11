@@ -312,7 +312,7 @@ ABSTRACT_TYPE(/datum/syndicate_buylist/traitor)
 /datum/syndicate_buylist/traitor/areacloak
 	name = "Cloaking Field Generator"
 	items = list(/obj/item/cloak_gen)
-	cost = 3
+	cost = 2
 	desc = "Remote-controlled device that produces an area of effect cloaking field while active. Don't lose the remote!"
 
 /datum/syndicate_buylist/traitor/floorcloset
