@@ -1,4 +1,9 @@
 
+(t)thu jun 11 26
+(u)JORJ949
+(p)26839
+(e)⚖🧛|C-Balance, A-Gamemodes
+(*)Salvagers now get random uniforms, suits and hats, pulling from the same pool that stowaways do. They also start with a gas mask.
 (t)wed jun 10 26
 (u)LeahTheTech
 (+)Chameleon projectors no longer make an obnoxious flash sound when scanning something.
