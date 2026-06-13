@@ -9,6 +9,8 @@ proc/pick_landmark(name, default = null, ignorespecific = list())
 	else
 		return pick(landmarks[name] - ignorespecific)
 
+TYPEINFO(/obj/landmark)
+	analyser_flags = ANALYSER_BLACKLIST //Please stop trying to give these analyzer components
 /obj/landmark
 	name = "landmark"
 	icon = 'icons/map-editing/landmarks.dmi'
@@ -636,6 +638,7 @@ var/global/list/job_start_locations = list()
 	/// /y offset relative to the landmark, will cause visual jump effect due to set_loc not gliding
 	var/yOffset = 0
 	add_to_landmarks = FALSE
+	deleted_on_start = FALSE
 	/// modifier for restricting criteria of what gets warped by mirror
 	var/warptarget_modifier = LANDMARK_VM_WARP_ALL
 	var/novis = FALSE
@@ -643,7 +646,7 @@ var/global/list/job_start_locations = list()
 		if(global.current_state < GAME_STATE_PREGAME)
 			src.setup(loc, man_xOffset, man_yOffset, man_targetZ, man_warptarget_modifier)
 		else
-			SPAWN(0)
+			SPAWN(1)
 				src.setup(loc, man_xOffset, man_yOffset, man_targetZ, man_warptarget_modifier)
 		..()
 
@@ -668,6 +671,7 @@ var/global/list/job_start_locations = list()
 				T.updateVis()
 				T.vistarget.fullbright = TRUE
 				T.vistarget.RL_Init()
+		qdel(src)
 
 /obj/landmark/viscontents_spawn/no_vis
 	name = "instant hole spawn"
