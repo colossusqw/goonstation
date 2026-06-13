@@ -639,8 +639,15 @@ var/global/list/job_start_locations = list()
 	/// modifier for restricting criteria of what gets warped by mirror
 	var/warptarget_modifier = LANDMARK_VM_WARP_ALL
 	var/novis = FALSE
-
 	New(var/loc, var/man_xOffset, var/man_yOffset, var/man_targetZ, var/man_warptarget_modifier)
+		if(global.current_state < GAME_STATE_PREGAME)
+			src.setup(loc, man_xOffset, man_yOffset, man_targetZ, man_warptarget_modifier)
+		else
+			SPAWN(0)
+				src.setup(loc, man_xOffset, man_yOffset, man_targetZ, man_warptarget_modifier)
+		..()
+
+	proc/setup(var/loc, var/man_xOffset, var/man_yOffset, var/man_targetZ, var/man_warptarget_modifier)
 		if (man_xOffset) src.xOffset = man_xOffset
 		if (man_yOffset) src.yOffset = man_yOffset
 		if (man_targetZ) src.targetZ = man_targetZ
@@ -661,7 +668,6 @@ var/global/list/job_start_locations = list()
 				T.updateVis()
 				T.vistarget.fullbright = TRUE
 				T.vistarget.RL_Init()
-		..()
 
 /obj/landmark/viscontents_spawn/no_vis
 	name = "instant hole spawn"
