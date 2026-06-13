@@ -1,4 +1,9 @@
 
+(t)fri jun 12 26
+(u)glowbold
+(e)⚖💊|C-Balance, A-Medical
+(*)Only medically trained crew can get an accurate assessment of how damaged someone is.
+(+)Toxin damage is no longer available on examine.
 (t)thu jun 11 26
 (u)JORJ949
 (p)26839
