@@ -1,6 +1,10 @@
 
 (t)sat jun 13 26
+(u)globwold
+(e)⚖💊|C-Balance, A-Medical
+(+)Operating tables always show output for mobs on top, regardless of laying or standing status.
 (u)JORJ949
+(e)⚖|C-Balance
 (+)All briefcases can now hold normal size items. The RD's toxins briefcase can no longer hold bulky items.
 (u)JORJ949 + ANNmagedon
 (p)26878
