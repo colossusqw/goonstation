@@ -1,5 +1,9 @@
 
 (t)sat jun 13 26
+(u)JORJ949 + ANNmagedon
+(p)26878
+(e)🎨👮|C-Sprites, A-Security
+(+)Resprited the stamp of the security stamp.
 (u)Sovexe
 (p)26883
 (e)🪲|C-Bug
