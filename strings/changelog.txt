@@ -1,5 +1,8 @@
 
 (t)sat jun 13 26
+(u)globwold
+(e)⚖💊|C-Balance, A-Medical
+(+)Operating tables always show output for mobs on top, regardless of laying or standing status.
 (u)JORJ949 + ANNmagedon
 (p)26878
 (e)🎨👮|C-Sprites, A-Security
