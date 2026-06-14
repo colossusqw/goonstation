@@ -79,7 +79,7 @@ def parse_pr_changelog(pr):
 	feedback = None
 	feedback_match = re.search(r"\(f\)\s*(.*?)$", changelog_match.group(1), re.M)
 	if feedback_match is not None:
-		link = feedback_match.group(1)
+		link = feedback_match.group(1).strip()
 		if link.find("https://forum.ss13.co/") == 0:
 			feedback = link
 	lines = changelog_match.group(1).split('\n')
