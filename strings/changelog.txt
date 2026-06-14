@@ -1,4 +1,10 @@
 
+(t)sun jun 14 26
+(u)Mr. Moriarty
+(p)26778
+(f)https://forum.ss13.co/
+(e)🆕📄⚙|C-Feature, A-UI, A-Internal
+(*)The changelog may now display PR feedback threads. Click the above "Feedback" link to be redirected to the forums! Going forward, PRs with a feedback thread will be linked here.
 (t)sat jun 13 26
 (u)glowbold
 (e)⚖💊|C-Balance, A-Medical
