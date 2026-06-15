@@ -1,3 +1,11 @@
+
+(t)mon jun 15 26
+(u)glowbold
+(p)26845
+(e)🆕🎨🔄💊📨|C-Feature, C-Sprites, C-Rework, A-Medical, A-Logistics
+(*)Medical masks can have a mini-tank attached, instantly turn on internals when equipped, do not work in low pressure environments, and automatically turn off when out of gas.
+(*)Anesthetic storage lockers contain 2 medical masks with pre-installed anesthetic mini-tanks, 2 anesthetic tanks, and 5 anesthetic mini-tanks. Morphine contents unchanged.
+(+)Cargo can now order a medical-equipment locked Anesthetic Crate to restock medical's anesthetic supplies.
 (t)sun jun 14 26
 (u)TekoTheTeapot
 (p)26831
