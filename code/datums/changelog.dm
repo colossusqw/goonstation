@@ -44,7 +44,7 @@ so you'll want your single-digit days to have 0s in front
 	 *	> (*)Added soft soft pizza to the game - a tasty drink found in soda machines! \
 	 *	> (+)Drinking any kind of soda will cause you to burp violently.
 	 */
-	var/static/regex/changelog_regex = regex(@"```changelog\n(\(u\)\s*.*?):?$\n(\(f\)\s*.*?)$\n([\s\S\n]*)(\n)```", "m")
+	var/static/regex/changelog_regex = regex(@"```changelog\n(\(u\)\s*.*?):?$(?:\n(\(f\)\s*.*?)$)?\n([\s\S\n]*)\n```", "m")
 
 	/// Matches all carriage return characters.
 	var/static/regex/carriage_return_regex = regex(@"\r", "g")
@@ -78,7 +78,7 @@ so you'll want your single-digit days to have 0s in front
 /datum/changelog/New()
 	. = ..()
 	#ifdef TESTMERGE_PRS
-	src.testmerge_changes = list("(t)Testmerge")
+	src.testmerge_changes = list()
 
 	for (var/pr_num as anything in TESTMERGE_PRS) // list(123, 456)
 		var/log = src.get_testmerge_changelog(pr_num)
@@ -158,8 +158,8 @@ so you'll want your single-digit days to have 0s in front
 	var/change_entry = null		// (*) (+)
 
 	var/list/lines = splittext(changelog_string, "\n")
-	if (show_testmerges && src.testmerge_changes)
-		lines.Insert(1, testmerge_changes)
+	if (show_testmerges && length(src.testmerge_changes))
+		lines.Insert(1, "(t)Testmerge", src.testmerge_changes)
 
 	for (var/line as anything in lines)
 		if (!line || (copytext(line, 1, 2) == "#"))
