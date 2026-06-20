@@ -1,5 +1,11 @@
 
 (t)sat jun 20 26
+(u)LeahTheTech + sprites by Xenomni + ideas by Rayne
+(p)26881
+(e)🆕🎨🧛⏰📦⚗💪🐁|C-Feature, C-Sprites, A-Gamemodes, A-Status-Effects, A-Game-Objects, A-Chemistry, A-Traits, A-Critters
+(*)Added folded paper charms that can be made by a chaplain and strung with wire to be worn around the neck.
+(+)Charms can be stained with any reagent, with some reagents providing specific effects. The blood of a curse victim, for example, will provide limited use protection against curses when worn.
+(+)A short book on charm effects can be found in the chaplain's vending machine.
 (u)ANNmagedon
 (p)26859
 (e)🆕🛠️|C-Feature, A-Engineering
