@@ -553,9 +553,6 @@ TYPEINFO(/mob)
 /mob/proc/deliver_move_trigger(ev)
 	return
 
-/mob/proc/onMouseDrag(src_object,over_object,src_location,over_location,src_control,over_control,params)
-	return
-
 /mob/proc/onMouseDown(object,location,control,params)
 	return
 
