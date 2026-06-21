@@ -248,7 +248,7 @@
 /obj/machinery/light/incandescent/warm,
 /obj/decal/stripe_caution,
 /obj/storage/crate/eng_reinforcedcables,
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/engine/inner)
 "abk" = (
 /obj/cable{
@@ -5945,11 +5945,11 @@
 /turf/simulated/floor,
 /area/station/hallway/primary/north)
 "aBS" = (
-/turf/simulated/floor/orangeblack/side,
+/turf/simulated/floor/caution/side,
 /area/station/hallway/primary/north)
 "aBT" = (
 /obj/machinery/light/incandescent/netural,
-/turf/simulated/floor/orangeblack/side,
+/turf/simulated/floor/caution/side,
 /area/station/hallway/primary/north)
 "aBV" = (
 /turf/simulated/floor,
@@ -6223,14 +6223,14 @@
 /turf/simulated/floor/sanitary,
 /area/station/medical/morgue)
 "aDz" = (
-/turf/simulated/floor/orangeblack/side/white{
+/turf/simulated/floor/caution/white{
 	dir = 1
 	},
 /area/station/science/teleporter)
 "aDA" = (
 /obj/reagent_dispensers/foamtank,
 /obj/item/extinguisher,
-/turf/simulated/floor/orangeblack/side/white{
+/turf/simulated/floor/caution/white{
 	dir = 1
 	},
 /area/station/science/teleporter)
@@ -6244,13 +6244,13 @@
 /obj/cable{
 	icon_state = "0-2"
 	},
-/turf/simulated/floor/orangeblack/side/white{
+/turf/simulated/floor/caution/white{
 	dir = 1
 	},
 /area/station/science/teleporter)
 "aDD" = (
 /obj/storage/crate/adventure,
-/turf/simulated/floor/orangeblack/side/white{
+/turf/simulated/floor/caution/white{
 	dir = 5
 	},
 /area/station/science/teleporter)
@@ -6651,7 +6651,7 @@
 /obj/cable{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/orangeblack/side/white{
+/turf/simulated/floor/caution/white{
 	dir = 8
 	},
 /area/station/science/teleporter)
@@ -6803,7 +6803,7 @@
 /obj/cable{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/orangeblack/side/white{
+/turf/simulated/floor/caution/white{
 	dir = 8
 	},
 /area/station/science/teleporter)
@@ -6896,17 +6896,17 @@
 /turf/simulated/wall/auto/supernorn,
 /area/station/quartermaster/refinery)
 "aGe" = (
-/turf/simulated/floor/orangeblack/side/white{
+/turf/simulated/floor/caution/white{
 	dir = 10
 	},
 /area/station/science/teleporter)
 "aGf" = (
-/turf/simulated/floor/orangeblack/side/white,
+/turf/simulated/floor/caution/white,
 /area/station/science/teleporter)
 "aGg" = (
 /obj/storage/closet/emergency,
 /obj/machinery/light/incandescent/cool,
-/turf/simulated/floor/orangeblack/side/white,
+/turf/simulated/floor/caution/white,
 /area/station/science/teleporter)
 "aGh" = (
 /obj/machinery/atmospherics/pipe/manifold{
@@ -7163,7 +7163,7 @@
 /obj/disposalpipe/segment/brig{
 	dir = 4
 	},
-/turf/simulated/floor/orangeblack/side{
+/turf/simulated/floor/caution/side{
 	dir = 1
 	},
 /area/station/hallway/primary/east)
@@ -7172,7 +7172,7 @@
 /obj/disposalpipe/segment/brig{
 	dir = 4
 	},
-/turf/simulated/floor/orangeblack/side{
+/turf/simulated/floor/caution/side{
 	dir = 1
 	},
 /area/station/hallway/primary/east)
@@ -7901,7 +7901,7 @@
 "aKI" = (
 /obj/decal/stripe_caution,
 /obj/storage/crate/eng_dowsingrods,
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/engine/inner)
 "aKJ" = (
 /obj/table/auto,
@@ -13113,7 +13113,7 @@
 /obj/machinery/power/stomper,
 /obj/machinery/light/incandescent/warm,
 /obj/decal/stripe_caution,
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/engine/inner)
 "bml" = (
 /turf/simulated/floor/yellow/side{
@@ -13309,7 +13309,7 @@
 "bmO" = (
 /obj/machinery/power/stomper,
 /obj/decal/stripe_caution,
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/engine/inner)
 "bmQ" = (
 /obj/table/auto,
@@ -13406,7 +13406,7 @@
 /obj/item/vent_capture_unbuilt,
 /obj/item/vent_capture_unbuilt,
 /obj/decal/stripe_caution,
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/engine/inner)
 "bnz" = (
 /obj/machinery/fluid_canister,
@@ -14765,7 +14765,7 @@
 /obj/item/device/radio/headset/multifreq,
 /obj/item/device/radio/headset/multifreq,
 /obj/item/device/radio/headset/multifreq,
-/turf/simulated/floor/orangeblack/side/white,
+/turf/simulated/floor/caution/white,
 /area/station/science/teleporter)
 "bug" = (
 /obj/decal/stage_edge{
@@ -15578,22 +15578,22 @@
 /turf/simulated/floor/carpet/blue/fancy/innercorner/ne_triple,
 /area/station/crew_quarters/bar)
 "bxC" = (
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/quartermaster/office)
 "bxD" = (
 /obj/machinery/light/incandescent/warm,
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/quartermaster/office)
 "bxE" = (
 /obj/machinery/computer/announcement/station/cargo{
 	dir = 8
 	},
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/quartermaster/office)
 "bxG" = (
 /obj/machinery/light/incandescent/netural,
 /obj/disposalpipe/segment/morgue,
-/turf/simulated/floor/orangeblack/side{
+/turf/simulated/floor/caution/side{
 	dir = 8
 	},
 /area/station/hallway/primary/south)
@@ -15738,23 +15738,23 @@
 /obj/machinery/camera/directional/south{
 	pixel_x = -10
 	},
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/quartermaster/office)
 "byv" = (
 /obj/stool/chair/office/yellow{
 	dir = 4
 	},
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/quartermaster/office)
 "byw" = (
 /obj/machinery/computer/supplycomp{
 	dir = 8
 	},
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/quartermaster/office)
 "byx" = (
 /obj/disposalpipe/segment/morgue,
-/turf/simulated/floor/orangeblack/side{
+/turf/simulated/floor/caution/side{
 	dir = 8
 	},
 /area/station/hallway/primary/south)
@@ -15977,7 +15977,7 @@
 "bzm" = (
 /obj/machinery/nanofab/refining,
 /obj/decal/stripe_caution,
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/quartermaster/office)
 "bzn" = (
 /turf/simulated/floor/yellowblack{
@@ -20577,7 +20577,7 @@
 /obj/table/reinforced/auto,
 /obj/item/storage/box/trackimp_kit,
 /obj/item/hand_labeler,
-/turf/simulated/floor/orangeblack/side/white,
+/turf/simulated/floor/caution/white,
 /area/station/science/teleporter)
 "bWo" = (
 /obj/table/reinforced/auto,
@@ -20587,7 +20587,7 @@
 /obj/item/device/light/glowstick,
 /obj/item/device/gps,
 /obj/item/device/gps,
-/turf/simulated/floor/orangeblack/side/white{
+/turf/simulated/floor/caution/white{
 	dir = 6
 	},
 /area/station/science/teleporter)
@@ -24403,7 +24403,7 @@
 /obj/blind_switch/area/north{
 	pixel_x = 4
 	},
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/quartermaster/office)
 "cFt" = (
 /obj/disposalpipe/segment,
@@ -25055,7 +25055,7 @@
 	opacity = 0
 	},
 /obj/mapping_helper/firedoor_spawn,
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/science/teleporter)
 "djU" = (
 /obj/machinery/floorflusher/genpop,
@@ -27925,7 +27925,7 @@
 /obj/machinery/computer/barcode/qm/no_belthell{
 	dir = 4
 	},
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/quartermaster/office)
 "fwi" = (
 /obj/machinery/computer/barcode,
@@ -29645,7 +29645,7 @@
 	dir = 4
 	},
 /obj/machinery/firealarm/directional/north,
-/turf/simulated/floor/orangeblack/side{
+/turf/simulated/floor/caution/side{
 	dir = 1
 	},
 /area/station/hallway/primary/east)
@@ -30419,7 +30419,7 @@
 /obj/stool/chair/yellow{
 	dir = 8
 	},
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/quartermaster/office)
 "hyh" = (
 /turf/simulated/wall/auto/martian,
@@ -31485,7 +31485,7 @@
 	dir = 8;
 	pixel_y = 1
 	},
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/quartermaster/office)
 "iCE" = (
 /obj/decal/cleanable/blood/drip/high,
@@ -33757,7 +33757,7 @@
 /turf/simulated/floor/grime,
 /area/diner/bathroom)
 "kve" = (
-/turf/simulated/floor/orangeblack/side/white{
+/turf/simulated/floor/caution/white{
 	dir = 8
 	},
 /area/station/science/teleporter)
@@ -40395,7 +40395,7 @@
 	dir = 8;
 	pixel_y = 1
 	},
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/quartermaster/office)
 "qjI" = (
 /obj/machinery/light/small/sticky/blueish,
@@ -43099,7 +43099,7 @@
 	name = "Teleporter Pad Blast Shield";
 	opacity = 0
 	},
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/science/teleporter)
 "svu" = (
 /obj/disposalpipe/segment/morgue{
@@ -43331,7 +43331,7 @@
 "sEn" = (
 /obj/machinery/light/incandescent/harsh,
 /obj/decal/stripe_caution,
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/quartermaster/office)
 "sEF" = (
 /obj/machinery/chem_dispenser/chemical,
@@ -46850,7 +46850,7 @@
 /obj/machinery/light/incandescent/cool,
 /obj/machinery/firealarm/directional/north,
 /obj/storage/closet/fire,
-/turf/simulated/floor/orangeblack/side/white{
+/turf/simulated/floor/caution/white{
 	dir = 1
 	},
 /area/station/science/teleporter)
@@ -48445,7 +48445,7 @@
 /obj/machinery/camera/directional/west{
 	pixel_y = -10
 	},
-/turf/simulated/floor/orangeblack/side/white{
+/turf/simulated/floor/caution/white{
 	dir = 9
 	},
 /area/station/science/teleporter)

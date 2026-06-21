@@ -6181,7 +6181,7 @@
 /obj/item/clothing/shoes/flippers{
 	pixel_y = -12
 	},
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/ai_monitored/storage/eva)
 "erX" = (
 /obj/rack,
@@ -10369,7 +10369,7 @@
 /turf/simulated/floor,
 /area/station/crew_quarters/lounge)
 "hiB" = (
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/ai_monitored/storage/eva)
 "hiG" = (
 /obj/decal/cleanable/blood/gibs{
@@ -12109,7 +12109,7 @@
 /obj/machinery/camera/directional/west{
 	pixel_y = 10
 	},
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/ai_monitored/storage/eva)
 "isE" = (
 /obj/machinery/door/airlock/pyro/glass/security/alt{
@@ -12485,7 +12485,7 @@
 /obj/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/ai_monitored/storage/eva)
 "iGx" = (
 /obj/disposalpipe/segment/produce{
@@ -18124,7 +18124,7 @@
 	pixel_y = -12
 	},
 /obj/machinery/light/incandescent/cool,
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/ai_monitored/storage/eva)
 "mwO" = (
 /obj/machinery/door/poddoor/pyro{
@@ -21637,7 +21637,7 @@
 /area/station/maintenance/inner/central)
 "pbw" = (
 /obj/machinery/dispenser,
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/ai_monitored/storage/eva)
 "pbS" = (
 /obj/flock_reclaimer,
@@ -23285,7 +23285,7 @@
 /obj/cable{
 	icon_state = "0-2"
 	},
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/ai_monitored/storage/eva)
 "qis" = (
 /obj/mapping_helper/wingrille_spawn/auto/reinforced,
@@ -25190,7 +25190,7 @@
 /obj/item/sheet/glass/reinforced/fullstack,
 /obj/item/device/gps,
 /obj/item/device/gps,
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/ai_monitored/storage/eva)
 "rFX" = (
 /obj/cable{
@@ -25239,7 +25239,7 @@
 /area/research_outpost/hangar)
 "rIe" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/ai_monitored/storage/eva)
 "rIH" = (
 /obj/disposalpipe/segment/morgue{
@@ -25814,7 +25814,7 @@
 /obj/machinery/camera/directional/east{
 	pixel_y = 10
 	},
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/ai_monitored/storage/eva)
 "sbU" = (
 /obj/machinery/door/airlock/pyro/glass{
@@ -25846,7 +25846,7 @@
 /obj/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/ai_monitored/storage/eva)
 "sdw" = (
 /obj/machinery/firealarm/directional/north,
@@ -26721,7 +26721,7 @@
 	pixel_y = -12
 	},
 /obj/item/device/radio/intercom,
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/ai_monitored/storage/eva)
 "sMa" = (
 /obj/crevice{
@@ -29176,7 +29176,7 @@
 /area/station/security/checkpoint/sec_foyer/no_teleblock)
 "usj" = (
 /obj/machinery/light/incandescent/cool,
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/ai_monitored/storage/eva)
 "uty" = (
 /obj/cable{
@@ -30529,7 +30529,7 @@
 	enter_id = "eva";
 	name = "Bridge"
 	},
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/ai_monitored/storage/eva)
 "vus" = (
 /obj/structure/girder/reinforced,
@@ -31394,7 +31394,7 @@
 /obj/item/cell/supercell/charged,
 /obj/item/cell/supercell/charged,
 /obj/machinery/light/incandescent/cool,
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/ai_monitored/storage/eva)
 "vWJ" = (
 /obj/cable{
@@ -31601,7 +31601,7 @@
 /area/station/chapel/sanctuary)
 "wcC" = (
 /obj/storage/crate/rcd,
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/ai_monitored/storage/eva)
 "wcH" = (
 /obj/machinery/power/apc/autoname_west,
@@ -33884,7 +33884,7 @@
 	icon_state = "1-8"
 	},
 /obj/mapping_helper/access/eva,
-/turf/simulated/floor/orangeblack,
+/turf/simulated/floor/caution,
 /area/station/ai_monitored/storage/eva)
 "xGI" = (
 /obj/machinery/disposal/small/west,
