@@ -1,5 +1,9 @@
 
 (t)sun jun 21 26
+(u)LorrMaster
+(p)26598
+(e)💅🧱|C-QoL, A-Materials
+(*)Portable reclaimer now outputs leftover material as sheets.
 (u)Gomp
 (p)26750
 (e)🎨|C-Sprites
