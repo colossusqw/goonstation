@@ -1,5 +1,9 @@
 
 (t)sun jun 21 26
+(u)SebaceousSasquatch
+(p)26917
+(e)|
+(+)Custom injectors now have the reagent's name specified on them too.
 (u)LorrMaster
 (p)26598
 (e)💅🧱|C-QoL, A-Materials
