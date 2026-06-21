@@ -1,5 +1,9 @@
 
 (t)sun jun 21 26
+(u)Gomp
+(p)26750
+(e)🎨|C-Sprites
+(+)The segway has a new look.
 (u)JORJ949
 (p)26919
 (e)🆕🗺📦|C-Feature, A-Mapping, A-Game-Objects
