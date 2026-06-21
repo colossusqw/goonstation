@@ -1,4 +1,10 @@
 
+(t)sun jun 21 26
+(u)JORJ949
+(p)26919
+(e)🆕🗺📦|C-Feature, A-Mapping, A-Game-Objects
+(*)The syndicate disposals hijacker can now be used in hand to choose your hideout's style!
+(+)Added the "Trash Pit" style to the syndicate disposals hideout options.
 (t)sat jun 20 26
 (u)LeahTheTech + sprites by Xenomni + ideas by Rayne
 (p)26881
