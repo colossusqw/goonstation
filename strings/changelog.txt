@@ -1,5 +1,10 @@
 
 (t)fri jun 26 26
+(u)Nexusuxen
+(p)26918
+(e)🗺|A-Mapping
+(*)Oshan's AI Upload/Net Cafe has swapped places with the Sauna room. The Captain's quarters now also provides critical quick access to the Sauna from the Captain's new private bathroom.
+(+)Several areas around the AI Upload/Net Cafe have been altered to make room for the changes, primarily merging the fishing room with Hydroponics proper (A couple trays had to be moved into maintenance.)
 (u)Bartimeus973
 (p)26928
 (e)💅🔨|C-QoL, A-Player-Actions
