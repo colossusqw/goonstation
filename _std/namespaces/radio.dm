@@ -101,9 +101,9 @@ ADD_TO_NAMESPACE(RADIO)(proc/default_frequency_class(freq))
 	if (!class_to_return)
 		for (var/datum/gang/gang as anything in global.get_all_gangs())
 			if (freq == gang.gang_frequency)
-				class_to_return = RADIOCL_SYNDICATE
+				class_to_return = RADIO::CSS::SYNDICATE
 
-	return class_to_return || RADIOCL_OTHER
+	return class_to_return || RADIO::CSS::OTHER
 
 /// An alist of radio frequencies and their associated channel colours.
 ADD_TO_NAMESPACE(RADIO)(var/alist/frequencies_to_colours = alist(
