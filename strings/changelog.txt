@@ -1,5 +1,9 @@
 
 (t)fri jun 26 26
+(u)JORJ949
+(p)26846
+(e)🔎💅📄🧛|C-Code-Quality, C-QoL, A-UI, A-Gamemodes
+(*)Non-PDA syndicate uplinks (including headrev and nukeop) now use TGUI. Presently cannot view syndicate intelligence, this will come in a future update.
 (u)Walnut356
 (p)26999
 (e)🛠️|A-Engineering
