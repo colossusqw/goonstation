@@ -1,5 +1,10 @@
 
 (t)fri jun 26 26
+(u)glowbold
+(p)26905
+(e)🆕🗺⛔🚗|C-Feature, A-Mapping, C-Removal, A-Vehicles
+(*)Pod Tractor Beam secondary components have been removed from Security podbays.
+(*)Armory Pod Weapons Crate gets 2 Stasis Charger pod weapons
 (u)Zeabus
 (p)26990
 (e)🔬|A-Science
