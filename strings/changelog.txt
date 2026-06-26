@@ -1,5 +1,9 @@
 
 (t)fri jun 26 26
+(u)LorrMaster
+(p)26979
+(e)🆕🎨🧱⏰💪|C-Feature, C-Sprites, A-Materials, A-Status-Effects, A-Traits
+(*)Added the Artisan Trait, a new trait that gives your trinket a random material.
 (u)LeahTheTech
 (p)27004
 (e)⚖🧛|C-Balance, A-Gamemodes
