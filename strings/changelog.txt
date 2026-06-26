@@ -1,5 +1,9 @@
 
 (t)fri jun 26 26
+(u)LeahTheTech
+(p)27004
+(e)⚖🧛|C-Balance, A-Gamemodes
+(*)Vampire bite now instantly kills the victim when they are fully drained of blood.
 (u)glowbold
 (p)26905
 (e)🆕🗺⛔🚗|C-Feature, A-Mapping, C-Removal, A-Vehicles
