@@ -1,5 +1,9 @@
 
 (t)fri jun 26 26
+(u)CalliopeSoups
+(p)26858
+(e)🌠|A-Events
+(+)Certain unruly monkeys can now be played through the Sudden Sapience event.
 (u)Nexusuxen
 (p)26918
 (e)🗺|A-Mapping
