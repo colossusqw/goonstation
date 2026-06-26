@@ -1,5 +1,9 @@
 
 (t)fri jun 26 26
+(u)JORJ949
+(p)26956
+(e)🆕📨|C-Feature, A-Logistics
+(*)Cargo can now print carts at their manufacturer
 (u)Asterion0
 (p)26983
 (e)|
