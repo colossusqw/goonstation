@@ -1,5 +1,10 @@
 
 (t)fri jun 26 26
+(u)leafedlizord
+(p)27008
+(e)🎨💪|C-Sprites, A-Traits
+(+)Removed the body category from the Stinky trait.
+(+)Adjusted the sprite for the Stinky trait to match the other Uncategorized traits.
 (u)CalliopeSoups
 (p)26858
 (e)🌠|A-Events
