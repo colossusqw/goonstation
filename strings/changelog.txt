@@ -1,5 +1,9 @@
 
 (t)fri jun 26 26
+(u)Walnut356
+(p)26999
+(e)🛠️|A-Engineering
+(+)When stepping, Movement Component now outputs a signal with the result of the step.
 (u)JORJ949
 (p)26956
 (e)🆕📨|C-Feature, A-Logistics
