@@ -59,7 +59,7 @@ ADD_TO_NAMESPACE(TEST)(proc/example_proc())
 
 // The namespace path for a concatenated namespace name, with a capturing identity macro appended to the terminating forward slash.
 #define _NS_PATH_I(_ARGS...) _NS_PATH_CONCAT(__NS_PATH_I, ##_ARGS, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0)
-#define __NS_PATH_I(_NAME) /datum/namespace/##_NAME/##IDENTITY
+#define __NS_PATH_I(_NAME) datum/namespace/##_NAME/##IDENTITY
 
 #define _NS_PATH_CONCAT(X, a, b, c, d, e, f, g, h, i, j, ...) _NS_PATH_CONCAT_##j(X, a, b, c, d, e, f, g, h, i)
 #define _NS_PATH_CONCAT_0(X, a, b, c, d, e, f, g, h, i)
