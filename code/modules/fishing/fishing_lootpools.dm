@@ -106,4 +106,4 @@
 ///gotta put the "fake" one in to get the real one
 /datum/fishing_lootpool/literal_swordfish
 	required_lure = /obj/item/reagent_containers/food/fish/swordfish
-	fish_available = list(/obj/item/reagent_containers/food/fish/literal_swordfish = 7)
+	fish_available = list(/obj/item/reagent_containers/food/fish/literal_swordfish = 25)
