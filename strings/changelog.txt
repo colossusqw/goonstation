@@ -1,5 +1,8 @@
 
 (t)sun jun 28 26
+(u)LeahTheTech
+(*)The armory now REQUIRES an authorization reason.
+(+)New packet command "set_reason" for armory computers.
 (u)Cheekybrdy
 (p)26857
 (e)🎨⚗|C-Sprites, A-Chemistry
