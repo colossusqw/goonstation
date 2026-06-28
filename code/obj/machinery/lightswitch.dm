@@ -192,7 +192,33 @@ ADMIN_INTERACT_PROCS(/obj/machinery/light_switch, proc/trigger)
 
 		UpdateIcon()
 
-SET_UP_DIRECTIONALS(/obj/machinery/light_switch, OFFSETS_LIGHTSWITCH)
+/obj/machinery/light_switch/north
+	name = "N light switch"
+	dir = NORTH
+	pixel_y = 24
+
+/obj/machinery/light_switch/east
+	name = "E light switch"
+	dir = EAST
+	pixel_x = 24
+
+/obj/machinery/light_switch/south
+	name = "S light switch"
+	dir = SOUTH
+	pixel_y = -24
+
+/obj/machinery/light_switch/west
+	name = "W light switch"
+	dir = WEST
+	pixel_x = -24
+
+/obj/machinery/light_switch/auto
+	name = "light switch"
+
+	New()
+		SPAWN(1 DECI SECOND)
+			src.autoposition()
+		..()
 
 #undef SWITCH_SPAM_TIMEOUT
 #undef SWITCH_SPAM_START_THRESHOLD
