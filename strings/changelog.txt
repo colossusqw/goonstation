@@ -1,5 +1,9 @@
 
 (t)sun jun 28 26
+(u)SnugglyCactus, Skeletonman0, PiratePop, swinglow20, glowbold, LeahTheTech
+(p)26993
+(e)🎨🔊👽💪|C-Sprites, C-Sound, A-Mutantraces, A-Traits
+(*)Adds a 3-point amphibian trait to character select that allows players to be human amphibians, separate from nonhuman Abzunians and shelterfrogs. The frogs are coming.
 (u)LeahTheTech
 (*)The armory now REQUIRES an authorization reason.
 (+)New packet command "set_reason" for armory computers.
