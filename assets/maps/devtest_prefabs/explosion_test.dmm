@@ -25,7 +25,9 @@
 /obj/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/light_switch/directional/west,
+/obj/machinery/light_switch/west{
+	pixel_y = -10
+	},
 /turf/simulated/floor/bluewhite/corner{
 	dir = 8
 	},
@@ -176,7 +178,7 @@
 /area/station/devzone/no_default_light)
 "fX" = (
 /obj/disposalpipe/segment,
-/obj/machinery/light_switch/directional/west,
+/obj/machinery/light_switch/west,
 /obj/disposalpipe/segment/transport{
 	dir = 4
 	},
@@ -425,7 +427,7 @@
 /area/station/devzone/no_default_light)
 "nJ" = (
 /obj/storage/secure/closet/command/medical_director,
-/obj/machinery/light_switch/directional/north,
+/obj/machinery/light_switch/north,
 /turf/simulated/floor/carpet/blue/fancy/innercorner/north,
 /area/station/devzone/no_default_light)
 "oc" = (
@@ -590,7 +592,9 @@
 /obj/machinery/camera/directional/east{
 	pixel_y = -10
 	},
-/obj/machinery/light_switch/directional/east,
+/obj/machinery/light_switch/east{
+	pixel_y = 12
+	},
 /turf/simulated/floor/black,
 /area/station/devzone/no_default_light)
 "tC" = (

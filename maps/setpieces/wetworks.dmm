@@ -4219,6 +4219,7 @@
 	color = "aqua"
 	})
 "Da" = (
+/obj/machinery/light_switch/auto,
 /obj/rack,
 /obj/item/bandage,
 /obj/item/bandage,
@@ -4227,7 +4228,6 @@
 /obj/item/reagent_containers/mender_refill_cartridge/brute,
 /obj/item/reagent_containers/mender_refill_cartridge/burn,
 /obj/item_dispenser/latex_gloves,
-/obj/machinery/light_switch/directional/north,
 /turf/unsimulated/floor/redwhite,
 /area/syndicate_station{
 	name = "Decirprevo Tanker";
