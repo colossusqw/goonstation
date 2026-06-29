@@ -1,4 +1,6 @@
-
+(t)mon jun 29 26
+(u)LeahTheTech
+(+)Frog tongues can now catch and eat small insects, as well as other kinds of food.
 (t)sun jun 28 26
 (u)SnugglyCactus, Skeletonman0, PiratePop, swinglow20, glowbold, LeahTheTech
 (p)26993
