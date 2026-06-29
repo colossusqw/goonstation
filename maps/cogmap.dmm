@@ -22798,10 +22798,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/data_terminal,
-/obj/machinery/light_switch{
-	name = "W light switch";
-	pixel_y = 24
-	},
+/obj/machinery/light_switch/north,
 /turf/simulated/floor/plating/jen,
 /area/station/engine/elect)
 "bMa" = (
