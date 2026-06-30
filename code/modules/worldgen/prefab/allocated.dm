@@ -98,6 +98,9 @@ ABSTRACT_TYPE(/datum/mapPrefab/allocated)
 	name = "Trash Pit"
 	prefabPath = "assets/maps/allocated/syndicate_hideouts/trash_pit.dmm"
 
+/datum/mapPrefab/allocated/syndicate_hideout/dojo
+	name = "dojo"
+	prefabPath = "assets/maps/allocated/syndicate_hideouts/dojo.dmm"
 /datum/mapPrefab/allocated/syndicate_hideout/retreat
 	name = "Retreat"
 	prefabPath = "assets/maps/allocated/syndicate_hideouts/retreat.dmm"
