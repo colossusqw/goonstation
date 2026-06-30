@@ -1,5 +1,9 @@
 
 (t)tue jun 30 26
+(u)Sandwichi
+(p)26716
+(e)🆕💪|C-Feature, A-Traits
+(+)The Lunchbox trinket trait can now come packed with a Picky Eater's favourite foods.
 (u)Brainrot
 (p)27018
 (e)🗺|A-Mapping
