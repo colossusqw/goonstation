@@ -1,5 +1,9 @@
 
 (t)tue jun 30 26
+(u)Michael Warren
+(p)27013
+(e)🗺|A-Mapping
+(*)Added Syndicate hideout variant to the syndicate disposals hijacker. Now with a vibe befitting the wandering ronin you were always meant to be!
 (u)Sandwichi
 (p)26716
 (e)🆕💪|C-Feature, A-Traits
