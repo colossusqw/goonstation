@@ -1,7 +1,7 @@
-/// Namespace for all things manufacturers
+/// Namespace for all things manufacturers.
 CREATE_NAMESPACE(MANUFACTURER)
 
-/// The ui categories of the blueprints
+/// The UI categories of the blueprints.
 CREATE_NAMESPACE(MANUFACTURER, CATEGORY)
 
 ADD_TO_NAMESPACE(MANUFACTURER, CATEGORY)(var/const/TOOL = "Tool")
@@ -15,5 +15,3 @@ ADD_TO_NAMESPACE(MANUFACTURER, CATEGORY)(var/const/MACHINERY = "Machinery")
 ADD_TO_NAMESPACE(MANUFACTURER, CATEGORY)(var/const/MEDICINE = "Medicine")
 ADD_TO_NAMESPACE(MANUFACTURER, CATEGORY)(var/const/MISCELLANEOUS = "Miscellaneous")
 ADD_TO_NAMESPACE(MANUFACTURER, CATEGORY)(var/const/DOWNLOADED = "Downloaded")
-
-
