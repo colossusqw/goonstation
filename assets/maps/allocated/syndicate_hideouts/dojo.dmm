@@ -34,7 +34,6 @@
 "j" = (
 /obj/machinery/computer/camera_viewer,
 /obj/machinery/light/small/floor/warm,
-/obj/item/device/radio/intercom,
 /turf/simulated/floor/bamboo,
 /area/syndicate_station/hideout)
 "l" = (
@@ -71,6 +70,12 @@
 /area/syndicate_station/hideout)
 "r" = (
 /turf/simulated/floor/dojo/stone,
+/area/syndicate_station/hideout)
+"s" = (
+/obj/item/device/radio/intercom{
+	dir = 8
+	},
+/turf/simulated/floor/bamboo,
 /area/syndicate_station/hideout)
 "t" = (
 /obj/machinery/disposal/extradimensional/exit,
@@ -313,7 +318,7 @@ h
 h
 h
 h
-Z
+I
 h
 r
 S
@@ -328,7 +333,7 @@ o
 J
 N
 h
-I
+Z
 h
 C
 A
@@ -355,7 +360,7 @@ a
 a
 h
 V
-I
+s
 I
 d
 I

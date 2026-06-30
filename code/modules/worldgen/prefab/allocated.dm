@@ -88,6 +88,7 @@ ABSTRACT_TYPE(/datum/mapPrefab/allocated)
 	prefabSizeY = 33
 	prefabPath = "assets/maps/allocated/salvager_local.dmm"
 
+// Syndicate Hideouts
 /datum/mapPrefab/allocated/syndicate_hideout
 	name = "Sinister Office"
 	prefabSizeX = 13
@@ -99,8 +100,9 @@ ABSTRACT_TYPE(/datum/mapPrefab/allocated)
 	prefabPath = "assets/maps/allocated/syndicate_hideouts/trash_pit.dmm"
 
 /datum/mapPrefab/allocated/syndicate_hideout/dojo
-	name = "dojo"
+	name = "Dojo"
 	prefabPath = "assets/maps/allocated/syndicate_hideouts/dojo.dmm"
+
 /datum/mapPrefab/allocated/syndicate_hideout/retreat
 	name = "Retreat"
 	prefabPath = "assets/maps/allocated/syndicate_hideouts/retreat.dmm"
