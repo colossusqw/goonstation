@@ -1,5 +1,9 @@
 
 (t)tue jun 30 26
+(u)Brainrot
+(p)27018
+(e)🗺|A-Mapping
+(*)Added a new hideout variant for Syndicates who need a more relaxing place away from the NT crew to plan their crimes.
 (u)phoi
 (p)26980
 (e)🗺|A-Mapping
