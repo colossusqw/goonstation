@@ -1,4 +1,10 @@
 
+(t)fri jul 03 26
+(u)ANNmagedon
+(p)27072
+(e)|
+(+)RCD Charges now show up as ammo in manufacturers
+(+)Ammo found in hacked general manufacturers will now be correctly categorized
 (t)thu jul 02 26
 (u)ANNmagedon
 (p)27058
