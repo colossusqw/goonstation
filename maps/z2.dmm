@@ -35458,6 +35458,9 @@
 	icon_state = "offbroken";
 	name = "broken computer"
 	},
+/obj/blind_switch/north{
+	id = "owl"
+	},
 /turf/unsimulated/floor/wood/two,
 /area/owlery/office)
 "cGH" = (
@@ -41940,15 +41943,6 @@
 /turf/unsimulated/wall/auto/reinforced/supernorn,
 /area/owlery/office)
 "cYI" = (
-/obj/cable{
-	icon_state = "4-8"
-	},
-/turf/unsimulated/wall/auto/reinforced/supernorn,
-/area/owlery/office)
-"cYJ" = (
-/obj/blind_switch{
-	id = "owl"
-	},
 /obj/cable{
 	icon_state = "4-8"
 	},
@@ -92805,7 +92799,7 @@ cJh
 cYv
 cYv
 cUL
-cYJ
+cYI
 cGG
 cGf
 cGF

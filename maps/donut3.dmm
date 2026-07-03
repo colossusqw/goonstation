@@ -22950,15 +22950,15 @@
 /obj/machinery/light_switch/directional/north{
 	pixel_x = 7
 	},
-/obj/blind_switch/area{
-	pixel_x = -5;
-	pixel_y = 30
-	},
 /obj/cable{
 	icon_state = "2-8"
 	},
 /obj/machinery/camera/directional/north{
 	pixel_x = -10
+	},
+/obj/blind_switch/north{
+	pixel_x = -1;
+	pixel_y = 24
 	},
 /turf/simulated/floor/carpet/arcade,
 /area/station/crew_quarters/captain)
@@ -34751,12 +34751,12 @@
 /area/station/crew_quarters/quartersB)
 "kPo" = (
 /obj/machinery/light_switch/directional/north,
-/obj/blind_switch/area{
-	pixel_x = 12;
-	pixel_y = 24
-	},
 /obj/machinery/camera/directional/north{
 	pixel_x = -10
+	},
+/obj/blind_switch/north{
+	pixel_x = 12;
+	pixel_y = 24
 	},
 /turf/simulated/floor/wood/six,
 /area/station/library/reading2)
@@ -74051,12 +74051,12 @@
 /area/station/engine/inner)
 "wOz" = (
 /obj/machinery/light_switch/directional/north,
-/obj/blind_switch/area{
-	pixel_x = 12;
-	pixel_y = 24
-	},
 /obj/machinery/camera/directional/north{
 	pixel_x = -10
+	},
+/obj/blind_switch/north{
+	pixel_x = 12;
+	pixel_y = 24
 	},
 /turf/simulated/floor/wood/six,
 /area/station/library/reading1)
