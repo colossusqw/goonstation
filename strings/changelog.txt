@@ -1,5 +1,9 @@
 
 (t)fri jul 03 26
+(u)KolIsDumb, DeadMan164
+(p)27019
+(e)🎨|C-Sprites
+(+)Added 8 color variants of the dinosaur pajamas found within the clothing booth
 (u)A.I.TheArtificialIdiot
 (p)27034
 (e)⚗|A-Chemistry
