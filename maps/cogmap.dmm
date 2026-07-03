@@ -50448,6 +50448,10 @@
 /area/station/science/chemistry)
 "oaO" = (
 /obj/disposalpipe/segment/mail,
+/obj/machinery/light/small{
+	dir = 4;
+	pixel_x = 12
+	},
 /turf/simulated/floor/plating,
 /area/station/storage/warehouse)
 "oaZ" = (
