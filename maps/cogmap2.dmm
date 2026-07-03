@@ -63908,9 +63908,8 @@
 "ogv" = (
 /obj/machinery/communications_dish,
 /obj/machinery/power/data_terminal,
-/obj/cable,
 /obj/cable{
-	icon_state = "0-2"
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating/airless,
 /area/station/com_dish/auxdish)
@@ -67572,6 +67571,12 @@
 /obj/mesh/catwalk,
 /obj/cable{
 	icon_state = "1-2"
+	},
+/obj/cable{
+	icon_state = "2-8"
+	},
+/obj/cable{
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/airless/plating/catwalk,
 /area/station/com_dish/auxdish)
