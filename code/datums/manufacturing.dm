@@ -3697,7 +3697,7 @@ ABSTRACT_TYPE(/datum/manufacture/radio_upgrade)
 	item_outputs = list(/obj/storage/crate)
 	create = 1
 	time = 10 SECONDS
-	category = MANUFACTURER::CATEGORY::MISCELLANEOUS
+	category = MANUFACTURER::CATEGORY::CRATES
 
 /datum/manufacture/crate/wooden
 	name = "Wooden Crate"
@@ -3769,7 +3769,7 @@ ABSTRACT_TYPE(/datum/manufacture/radio_upgrade)
 	item_outputs = list(/obj/storage/cart)
 	create = 1
 	time = 10 SECONDS
-	category = MANUFACTURER::CATEGORY::MISCELLANEOUS
+	category = MANUFACTURER::CATEGORY::CARTS
 
 /datum/manufacture/cart/forensic
 	name = "Forensics Cart"
