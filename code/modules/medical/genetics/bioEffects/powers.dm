@@ -472,6 +472,9 @@ ABSTRACT_TYPE(/datum/bioEffect/power)
 
 		if (ishuman(holder.owner))
 			var/mob/living/carbon/human/H = owner
+			if (!H.organHolder.head)
+				boutput(holder.owner, SPAN_ALERT("You don't have a head!"))
+				return CAST_ATTEMPT_FAIL_NO_COOLDOWN
 			var/obj/item/I
 			if (istype(H.wear_mask) && H.wear_mask.c_flags & COVERSMOUTH)
 				I = H.wear_mask
