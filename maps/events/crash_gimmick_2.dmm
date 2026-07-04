@@ -15,8 +15,8 @@
 	dir = 4
 	},
 /obj/mapping_helper/airlock/cycler/manual{
-	cycle_id = "eastairlockinner";
-	name = "East Airlock"
+	cycle_id = "westairlockinner";
+	name = "West Airlock"
 	},
 /turf/simulated/floor/shuttle,
 /area/shuttle/arrival/station)
@@ -189,8 +189,8 @@
 	dir = 4
 	},
 /obj/mapping_helper/airlock/cycler/manual{
-	cycle_id = "westairlockouter";
-	name = "West Airlock"
+	cycle_id = "eastairlockouter";
+	name = "East Airlock"
 	},
 /turf/simulated/floor/shuttle,
 /area/shuttle/arrival/station)
@@ -255,7 +255,7 @@
 /turf/simulated/floor/shuttle,
 /area/shuttle/arrival/station)
 "hG" = (
-/obj/machinery/vending/security,
+/obj/submachine/weapon_vendor/security,
 /turf/simulated/floor/shuttle/red,
 /area/shuttle/arrival/station)
 "hT" = (
@@ -295,7 +295,13 @@
 	},
 /area/built_zone)
 "jp" = (
-/turf/simulated/floor/plating,
+/obj/indestructible/shuttle_corner{
+	dir = 0
+	},
+/obj/lattice{
+	icon_state = "lattice-dir"
+	},
+/turf/space,
 /area/space)
 "jy" = (
 /obj/cable{
@@ -362,6 +368,13 @@
 	free_resources = list(/obj/item/material_piece/steel = 999, /obj/item/material_piece/copper = 999, /obj/item/material_piece/glass = 999)
 	},
 /turf/simulated/floor/shuttle,
+/area/shuttle/arrival/station)
+"ly" = (
+/obj/machinery/power/rtg,
+/obj/cable{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/shuttlebay,
 /area/shuttle/arrival/station)
 "lz" = (
 /obj/mesh/catwalk,
@@ -475,6 +488,19 @@
 	},
 /turf/simulated/floor/plating,
 /area/space)
+"no" = (
+/obj/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/pyro/external{
+	dir = 4
+	},
+/obj/mapping_helper/airlock/cycler/manual{
+	cycle_id = "eastairlockinner";
+	name = "East Airlock"
+	},
+/turf/simulated/floor/shuttle,
+/area/shuttle/arrival/station)
 "nO" = (
 /obj/lattice{
 	dir = 9;
@@ -608,14 +634,6 @@
 	name = "steel plating"
 	},
 /area/built_zone)
-"rC" = (
-/obj/machinery/door/airlock/pyro/glass/security{
-	dir = 4;
-	req_access = null
-	},
-/obj/mapping_helper/access/security,
-/turf/simulated/floor/shuttle/red,
-/area/shuttle/arrival/station)
 "rQ" = (
 /turf/space,
 /area/supply/sell_point)
@@ -638,10 +656,7 @@
 /turf/simulated/floor/industrial,
 /area/built_zone)
 "sG" = (
-/obj/indestructible/shuttle_corner{
-	dir = 0
-	},
-/turf/space,
+/turf/simulated/floor/plating,
 /area/space)
 "sU" = (
 /obj/machinery/door/unpowered/shuttle,
@@ -721,15 +736,6 @@
 	name = "steel plating"
 	},
 /area/built_zone)
-"uS" = (
-/obj/indestructible/shuttle_corner{
-	dir = 0
-	},
-/obj/lattice{
-	icon_state = "lattice-dir"
-	},
-/turf/space,
-/area/space)
 "uX" = (
 /obj/indestructible/shuttle_corner{
 	dir = 1
@@ -780,11 +786,13 @@
 /turf/simulated/floor/shuttlebay,
 /area/shuttle/arrival/station)
 "wG" = (
-/obj/indestructible/shuttle_corner{
-	dir = 1
+/obj/machinery/door/airlock/pyro/glass/security{
+	dir = 4;
+	req_access = null
 	},
-/turf/space,
-/area/space)
+/obj/mapping_helper/access/security,
+/turf/simulated/floor/shuttle/red,
+/area/shuttle/arrival/station)
 "wP" = (
 /obj/stool/chair/blue{
 	dir = 8
@@ -813,18 +821,22 @@
 	dir = 4
 	},
 /obj/mapping_helper/airlock/cycler/manual{
-	cycle_id = "eastairlockouter";
-	name = "East Airlock"
+	cycle_id = "westairlockouter";
+	name = "West Airlock"
 	},
 /turf/simulated/floor/shuttle,
 /area/shuttle/arrival/station)
 "xY" = (
-/obj/machinery/shuttle/engine/heater{
-	dir = 1;
-	icon_state = "alt_heater-L"
-	},
-/turf/simulated/wall/auto/shuttle,
-/area/space)
+/obj/storage/crate,
+/obj/item/electronics/scanner,
+/obj/item/electronics/scanner,
+/obj/item/electronics/scanner,
+/obj/item/electronics/scanner,
+/obj/item/electronics/scanner,
+/obj/item/device/matanalyzer,
+/obj/machinery/light/small/floor/harsh/very,
+/turf/simulated/floor/shuttle,
+/area/shuttle/arrival/station)
 "yf" = (
 /obj/cable{
 	icon_state = "0-8"
@@ -894,17 +906,23 @@
 	},
 /area/built_zone)
 "zK" = (
-/obj/lattice{
-	icon_state = "lattice-dir"
-	},
 /obj/indestructible/shuttle_corner{
-	dir = 1
+	dir = 0
 	},
 /turf/space,
 /area/space)
 "zS" = (
-/obj/submachine/weapon_vendor/security,
-/turf/simulated/floor/shuttle/red,
+/obj/forcefield/energyshield/perma{
+	dir = 4
+	},
+/obj/machinery/door/airlock/pyro/external{
+	dir = 4
+	},
+/obj/mapping_helper/airlock/cycler/manual{
+	cycle_id = "westairlockouter";
+	name = "West Airlock"
+	},
+/turf/simulated/floor/shuttle,
 /area/shuttle/arrival/station)
 "AG" = (
 /obj/mesh/catwalk{
@@ -939,6 +957,10 @@
 	},
 /area/built_zone)
 "Cv" = (
+/obj/machinery/recharger/wall/sticky{
+	dir = 4;
+	pixel_x = 23
+	},
 /turf/simulated/floor/shuttle/red,
 /area/shuttle/arrival/station)
 "CP" = (
@@ -1004,12 +1026,12 @@
 	},
 /area/space)
 "DR" = (
-/obj/mapping_helper/wingrille_spawn/auto/reinforced,
 /obj/machinery/shuttle/engine/heater{
 	dir = 1;
-	icon_state = "alt_heater-M"
+	icon_state = "alt_heater-L"
 	},
-/turf/simulated/floor/plating/airless,
+/obj/mapping_helper/wingrille_spawn/auto/reinforced,
+/turf/simulated/floor/plating,
 /area/space)
 "DV" = (
 /obj/table/reinforced/auto,
@@ -1035,18 +1057,11 @@
 /turf/simulated/floor/shuttle,
 /area/shuttle/arrival/station)
 "Ep" = (
-/obj/cable{
-	icon_state = "4-8"
+/obj/indestructible/shuttle_corner{
+	dir = 1
 	},
-/obj/machinery/door/airlock/pyro/external{
-	dir = 4
-	},
-/obj/mapping_helper/airlock/cycler/manual{
-	cycle_id = "westairlockinner";
-	name = "West Airlock"
-	},
-/turf/simulated/floor/shuttle,
-/area/shuttle/arrival/station)
+/turf/space,
+/area/space)
 "Er" = (
 /obj/machinery/camera{
 	c_tag = "autotag";
@@ -1098,15 +1113,13 @@
 /turf/simulated/floor/circuit,
 /area/shuttle/arrival/station)
 "Fz" = (
-/obj/storage/crate,
-/obj/item/device/light/glowstick,
-/obj/item/device/light/glowstick,
-/obj/item/device/light/glowstick,
-/obj/item/device/light/glowstick,
-/obj/item/device/light/glowstick,
-/obj/item/device/light/glowstick,
-/turf/simulated/floor/shuttle,
-/area/shuttle/arrival/station)
+/obj/mapping_helper/wingrille_spawn/auto/reinforced,
+/obj/machinery/shuttle/engine/heater{
+	dir = 1;
+	icon_state = "alt_heater-R"
+	},
+/turf/simulated/floor/plating,
+/area/space)
 "FZ" = (
 /obj/machinery/computer/supplycomp{
 	dir = 8
@@ -1141,15 +1154,8 @@
 	},
 /area/built_zone)
 "GH" = (
-/obj/storage/crate,
-/obj/item/electronics/scanner,
-/obj/item/electronics/scanner,
-/obj/item/electronics/scanner,
-/obj/item/electronics/scanner,
-/obj/item/electronics/scanner,
-/obj/item/device/matanalyzer,
-/obj/machinery/light/small/floor/harsh/very,
-/turf/simulated/floor/shuttle,
+/obj/machinery/vending/security,
+/turf/simulated/floor/shuttle/red,
 /area/shuttle/arrival/station)
 "Hg" = (
 /turf/simulated/shuttle/wall/cockpit{
@@ -1380,6 +1386,14 @@
 	name = "steel plating"
 	},
 /area/built_zone)
+"Nu" = (
+/obj/mapping_helper/wingrille_spawn/auto/reinforced,
+/obj/machinery/shuttle/engine/heater{
+	dir = 1;
+	icon_state = "alt_heater-M"
+	},
+/turf/simulated/floor/plating,
+/area/space)
 "NB" = (
 /obj/cable{
 	icon_state = "1-8"
@@ -1511,15 +1525,14 @@
 /turf/simulated/floor/shuttle/yellow,
 /area/shuttle/arrival/station)
 "Qu" = (
-/obj/machinery/door/airlock/pyro/external{
-	dir = 4
+/obj/lattice{
+	icon_state = "lattice-dir"
 	},
-/obj/mapping_helper/airlock/cycler/manual{
-	cycle_id = "westairlockinner";
-	name = "West Airlock"
+/obj/indestructible/shuttle_corner{
+	dir = 1
 	},
-/turf/simulated/floor/shuttle,
-/area/shuttle/arrival/station)
+/turf/space,
+/area/space)
 "Qx" = (
 /turf/space,
 /area/supply/spawn_point)
@@ -1569,11 +1582,14 @@
 /turf/simulated/floor/shuttle,
 /area/shuttle/arrival/station)
 "RR" = (
-/obj/machinery/power/rtg,
-/obj/cable{
-	icon_state = "0-2"
-	},
-/turf/simulated/floor/shuttlebay,
+/obj/storage/crate,
+/obj/item/device/light/glowstick,
+/obj/item/device/light/glowstick,
+/obj/item/device/light/glowstick,
+/obj/item/device/light/glowstick,
+/obj/item/device/light/glowstick,
+/obj/item/device/light/glowstick,
+/turf/simulated/floor/shuttle,
 /area/shuttle/arrival/station)
 "Sl" = (
 /obj/landmark/start/latejoin,
@@ -1624,16 +1640,15 @@
 	},
 /area/built_zone)
 "Ud" = (
-/obj/mapping_helper/wingrille_spawn/auto/reinforced,
-/obj/machinery/shuttle/engine/heater{
-	dir = 1;
-	icon_state = "alt_heater-R"
+/obj/machinery/door/airlock/pyro/external{
+	dir = 4
 	},
-/obj/indestructible/shuttle_corner{
-	dir = 0
+/obj/mapping_helper/airlock/cycler/manual{
+	cycle_id = "westairlockinner";
+	name = "West Airlock"
 	},
-/turf/simulated/floor/plating/airless,
-/area/space)
+/turf/simulated/floor/shuttle,
+/area/shuttle/arrival/station)
 "Uj" = (
 /obj/landmark/map{
 	name = "CRASH"
@@ -1841,27 +1856,6 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/shuttlebay,
-/area/shuttle/arrival/station)
-"YZ" = (
-/obj/mapping_helper/wingrille_spawn/auto/reinforced,
-/obj/machinery/shuttle/engine/heater{
-	dir = 1;
-	icon_state = "alt_heater-R"
-	},
-/turf/simulated/floor/plating/airless,
-/area/space)
-"Zd" = (
-/obj/forcefield/energyshield/perma{
-	dir = 4
-	},
-/obj/machinery/door/airlock/pyro/external{
-	dir = 4
-	},
-/obj/mapping_helper/airlock/cycler/manual{
-	cycle_id = "westairlockouter";
-	name = "West Airlock"
-	},
-/turf/simulated/floor/shuttle,
 /area/shuttle/arrival/station)
 "Zr" = (
 /obj/machinery/light/small/floor/harsh/very,
@@ -45429,7 +45423,7 @@ ps
 ps
 ps
 ps
-jp
+sG
 nn
 ps
 Ya
@@ -45731,8 +45725,8 @@ Kq
 Kq
 si
 si
-Zd
-fB
+zS
+xi
 pq
 YD
 Ya
@@ -46017,7 +46011,7 @@ ay
 ay
 ay
 NH
-uS
+jp
 si
 gL
 Fi
@@ -46319,7 +46313,7 @@ ps
 ps
 ps
 Ut
-Ud
+Fz
 jj
 Bl
 yX
@@ -46621,7 +46615,7 @@ ay
 ay
 ay
 YL
-DR
+Nu
 oT
 JP
 YV
@@ -46637,8 +46631,8 @@ vM
 tK
 si
 si
-Qu
-Ep
+Ud
+aq
 si
 xd
 UC
@@ -46923,8 +46917,8 @@ ay
 ay
 ay
 WZ
-xY
-RR
+DR
+ly
 wq
 Vb
 si
@@ -47225,7 +47219,7 @@ ay
 ay
 ay
 nO
-wG
+Ep
 si
 yu
 iQ
@@ -47829,7 +47823,7 @@ ay
 ay
 ay
 lR
-sG
+zK
 si
 vZ
 le
@@ -48131,7 +48125,7 @@ ay
 ay
 ay
 Dl
-YZ
+Fz
 HM
 vM
 vM
@@ -48433,8 +48427,8 @@ ay
 ay
 ay
 YL
-DR
-GH
+Nu
+xY
 tK
 tK
 vv
@@ -48446,11 +48440,11 @@ si
 si
 si
 si
-rC
+wG
 si
 si
 si
-aq
+no
 si
 KD
 yf
@@ -48735,8 +48729,8 @@ ps
 ps
 ps
 PR
-xY
-Fz
+DR
+RR
 lE
 Wb
 Wb
@@ -48749,7 +48743,7 @@ si
 Kh
 Ms
 Zr
-zS
+hG
 si
 lA
 Yn
@@ -49037,7 +49031,7 @@ ay
 ay
 ay
 NH
-zK
+Qu
 si
 rv
 yB
@@ -49051,7 +49045,7 @@ si
 mz
 wo
 Cv
-hG
+GH
 si
 OH
 Yn
@@ -49356,7 +49350,7 @@ si
 si
 si
 si
-xi
+fB
 EO
 YP
 pG
