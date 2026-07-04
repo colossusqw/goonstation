@@ -379,6 +379,7 @@ ABSTRACT_TYPE(/datum/bioEffect/power)
 	hit_ground_chance = 0
 	smashes_glasses = FALSE
 	shot_sound = 'sound/impact_sounds/Slimy_Hit_3.ogg'
+	shot_volume = 40
 
 	on_launch(obj/projectile/P)
 		..()
