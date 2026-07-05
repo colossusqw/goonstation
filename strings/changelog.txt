@@ -1,5 +1,9 @@
 
 (t)sun jul 05 26
+(u)JORJ949
+(p)26968
+(e)🆕📦🧑‍✈️|C-Feature, A-Game-Objects, A-Command
+(*)The AccessPro can now set (but not edit devices set to) Armory and HoS access.
 (u)Bartimeus973
 (p)26957
 (e)🪲⚖|C-Bug, C-Balance
