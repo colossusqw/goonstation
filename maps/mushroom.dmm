@@ -23753,6 +23753,10 @@
 	dir = 4
 	},
 /area/station/medical/medbay)
+"oea" = (
+/obj/storage/cart/forensic/detective,
+/turf/simulated/floor/carpet/grime,
+/area/station/security/detectives_office)
 "oem" = (
 /obj/machinery/camera/directional/north{
 	pixel_x = -10
@@ -88436,7 +88440,7 @@ bac
 mpb
 urS
 vJu
-wgG
+oea
 wgG
 wgG
 wgG
