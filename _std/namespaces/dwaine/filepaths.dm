@@ -1,5 +1,6 @@
 //------------ DWAINE Setup Filepaths ------------//
 CREATE_NAMESPACE(DWAINE, DIRECTORY)
+
 /// Filepath that corresponds to the directory for user record files.
 ADD_TO_NAMESPACE(DWAINE, DIRECTORY)(var/const/USERS = "/usr")
 /// Filepath that corresponds to the directory for personal user directories.

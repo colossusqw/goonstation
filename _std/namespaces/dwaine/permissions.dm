@@ -7,7 +7,7 @@ ADD_TO_NAMESPACE(DWAINE, PERM, BIT)(var/const/OWNER_READ = (1 << 0))
 /// The owner may write.
 ADD_TO_NAMESPACE(DWAINE, PERM, BIT)(var/const/OWNER_WRITE = (1 << 1))
 /// The owner may execute.
-ADD_TO_NAMESPACE(DWAINE, PERM, BIT)(var/const/OWNER_EXECUTE	=(1 << 2))
+ADD_TO_NAMESPACE(DWAINE, PERM, BIT)(var/const/OWNER_EXECUTE	= (1 << 2))
 /// The group may read.
 ADD_TO_NAMESPACE(DWAINE, PERM, BIT)(var/const/GROUP_READ = (1 << 3))
 /// The group may write.
