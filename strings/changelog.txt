@@ -1,5 +1,9 @@
 
 (t)thu jul 09 26
+(u)Astarthoc
+(p)27117
+(e)|
+(+)You can now emag atmospheric analyzers, causing them to display temperature and volume usint imperial units instead of metric.
 (u)ANNmagedon
 (p)27118
 (e)🗺|A-Mapping
