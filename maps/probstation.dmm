@@ -805,6 +805,18 @@
 	},
 /turf/simulated/floor/airless/plating/catwalk/auto,
 /area/space)
+"cW" = (
+/obj/cable{
+	icon_state = "1-2"
+	},
+/obj/disposalpipe/switch_junction/left/north{
+	name = "artifact junction"
+	},
+/obj/mapping_helper/mailtag/manual{
+	mail_tag = "artifact_ejector"
+	},
+/turf/simulated/floor/plating,
+/area/station/maintenance/outer/ne)
 "cX" = (
 /obj/disposalpipe/segment{
 	dir = 4
@@ -1460,7 +1472,10 @@
 /turf/space,
 /area/station/com_dish/comdish)
 "fn" = (
-/obj/machinery/drone_recharger/factory,
+/obj/mapping_helper/wingrille_spawn/auto/reinforced,
+/obj/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/outer/ne)
 "fo" = (
@@ -2963,6 +2978,13 @@
 	dir = 4
 	},
 /area/station/hallway/secondary/northwest)
+"lc" = (
+/obj/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/drone_recharger/factory,
+/turf/simulated/floor/plating,
+/area/station/maintenance/outer/ne)
 "lf" = (
 /obj/cable{
 	icon_state = "4-8"
@@ -6915,6 +6937,11 @@
 /obj/machinery/recharge_station,
 /turf/simulated/floor/plating,
 /area/station/maintenance/inner/sw)
+"Al" = (
+/obj/disposaloutlet/south,
+/obj/disposalpipe/trunk/west,
+/turf/simulated/floor/plating,
+/area/station/maintenance/outer/ne)
 "Ao" = (
 /turf/simulated/floor/color_coded_hall{
 	dir = 9
@@ -7662,6 +7689,9 @@
 	pixel_y = 24
 	},
 /obj/random_item_spawner/gross_with_junk/one,
+/obj/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/outer/ne)
 "Dn" = (
@@ -10432,6 +10462,13 @@
 /obj/random_item_spawner/gross_with_junk/one,
 /turf/simulated/floor/plating,
 /area/station/maintenance/outer/nw)
+"Or" = (
+/obj/machinery/mass_driver{
+	dir = 4;
+	drive_range = 83
+	},
+/turf/simulated/floor/plating,
+/area/station/maintenance/outer/ne)
 "Os" = (
 /obj/cable{
 	icon_state = "4-8"
@@ -11362,10 +11399,7 @@
 /turf/simulated/floor/black/side,
 /area/station/hallway/primary/east)
 "Sp" = (
-/obj/machinery/light/small/frostedred{
-	dir = 1;
-	pixel_y = 24
-	},
+/obj/machinery/launcher_loader/east,
 /turf/simulated/floor/plating,
 /area/station/maintenance/outer/ne)
 "Sq" = (
@@ -13104,6 +13138,13 @@
 /obj/machinery/light/incandescent/netural,
 /turf/simulated/floor/color_coded_hall,
 /area/station/hallway/primary/northeast)
+"Zv" = (
+/obj/random_item_spawner/gross_with_junk/one,
+/obj/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/station/maintenance/outer/ne)
 "Zw" = (
 /obj/disposalpipe/trunk{
 	dir = 2;
@@ -70774,7 +70815,7 @@ zc
 jG
 HF
 ks
-ks
+cW
 yR
 FL
 By
@@ -71076,7 +71117,7 @@ bp
 bD
 mz
 rx
-fF
+Zv
 rx
 ef
 By
@@ -71680,7 +71721,7 @@ bD
 bD
 bD
 mz
-rx
+Wn
 rx
 Tw
 By
@@ -71982,7 +72023,7 @@ DO
 DO
 Bg
 mz
-rx
+lc
 rx
 rx
 By
@@ -72284,7 +72325,7 @@ Yq
 Oi
 is
 mz
-fF
+Zv
 rx
 rx
 By
@@ -72586,7 +72627,7 @@ mz
 mz
 XW
 mz
-rx
+Wn
 rx
 rx
 By
@@ -72888,7 +72929,7 @@ By
 mz
 jh
 mz
-Sp
+nc
 rx
 rx
 By
@@ -73190,8 +73231,8 @@ By
 By
 By
 mz
-YS
-fn
+Wn
+rx
 fF
 rx
 Ee
@@ -73491,10 +73532,10 @@ rz
 By
 By
 By
-By
 YS
-rx
-rx
+fn
+tl
+YS
 fF
 YS
 NV
@@ -73793,10 +73834,10 @@ rz
 By
 By
 By
-By
+Ye
+Al
+Sp
 YS
-YS
-tl
 tl
 YS
 NV
@@ -74095,11 +74136,11 @@ rz
 By
 By
 By
-By
-By
-By
-By
-By
+sc
+jy
+Or
+jy
+jy
 YS
 YS
 YS

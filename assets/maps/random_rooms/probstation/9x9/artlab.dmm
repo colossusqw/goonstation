@@ -37,7 +37,7 @@
 /obj/decal/tile_edge/stripe/corner/big2{
 	dir = 6
 	},
-/obj/disposalpipe/segment,
+/obj/disposalpipe/segment/bent/north,
 /turf/simulated/floor/grey,
 /area/station/science/artifact)
 "g" = (
@@ -73,6 +73,7 @@
 /obj/cable{
 	icon_state = "0-4"
 	},
+/obj/railing/purple,
 /turf/simulated/floor/grey,
 /area/station/science/artifact)
 "l" = (
@@ -105,6 +106,9 @@
 /area/station/science/artifact)
 "o" = (
 /obj/decal/tile_edge/stripe/big,
+/obj/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/grey,
 /area/station/science/artifact)
 "p" = (
@@ -117,7 +121,7 @@
 /obj/decal/tile_edge/stripe/big{
 	dir = 4
 	},
-/obj/disposalpipe/segment,
+/obj/railing/purple,
 /turf/simulated/floor/grey,
 /area/station/science/artifact)
 "s" = (
@@ -156,8 +160,13 @@
 /obj/decal/tile_edge/stripe/corner/big2{
 	dir = 5
 	},
-/obj/disposalpipe/segment/bent/north,
-/turf/simulated/floor/grey,
+/obj/disposalpipe/trunk/east,
+/obj/machinery/floorflusher{
+	name = "artifact flusher";
+	mail_tag = "artifact_ejector";
+	id = "artchute"
+	},
+/turf/simulated/floor/circuit/purple,
 /area/station/science/artifact)
 "w" = (
 /obj/machinery/computer3/terminal/zeta,
@@ -247,7 +256,7 @@
 /obj/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/grey,
+/turf/simulated/floor/circuit/purple,
 /area/station/science/artifact)
 "D" = (
 /obj/machinery/firealarm/directional/east,
@@ -296,6 +305,7 @@
 /obj/decal/tile_edge/stripe/corner/big2{
 	dir = 10
 	},
+/obj/disposalpipe/segment/bent/south,
 /turf/simulated/floor/grey,
 /area/station/science/artifact)
 "I" = (
@@ -342,6 +352,7 @@
 /obj/decal/tile_edge/stripe/big{
 	dir = 8
 	},
+/obj/disposalpipe/segment,
 /turf/simulated/floor/grey,
 /area/station/science/artifact)
 "N" = (
@@ -464,11 +475,20 @@
 /obj/decal/tile_edge/stripe/corner/big2{
 	dir = 5
 	},
+/obj/disposalpipe/junction/right/east,
+/obj/machinery/activation_button/flusher_button{
+	id = "artchute";
+	name = "Chute Activator";
+	pixel_y = -21
+	},
+/obj/decal/tile_edge/stripe/big{
+	dir = 8
+	},
 /obj/decal/tile_edge/stripe/corner/big2{
 	dir = 9
 	},
-/obj/disposalpipe/segment{
-	dir = 4
+/obj/decal/tile_edge/stripe/corner/big2{
+	dir = 10
 	},
 /turf/simulated/floor/grey,
 /area/station/science/artifact)
