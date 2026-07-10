@@ -1,4 +1,9 @@
 
+(t)fri jul 10 26
+(u)bamlord
+(p)26954
+(e)💡|A-Station-Systems
+(*)The Chaplain can now bless the TEG with their bible
 (t)thu jul 09 26
 (u)Astarthoc
 (p)27117
