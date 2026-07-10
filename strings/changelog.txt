@@ -1,5 +1,9 @@
 
 (t)fri jul 10 26
+(u)nova2053
+(p)27123
+(e)|
+(+)Airlocks which have been forced open by EMPs no longer require access to deconstruct.
 (u)bamlord
 (p)26954
 (e)💡|A-Station-Systems
