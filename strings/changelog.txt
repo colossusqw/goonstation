@@ -1,5 +1,9 @@
 
 (t)fri jul 10 26
+(u)ANNmagedon
+(p)27003
+(e)|
+(+)Added the APC Pinpointer to the engineering manufacturer
 (u)swinglow20
 (p)26843
 (e)🎨🐁|C-Sprites, A-Critters
