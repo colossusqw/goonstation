@@ -1,5 +1,9 @@
 
 (t)fri jul 10 26
+(u)Walnut356
+(p)26998
+(e)🛠️|A-Engineering
+(+)Fixed Control Unit execution jumping to offset 6 when outputting a signal
 (u)TekoTheTeapot
 (p)27011
 (e)|
