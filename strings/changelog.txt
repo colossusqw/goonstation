@@ -1,5 +1,9 @@
 
 (t)fri jul 10 26
+(u)swinglow20
+(p)26843
+(e)🎨🐁|C-Sprites, A-Critters
+(+)Reworked the icons for the fermid species. Watch out, mining!
 (u)bamlord
 (p)26723
 (e)🌠|A-Events
