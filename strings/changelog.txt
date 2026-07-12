@@ -1,5 +1,12 @@
 
 (t)sun jul 12 26
+(u)glowbold
+(p)25847
+(e)🗺⚖🧫⛔💊🐣|A-Mapping, C-Balance, C-Experimental, C-Removal, A-Medical, A-Respawning
+(*)Enzymatic Reclaimers only accept organs and limbs.
+(*)Empty Clone Pods will slowly regenerate bio-matter to the minimum required to clone.
+(*)Clone Pods accept an IV bag, injects into the growing clone.
+(+)Click-dragging blood/synthmeat/etc from reagent containers to Clone Pods transfers the entire amount.
 (u)Chasu
 (p)27067
 (f)https://forum.ss13.co/showthread.php?tid=25277
