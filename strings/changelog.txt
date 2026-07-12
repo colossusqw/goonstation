@@ -1,5 +1,10 @@
 
 (t)sun jul 12 26
+(u)JORJ949
+(p)26981
+(e)🆕🎨⚖⏰🐣|C-Feature, C-Sprites, C-Balance, A-Status-Effects, A-Respawning
+(*)You can now select both standard borg arms in character setup, however they no longer break cuffs.
+(*)Sturdy (1 reinforcement) cyborg arms can now be attached to humans and still break cuffs.
 (u)Cheekybrdy
 (p)26764
 (e)⚖🐣|C-Balance, A-Respawning
