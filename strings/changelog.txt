@@ -1,5 +1,10 @@
 
 (t)sun jul 12 26
+(u)Chasu
+(p)27067
+(f)https://forum.ss13.co/showthread.php?tid=25277
+(e)|
+(*)The timer before the start of the round has been extended by two minutes
 (u)Calphrick
 (p)26837
 (e)⚖🏅🛠️|C-Balance, A-Medal, A-Engineering
