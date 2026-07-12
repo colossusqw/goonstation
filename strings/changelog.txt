@@ -1,4 +1,10 @@
 
+(t)sun jul 12 26
+(u)ANNmagedon
+(p)27005
+(e)|
+(+)More hotspot equipment has been added to the engineering manufacturer on maps with hotspots.
+(+)Miners can now print powered shovels on all maps (for fossils).
 (t)sat jul 11 26
 (u)CalliopeSoups
 (p)27112
