@@ -1,5 +1,9 @@
 
 (t)sun jul 12 26
+(u)LorrMaster
+(p)26654
+(e)🆕🎨🧱|C-Feature, C-Sprites, A-Materials
+(*)Rods in the nuclear reactor now have different melting points depending on the rod's material.
 (u)glowbold
 (p)25847
 (e)🗺⚖🧫⛔💊🐣|A-Mapping, C-Balance, C-Experimental, C-Removal, A-Medical, A-Respawning
