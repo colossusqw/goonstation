@@ -1,5 +1,9 @@
 
 (t)sun jul 12 26
+(u)Calphrick
+(p)26837
+(e)⚖🏅🛠️|C-Balance, A-Medal, A-Engineering
+(+)Reduced the credit requirement of the Chief Engineer's "Earn at least x credits via the PTL" from one million to one hundred thousand.
 (u)LorrMaster
 (p)26966
 (e)💅🧱|C-QoL, A-Materials
