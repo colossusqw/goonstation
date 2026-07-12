@@ -1,5 +1,9 @@
 
 (t)sun jul 12 26
+(u)Cheekybrdy
+(p)26764
+(e)⚖🐣|C-Balance, A-Respawning
+(+)Midround events can now happen at all population amounts (1 minimum down from 15).
 (u)Midnightradar
 (p)26499
 (e)⚗|A-Chemistry
