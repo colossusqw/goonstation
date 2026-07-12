@@ -1,5 +1,9 @@
 
 (t)sun jul 12 26
+(u)LorrMaster
+(p)26966
+(e)💅🧱|C-QoL, A-Materials
+(*)Any material may now be turned into sheets using the sheet extruder.
 (u)ANNmagedon
 (p)27005
 (e)|
