@@ -1,5 +1,7 @@
 
 (t)sun jul 12 26
+(u)glowbold
+(+)Chaplain headsets have medical radio access.
 (u)JORJ949
 (p)26981
 (e)🆕🎨⚖⏰🐣|C-Feature, C-Sprites, C-Balance, A-Status-Effects, A-Respawning
