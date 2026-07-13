@@ -1,4 +1,9 @@
 
+(t)mon jul 13 26
+(u)bamlord
+(p)27105
+(e)🔄📦|C-Rework, A-Game-Objects
+(*)Stimpacks can now be used on other people/critters.
 (t)sun jul 12 26
 (u)glowbold
 (+)Chaplain headsets have medical radio access.
