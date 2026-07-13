@@ -1,5 +1,9 @@
 
 (t)mon jul 13 26
+(u)ANNmagedon
+(p)27161
+(e)🎨|C-Sprites
+(+)Due to complaints from low perception crew mates, the ship component fabricator has been painted.
 (u)Calphrick
 (p)27149
 (e)💅🎩🧑‍✈️|C-QoL, A-Clothing, A-Command
