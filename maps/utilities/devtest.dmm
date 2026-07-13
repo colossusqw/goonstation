@@ -1573,7 +1573,7 @@
 /turf/simulated/floor,
 /area/station/devzone)
 "Bs" = (
-/obj/machinery/computer/announcement/station,
+/obj/machinery/computer/announcement/station/bridge,
 /turf/simulated/floor,
 /area/station/devzone)
 "Bw" = (
