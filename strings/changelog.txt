@@ -1,5 +1,9 @@
 
 (t)mon jul 13 26
+(u)Calphrick
+(p)27149
+(e)💅🎩🧑‍✈️|C-QoL, A-Clothing, A-Command
+(+)The Head of Personnel now comes to work with their jacket already on.
 (u)bamlord
 (p)27105
 (e)🔄📦|C-Rework, A-Game-Objects
