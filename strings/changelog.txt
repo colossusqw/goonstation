@@ -1,5 +1,9 @@
 
 (t)tue jul 14 26
+(u)ANNmagedon.
+(p)27114
+(e)|
+(+)Added the new history shell builtin to dwaine! type "man history" to find out more.
 (u)EmeraldCrow
 (p)27176
 (e)🎨|C-Sprites
