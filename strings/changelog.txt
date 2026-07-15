@@ -1,5 +1,9 @@
 
 (t)wed jul 15 26
+(u)JORJ949
+(p)27180
+(e)🆕🎨📦|C-Feature, C-Sprites, A-Game-Objects
+(*)Signal jammers can now be used in assemblies. Note that signal jammers block remote signaller signals, so you cannot disable a signal jammer via remote signaller.
 (u)LeahTheTech
 (+)Receiving a message from a partner station now plays the default announcement sound.
 (u)JORJ949
