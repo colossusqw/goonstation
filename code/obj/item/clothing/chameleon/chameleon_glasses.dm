@@ -318,3 +318,10 @@
 		name = "mechanised boots"
 		desc = "Industrial-grade boots fitted with mechanised balancers and stabilisers to increase running speed under a heavy workload."
 		step_sound = "step_default"
+
+	clown_shoes
+		name = /obj/item/clothing/shoes/clown_shoes::name
+		desc = /obj/item/clothing/shoes/clown_shoes::desc
+		icon_state = /obj/item/clothing/shoes/clown_shoes::icon_state
+		item_state = /obj/item/clothing/shoes/clown_shoes::item_state
+		step_sound = /obj/item/clothing/shoes/clown_shoes::step_sound

@@ -313,3 +313,12 @@
 		sprite_item = 'icons/obj/clothing/jumpsuits/item_js_misc.dmi'
 		sprite_worn = 'icons/mob/clothing/jumpsuits/worn_js_misc.dmi'
 		sprite_hand = 'icons/mob/inhand/jumpsuits/hand_js_misc.dmi'
+
+	clown
+		name = /obj/item/clothing/under/misc/clown::name
+		desc = /obj/item/clothing/under/misc/clown::desc
+		icon_state = /obj/item/clothing/under/misc/clown::icon_state
+		item_state = /obj/item/clothing/under/misc/clown::item_state
+		sprite_item = /obj/item/clothing/under/misc/clown::icon
+		sprite_worn = /obj/item/clothing/under/misc/clown::wear_image_icon
+		sprite_hand = /obj/item/clothing/under/misc/clown::inhand_image_icon

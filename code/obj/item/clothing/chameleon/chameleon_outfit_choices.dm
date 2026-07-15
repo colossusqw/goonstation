@@ -274,6 +274,17 @@
 		belt_type = new/datum/chameleon_belt_pattern
 		backpack_type = new/datum/chameleon_backpack_pattern/satchel
 
+	clown
+		name = "Clown"
+		jumpsuit_type = new/datum/chameleon_jumpsuit_pattern/clown
+		hat_type = new/datum/chameleon_hat_pattern/winter_clown_hat //There is no "normal" clown hat, nor chameleon mask
+		suit_type = new/datum/chameleon_suit_pattern/cape_rainbow
+		glasses_type = new/datum/chameleon_glasses_pattern //Prescriptions are close enough
+		shoes_type = new/datum/chameleon_shoes_pattern/clown_shoes
+		gloves_type = new/datum/chameleon_gloves_pattern/latex
+		belt_type = new/datum/chameleon_belt_pattern/funny
+		backpack_type = new/datum/chameleon_backpack_pattern/red
+
 	new_outfit
 		function = "new_outfit"
 		name = "New Outfit Set"

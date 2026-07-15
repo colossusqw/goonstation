@@ -351,3 +351,9 @@ ABSTRACT_TYPE(/datum/chameleon_suit_pattern)
 		desc = "BuRK BuRK BuRK - Bork Bork Bork!"
 		icon_state = "chef"
 		item_state = "chef"
+
+	cape_rainbow
+		name = /obj/item/clothing/suit/bedsheet/cape/captain::name
+		desc = /obj/item/clothing/suit/bedsheet/cape/captain::desc
+		icon_state = /obj/item/clothing/suit/bedsheet/cape/captain::icon_state
+		item_state = /obj/item/clothing/suit/bedsheet/cape/captain::item_state

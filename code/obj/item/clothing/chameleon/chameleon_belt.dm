@@ -153,3 +153,9 @@
 		desc = "A sturdy belt with hooks for chicken carriers."
 		icon_state = "rancherbelt"
 		item_state = "rancher"
+
+	funny
+		name = /obj/item/storage/fanny/funny::name
+		desc = /obj/item/storage/fanny/funny::desc
+		icon_state = /obj/item/storage/fanny/funny::icon_state
+		item_state = /obj/item/storage/fanny/funny::item_state

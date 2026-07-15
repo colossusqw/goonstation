@@ -264,3 +264,10 @@
 		icon_state = "mailcap"
 		item_state = "mailcap"
 		seal_hair = FALSE
+
+	winter_clown_hat
+		name = /obj/item/clothing/head/clown_winter_hat::name
+		desc = /obj/item/clothing/head/clown_winter_hat::desc
+		icon_state = /obj/item/clothing/head/clown_winter_hat::icon_state
+		item_state = /obj/item/clothing/head/clown_winter_hat::item_state
+		seal_hair = FALSE
