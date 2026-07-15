@@ -47,6 +47,15 @@
 /obj/mapping_helper/mob_spawn/corpse/critter/random/martian,
 /turf/simulated/floor/plating/scorched,
 /area/evilreaver/atmospherics)
+"acj" = (
+/obj/cable{
+	icon_state = "1-2"
+	},
+/obj/disposalpipe/segment/bent/east,
+/turf/simulated/floor/yellow/checker{
+	dir = 4
+	},
+/area/station/engine/elect)
 "ack" = (
 /obj/reagent_dispensers/fueltank,
 /turf/simulated/floor/plating,
@@ -7498,6 +7507,7 @@
 /area/station/crew_quarters/captain)
 "fgY" = (
 /obj/landmark/gps_waypoint,
+/obj/disposalpipe/segment/bent/east,
 /turf/simulated/floor/yellow/checker{
 	dir = 4
 	},
@@ -7906,8 +7916,6 @@
 /obj/machinery/light/incandescent/warm,
 /obj/item/deconstructor,
 /obj/item/electronics/scanner,
-/obj/machinery/disposal/small/west,
-/obj/disposalpipe/trunk/west,
 /turf/simulated/floor/yellow/checker{
 	dir = 4
 	},
@@ -11319,15 +11327,6 @@
 	dir = 1
 	},
 /area/station/hallway/primary/north)
-"hSR" = (
-/obj/cable{
-	icon_state = "1-2"
-	},
-/obj/disposalpipe/segment/horizontal,
-/turf/simulated/floor/yellow/checker{
-	dir = 4
-	},
-/area/station/engine/elect)
 "hSS" = (
 /obj/decal/mule/beacon,
 /obj/storage/crate,
@@ -11681,6 +11680,10 @@
 /obj/item/cigpacket/menthol,
 /obj/item/device/light/zippo{
 	pixel_x = -5
+	},
+/obj/machinery/power/apc/autoname_north,
+/obj/cable{
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/inner/east)
@@ -17803,6 +17806,9 @@
 /obj/cable{
 	icon_state = "2-4"
 	},
+/obj/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/inner/east)
 "mhq" = (
@@ -19481,7 +19487,6 @@
 /obj/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/autoname_east,
 /obj/machinery/space_heater,
 /turf/simulated/floor/plating,
 /area/station/maintenance/inner/east)
@@ -27783,6 +27788,7 @@
 /obj/cable{
 	icon_state = "1-2"
 	},
+/obj/disposalpipe/segment/bent/west,
 /turf/simulated/floor/yellow/checker{
 	dir = 4
 	},
@@ -30138,12 +30144,6 @@
 /area/station/crew_quarters/market{
 	name = "Supply Lobby"
 	})
-"veK" = (
-/obj/disposalpipe/segment/bent/east,
-/turf/simulated/floor/yellow/checker{
-	dir = 4
-	},
-/area/station/engine/elect)
 "veY" = (
 /obj/machinery/disposal/mail/small/autoname/research/chemistry/west,
 /obj/disposalpipe/trunk/mail/north,
@@ -33924,6 +33924,8 @@
 /area/station/ai_monitored/storage/eva)
 "xGI" = (
 /obj/storage/secure/closet/engineering/mechanic,
+/obj/machinery/disposal/small/west,
+/obj/disposalpipe/trunk/west,
 /turf/simulated/floor/yellow/checker{
 	dir = 4
 	},
@@ -85929,7 +85931,7 @@ uQB
 kRq
 uXn
 fgY
-veK
+gAU
 gAU
 dEL
 ibG
@@ -86229,9 +86231,9 @@ dvv
 jfT
 uQe
 gsd
-biO
+acj
 txv
-hSR
+biO
 biO
 gKE
 oGX
