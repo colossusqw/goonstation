@@ -17,7 +17,7 @@
 (u)EmeraldCrow
 (p)27176
 (e)🎨|C-Sprites
-(*)Added two new figuines to the game for Vi The Silly and Erikkainn: go gambling today!
+(+)Added two new figurines to the game for Vi The Silly and Erikkainn: go gambling today!
 (t)mon jul 13 26
 (u)LorrMaster
 (p)27175
