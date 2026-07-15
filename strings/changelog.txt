@@ -1,6 +1,10 @@
 
 (t)wed jul 15 26
 (u)JORJ949
+(p)27172
+(e)🪲💡|C-Bug, A-Station-Systems
+(+)Syndicate hideout chutes (both entrance and exit) now always repressurize as if in a normal atmosphere, even if there is no atmosphere around them.
+(u)JORJ949
 (p)27136
 (e)🆕📦|C-Feature, A-Game-Objects
 (+)You can now emag pulse rifles to turn them into pullse rifles.
