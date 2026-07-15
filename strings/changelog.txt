@@ -1,6 +1,12 @@
 
 (t)wed jul 15 26
 (u)JORJ949
+(p)27180
+(e)🆕🎨📦|C-Feature, C-Sprites, A-Game-Objects
+(*)Signal jammers can now be used in assemblies. Note that signal jammers block remote signaller signals, so you cannot disable a signal jammer via remote signaller.
+(u)LeahTheTech
+(+)Receiving a message from a partner station now plays the default announcement sound.
+(u)JORJ949
 (p)27172
 (e)🪲💡|C-Bug, A-Station-Systems
 (+)Syndicate hideout chutes (both entrance and exit) now always repressurize as if in a normal atmosphere, even if there is no atmosphere around them.
@@ -8,7 +14,6 @@
 (p)27136
 (e)🆕📦|C-Feature, A-Game-Objects
 (+)You can now emag pulse rifles to turn them into pullse rifles.
-(+)Receiving a message from a partner station now plays the default announcement sound.
 (t)tue jul 14 26
 (u)ANNmagedon.
 (p)27114
