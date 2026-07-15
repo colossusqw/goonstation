@@ -1,4 +1,9 @@
+
 (t)wed jul 15 26
+(u)JORJ949
+(p)27136
+(e)🆕📦|C-Feature, A-Game-Objects
+(+)You can now emag pulse rifles to turn them into pullse rifles.
 (+)Receiving a message from a partner station now plays the default announcement sound.
 (t)tue jul 14 26
 (u)ANNmagedon.
