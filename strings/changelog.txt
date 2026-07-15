@@ -1,5 +1,9 @@
 
 (t)wed jul 15 26
+(u)ANNmagedon
+(p)27196
+(e)🗺|A-Mapping
+(+)Fixed Oshan lacking the standard tools & breach engineering carts.
 (u)JORJ949
 (p)27121
 (e)🆕🧛📦|C-Feature, A-Gamemodes, A-Game-Objects
