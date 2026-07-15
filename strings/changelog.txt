@@ -1,5 +1,12 @@
 
 (t)wed jul 15 26
+(u)cringe
+(p)27142
+(e)🆕🎨💨|C-Feature, C-Sprites, A-Atmospherics
+(*)New gates in the HPD, check em out. Descriptions in minor changes.
+(+)Normal gates open above the opening value and close below the closing value. When inverted, they open below the opening value and close above the closing value.
+(+)The thermostatic gate works on temperature.
+(+)The pressure relief gate works on pressure.
 (u)JORJ949
 (p)27180
 (e)🆕🎨📦|C-Feature, C-Sprites, A-Game-Objects
