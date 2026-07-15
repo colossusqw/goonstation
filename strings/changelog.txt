@@ -1,4 +1,5 @@
-
+(t)wed jul 15 26
+(+)Receiving a message from a partner station now plays the default announcement sound.
 (t)tue jul 14 26
 (u)ANNmagedon.
 (p)27114
