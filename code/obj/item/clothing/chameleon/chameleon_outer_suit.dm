@@ -88,7 +88,9 @@
 			else
 				c_flags &= ~COVERSHAIR
 			src.tooltip_rebuild = TRUE
-			usr.set_clothing_icon_dirty()
+			if(ismob(src.loc))
+				var/mob/mob_loc = src.loc
+				mob_loc.set_clothing_icon_dirty()
 
 ABSTRACT_TYPE(/datum/chameleon_suit_pattern)
 /datum/chameleon_suit_pattern

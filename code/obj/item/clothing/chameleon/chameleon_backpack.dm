@@ -148,7 +148,9 @@
 			src.wear_image = image(wear_image_icon)
 			src.inhand_image = image(inhand_image_icon)
 			src.tooltip_rebuild = TRUE
-			usr.set_clothing_icon_dirty()
+			if(ismob(src.loc))
+				var/mob/mob_loc = src.loc
+				mob_loc.set_clothing_icon_dirty()
 
 /obj/item/storage/backpack/chameleon/tactical_belt
 	included_belt = /obj/item/storage/belt/chameleon/tactical

@@ -84,8 +84,10 @@
 			src.inhand_image = image(inhand_image_icon)
 			src.hide_underwear = T.hide_underwear
 			src.tooltip_rebuild = TRUE
-			usr.set_clothing_icon_dirty()
-			usr.update_body()
+			if(ismob(src.loc))
+				var/mob/mob_loc = src.loc
+				mob_loc.set_clothing_icon_dirty()
+				mob_loc.update_body()
 
 /datum/chameleon_jumpsuit_pattern
 	var/name = "black jumpsuit"

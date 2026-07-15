@@ -79,7 +79,9 @@
 			src.wear_image = image(wear_image_icon)
 			src.inhand_image = image(inhand_image_icon)
 			src.tooltip_rebuild = TRUE
-			usr.set_clothing_icon_dirty()
+			if(ismob(src.loc))
+				var/mob/mob_loc = src.loc
+				mob_loc.set_clothing_icon_dirty()
 
 /datum/chameleon_glasses_pattern
 	var/name = "prescription glasses"
@@ -214,7 +216,9 @@
 			src.inhand_image = image(inhand_image_icon)
 			src.step_sound = T.step_sound
 			src.tooltip_rebuild = TRUE
-			usr.set_clothing_icon_dirty()
+			if(ismob(src.loc))
+				var/mob/mob_loc = src.loc
+				mob_loc.set_clothing_icon_dirty()
 
 /datum/chameleon_shoes_pattern
 	var/name = "black shoes"
