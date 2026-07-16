@@ -3127,15 +3127,13 @@
 	},
 /area/station/security/checkpoint/arrivals)
 "aoq" = (
-/obj/machinery/disposal{
-	name = "Lay-Z Chef Prison Food Chute"
-	},
 /obj/disposalpipe/trunk/food{
 	dir = 1
 	},
 /obj/decal/tile_edge/stripe/extra_big{
 	dir = 5
 	},
+/obj/machinery/disposal/kitchen/brig,
 /turf/simulated/floor,
 /area/station/crew_quarters/kitchen)
 "aoA" = (
@@ -7674,11 +7672,9 @@
 /obj/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/disposal{
-	name = "ejection chute"
-	},
 /obj/disposalpipe/trunk/ejection,
 /obj/machinery/power/apc/autoname_north,
+/obj/machinery/disposal/ejection,
 /turf/simulated/floor/red/side{
 	dir = 1
 	},
@@ -14700,10 +14696,10 @@
 /turf/simulated/floor/grime,
 /area/station/maintenance/disposal)
 "bgt" = (
-/obj/machinery/disposal,
 /obj/disposalpipe/trunk/ejection{
 	dir = 4
 	},
+/obj/machinery/disposal/ejection/space,
 /turf/simulated/floor/plating,
 /area/station/maintenance/disposal)
 "bgu" = (
@@ -29871,9 +29867,7 @@
 /obj/disposalpipe/trunk{
 	dir = 4
 	},
-/obj/machinery/disposal{
-	name = "Test Chamber Chute"
-	},
+/obj/machinery/disposal/sci/test_chamber,
 /turf/simulated/floor/plating,
 /area/station/science/testchamber)
 "crp" = (
@@ -41869,10 +41863,8 @@
 /area/station/hallway/secondary/exit)
 "iMW" = (
 /obj/disposalpipe/trunk/transport,
-/obj/machinery/disposal{
-	name = "Test Chamber Chute"
-	},
 /obj/decal/stripe_delivery,
+/obj/machinery/disposal/sci/test_chamber,
 /turf/simulated/floor,
 /area/station/security/main)
 "iNm" = (
@@ -48277,15 +48269,13 @@
 /obj/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/disposal{
-	name = "ejection chute"
-	},
 /obj/disposalpipe/trunk/ejection{
 	dir = 4
 	},
 /obj/decal/tile_edge/stripe/extra_big{
 	dir = 4
 	},
+/obj/machinery/disposal/ejection,
 /turf/simulated/floor,
 /area/station/ai_monitored/armory)
 "nje" = (
@@ -50088,13 +50078,11 @@
 /turf/simulated/floor/black,
 /area/station/medical/robotics)
 "orU" = (
-/obj/machinery/disposal{
-	name = "Crematorium Chute"
-	},
 /obj/disposalpipe/trunk/morgue{
 	dir = 2;
 	name = "crematorium pipe"
 	},
+/obj/machinery/disposal/crematorium,
 /turf/simulated/floor/sanitary/white,
 /area/station/medical/morgue)
 "orV" = (
@@ -59451,14 +59439,12 @@
 /turf/simulated/floor/sanitary/white,
 /area/station/medical/morgue)
 "uEg" = (
-/obj/machinery/disposal{
-	name = "Lay-Z Chef Cafeteria Chute"
-	},
 /obj/disposalpipe/trunk/food,
 /obj/decal/tile_edge/stripe/extra_big{
 	dir = 6
 	},
 /obj/machinery/alarm/directional/west,
+/obj/machinery/disposal/kitchen/cafeteria,
 /turf/simulated/floor,
 /area/station/crew_quarters/kitchen)
 "uEB" = (

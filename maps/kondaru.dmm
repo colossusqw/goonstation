@@ -41689,7 +41689,7 @@
 /turf/simulated/floor,
 /area/station/engine/gas)
 "mLt" = (
-/obj/machinery/disposal,
+/obj/machinery/disposal/kitchen/brig,
 /obj/machinery/light/small{
 	dir = 8;
 	pixel_x = -12

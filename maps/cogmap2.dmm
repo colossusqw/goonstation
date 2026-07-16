@@ -9247,9 +9247,7 @@
 /turf/simulated/floor/specialroom/cafeteria,
 /area/station/crew_quarters/kitchen)
 "aDz" = (
-/obj/machinery/disposal{
-	name = "Lay-Z Chef Prison Food Chute"
-	},
+/obj/machinery/disposal/kitchen/brig,
 /obj/machinery/light,
 /obj/disposalpipe/trunk/food{
 	dir = 4
@@ -9608,9 +9606,7 @@
 /turf/simulated/floor,
 /area/station/hydroponics/bay)
 "aEI" = (
-/obj/machinery/disposal{
-	name = "Lay-Z Chef Prison Food Chute"
-	},
+/obj/machinery/disposal/kitchen/brig,
 /obj/disposalpipe/trunk/food{
 	dir = 1
 	},
@@ -38878,9 +38874,7 @@
 	},
 /area/station/science/lobby)
 "cxB" = (
-/obj/machinery/disposal{
-	name = "Test Chamber Chute"
-	},
+/obj/machinery/disposal/sci/test_chamber,
 /obj/machinery/light{
 	dir = 4;
 	layer = 9.1;
@@ -45594,9 +45588,7 @@
 /turf/simulated/floor/blue/side,
 /area/station/medical/medbay/surgery/storage)
 "cWA" = (
-/obj/machinery/disposal{
-	name = "Test Chamber Chute"
-	},
+/obj/machinery/disposal/sci/test_chamber,
 /obj/item/storage/wall/random,
 /obj/disposalpipe/trunk/transport{
 	dir = 8
@@ -48785,9 +48777,7 @@
 /turf/simulated/floor,
 /area/research_outpost)
 "diV" = (
-/obj/machinery/disposal{
-	name = "Test Chamber Chute"
-	},
+/obj/machinery/disposal/sci/test_chamber,
 /obj/disposalpipe/trunk{
 	dir = 4
 	},
@@ -52556,9 +52546,7 @@
 /turf/simulated/floor/engine/vacuum,
 /area/station/science/lab)
 "fJN" = (
-/obj/machinery/disposal{
-	name = "Lay-Z Chef Cafeteria Chute"
-	},
+/obj/machinery/disposal/kitchen/cafeteria,
 /obj/machinery/light_switch/directional/east{
 	pixel_y = 4
 	},
@@ -59301,9 +59289,7 @@
 /turf/simulated/floor/specialroom/medbay,
 /area/station/medical/medbay/lobby)
 "kXx" = (
-/obj/machinery/disposal{
-	name = "monkeydome chute"
-	},
+/obj/machinery/disposal/sci/monkey_dome,
 /obj/disposalpipe/trunk/transport,
 /turf/simulated/floor/greenwhite,
 /area/station/medical/research)
