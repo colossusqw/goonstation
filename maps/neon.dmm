@@ -24677,6 +24677,7 @@
 /obj/machinery/disposal/small/south,
 /obj/disposalpipe/trunk/west,
 /obj/machinery/light_switch/directional/south,
+/obj/storage/crate/freezer/organs,
 /turf/simulated/floor/sanitary,
 /area/station/medical/morgue)
 "rkO" = (
@@ -29055,6 +29056,7 @@
 /obj/item/scalpel,
 /obj/machinery/drainage/big,
 /obj/item/reagent_containers/syringe,
+/obj/random_item_spawner/organs/bloody,
 /turf/simulated/floor/sanitary,
 /area/station/medical/morgue)
 "upj" = (
