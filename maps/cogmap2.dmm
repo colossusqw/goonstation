@@ -28659,10 +28659,6 @@
 /obj/disposalpipe/segment/brig,
 /turf/simulated/floor/black,
 /area/station/hallway/primary/east)
-"bPH" = (
-/obj/disposalpipe/junction/right/west,
-/turf/simulated/floor/black,
-/area/station/hallway/primary/east)
 "bPI" = (
 /obj/machinery/light,
 /obj/disposalpipe/segment/ejection{
@@ -29230,7 +29226,6 @@
 /area/station/security/main)
 "bRq" = (
 /obj/mapping_helper/wingrille_spawn/auto/reinforced,
-/obj/disposalpipe/segment,
 /obj/cable{
 	icon_state = "0-8"
 	},
@@ -29724,19 +29719,15 @@
 /turf/simulated/floor,
 /area/station/security/main)
 "bSS" = (
-/obj/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
+/obj/disposalpipe/junction/middle/south,
 /turf/simulated/floor/red/side{
 	dir = 4
 	},
 /area/station/security/main)
 "bST" = (
 /obj/item/device/radio/intercom/security,
-/obj/machinery/disposal,
 /obj/disposalpipe/trunk{
-	dir = 4
+	dir = 8
 	},
 /obj/machinery/light{
 	dir = 1;
@@ -29744,12 +29735,10 @@
 	pixel_y = 21
 	},
 /obj/decal/stripe_delivery,
+/obj/machinery/disposal,
 /turf/simulated/floor,
 /area/station/security/main)
 "bSU" = (
-/obj/disposalpipe/segment{
-	dir = 4
-	},
 /obj/shrub{
 	dir = 1
 	},
@@ -29760,10 +29749,6 @@
 /turf/simulated/floor/grime,
 /area/station/security/main)
 "bSV" = (
-/obj/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/grime,
 /area/station/security/main)
@@ -133540,7 +133525,7 @@ bMG
 bOh
 bBu
 bBo
-bBo
+bZN
 tTK
 bBo
 bXx
@@ -134444,7 +134429,7 @@ bJj
 bKV
 bMJ
 bOj
-bPH
+bOj
 bRq
 bSV
 bSX
