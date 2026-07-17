@@ -1,5 +1,9 @@
 
 (t)fri jul 17 26
+(u)Sovexe
+(p)26841
+(e)🧫🔊🚨⚙|C-Experimental, C-Sound, A-Admin, A-Internal
+(*)Added backend support for multi-emitter managed positional sounds that dynamically update their position and volume while playing.
 (u)JORJ949
 (p)27153
 (e)💅🧛|C-QoL, A-Gamemodes
