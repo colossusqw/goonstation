@@ -19084,16 +19084,6 @@
 	dir = 5
 	},
 /area/station/hallway/secondary/exit)
-"eRt" = (
-/obj/disposalpipe/segment/mail{
-	dir = 4
-	},
-/obj/machinery/conveyor/NS{
-	id = "zetadisposals";
-	move_lag = 15
-	},
-/turf/simulated/floor/plating,
-/area/station/maintenance/scidisposal)
 "eRx" = (
 /obj/machinery/firealarm/directional/north,
 /turf/simulated/floor/caution/south,
@@ -26848,6 +26838,15 @@
 	dir = 4
 	},
 /area/station/security/processing)
+"jxb" = (
+/obj/machinery/conveyor/WS{
+	id = "garbage";
+	move_lag = 15
+	},
+/obj/machinery/light/small/sticky/frostedred,
+/obj/landmark/disposals_endpoint,
+/turf/simulated/floor/plating,
+/area/station/maintenance/disposal)
 "jxd" = (
 /obj/cable{
 	icon_state = "1-2"
@@ -28842,13 +28841,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/south)
-"kJb" = (
-/obj/machinery/conveyor_switch{
-	id = "garbage"
-	},
-/obj/machinery/light/small/sticky/frostedred,
-/turf/simulated/floor/plating,
-/area/station/maintenance/disposal)
 "kJp" = (
 /obj/decal/cleanable/rust/jen,
 /obj/machinery/light/small/sticky/frostedred,
@@ -30089,6 +30081,17 @@
 	},
 /turf/simulated/floor,
 /area/station/hallway/primary/south)
+"lrV" = (
+/obj/disposalpipe/segment/mail{
+	dir = 4
+	},
+/obj/machinery/conveyor/NS{
+	id = "zetadisposals";
+	move_lag = 15
+	},
+/obj/landmark/disposals_endpoint,
+/turf/simulated/floor/plating,
+/area/station/maintenance/scidisposal)
 "lsq" = (
 /obj/cable{
 	icon_state = "4-8"
@@ -36196,14 +36199,6 @@
 	dir = 10
 	},
 /area/station/medical/medbay/lobby)
-"oCe" = (
-/obj/machinery/conveyor/WS{
-	id = "garbage";
-	move_lag = 15
-	},
-/obj/machinery/light/small/sticky/frostedred,
-/turf/simulated/floor/plating,
-/area/station/maintenance/disposal)
 "oCp" = (
 /obj/machinery/light/incandescent,
 /obj/disposalpipe/segment{
@@ -48168,6 +48163,14 @@
 	dir = 8
 	},
 /area/station/medical/medbay/surgery)
+"vuH" = (
+/obj/machinery/conveyor_switch{
+	id = "garbage";
+	position = 1
+	},
+/obj/machinery/light/small/sticky/frostedred,
+/turf/simulated/floor/plating,
+/area/station/maintenance/disposal)
 "vuZ" = (
 /obj/machinery/power/tracker/aisat,
 /obj/cable/yellow{
@@ -88854,7 +88857,7 @@ bAo
 ggu
 bAq
 otx
-kJb
+vuH
 ekW
 bPg
 bAo
@@ -89455,7 +89458,7 @@ bxS
 srQ
 bzu
 bAq
-oCe
+jxb
 vKg
 bCB
 bBU
@@ -121364,7 +121367,7 @@ ajD
 rYA
 ajA
 pyu
-eRt
+lrV
 sQh
 laX
 jeb
