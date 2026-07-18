@@ -240,25 +240,15 @@
 				R.traitorradio = src
 				if (src.lock_code_autogenerate == 1)
 					R.traitor_frequency = src.generate_code()
+					src.locked = TRUE
 				R.protected_radio = TRUE
-				src.name = R.name
-				src.icon = R.icon
-				src.icon_state = R.icon_state
 				src.origradio = R
 		return
 
 	lock(mob/user)
 		. = ..()
 		if(!.) return //Failed to lock, don't continue.
-		if (!isnull(src.origradio) && istype(src.origradio, /obj/item/device/radio))
-			var/obj/item/device/radio/T = src.origradio
-			src.set_loc(T)
-			T.set_loc(user)
-			user.u_equip(src)
-			user.put_in_hand_or_drop(T)
-			src.set_loc(T)
-			T.set_frequency(initial(T.frequency))
-			T.AttackSelf(user)
+		src.origradio?.ui_interact(user)
 
 	traitor
 		purchase_flags = UPLINK_TRAITOR
