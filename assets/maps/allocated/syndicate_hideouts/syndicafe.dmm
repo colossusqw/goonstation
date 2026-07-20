@@ -73,6 +73,16 @@
 	},
 /turf/simulated/floor/sanitary,
 /area/syndicate_station/hideout)
+"k" = (
+/obj/table/syndicate/auto,
+/obj/item/cloth/towel/black{
+	pixel_y = 7;
+	pixel_x = -4
+	},
+/turf/simulated/floor/redblack{
+	dir = 1
+	},
+/area/syndicate_station/hideout)
 "l" = (
 /obj/storage/crate,
 /obj/item/clothing/gloves/black,
@@ -130,7 +140,6 @@
 /area/syndicate_station/hideout)
 "u" = (
 /obj/item/storage/toilet,
-/obj/item/cloth/towel/black,
 /obj/item/cash_briefcase/syndicate{
 	pixel_y = 5
 	},
@@ -455,7 +464,7 @@ M
 e
 s
 I
-v
+k
 R
 C
 V
