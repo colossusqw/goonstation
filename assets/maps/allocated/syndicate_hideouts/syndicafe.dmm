@@ -107,10 +107,10 @@
 /obj/machinery/light/incandescent/warm{
 	dir = 1
 	},
-/turf/unsimulated/floor/carpet/red/fancy/edge/north,
+/turf/simulated/floor/carpet/red/fancy/edge/north,
 /area/syndicate_station/hideout)
 "o" = (
-/turf/unsimulated/floor/carpet/red/fancy/edge/se,
+/turf/simulated/floor/carpet/red/fancy/edge/se,
 /area/syndicate_station/hideout)
 "p" = (
 /turf/simulated/floor/airless/stairs/wood,
@@ -136,7 +136,7 @@
 /turf/simulated/floor/sanitary,
 /area/syndicate_station/hideout)
 "s" = (
-/turf/unsimulated/floor/carpet/red/fancy/edge/north,
+/turf/simulated/floor/carpet/red/fancy/edge/north,
 /area/syndicate_station/hideout)
 "u" = (
 /obj/item/storage/toilet,
@@ -204,7 +204,7 @@
 /turf/simulated/floor/sanitary,
 /area/syndicate_station/hideout)
 "E" = (
-/turf/unsimulated/floor/carpet/red/fancy/edge/sw,
+/turf/simulated/floor/carpet/red/fancy/edge/sw,
 /area/syndicate_station/hideout)
 "F" = (
 /obj/machinery/light/small/floor/netural,
@@ -229,7 +229,7 @@
 /area/syndicate_station/hideout)
 "I" = (
 /obj/stool/sleek,
-/turf/unsimulated/floor/carpet/red/fancy/edge/south,
+/turf/simulated/floor/carpet/red/fancy/edge/south,
 /area/syndicate_station/hideout)
 "J" = (
 /obj/machinery/chem_dispenser/alcohol,
@@ -320,7 +320,7 @@
 /obj/machinery/light/incandescent/warm{
 	dir = 8
 	},
-/turf/unsimulated/floor/carpet/red/fancy/edge/nw,
+/turf/simulated/floor/carpet/red/fancy/edge/nw,
 /area/syndicate_station/hideout)
 "Q" = (
 /obj/machinery/light/incandescent/warm{
@@ -344,7 +344,7 @@
 	},
 /area/syndicate_station/hideout)
 "U" = (
-/turf/unsimulated/floor/carpet/red/fancy/edge/south,
+/turf/simulated/floor/carpet/red/fancy/edge/south,
 /area/syndicate_station/hideout)
 "V" = (
 /turf/unsimulated/wall/auto/lead/gray,
@@ -357,7 +357,7 @@
 /obj/machinery/light/incandescent/warm{
 	dir = 4
 	},
-/turf/unsimulated/floor/carpet/red/fancy/edge/ne,
+/turf/simulated/floor/carpet/red/fancy/edge/ne,
 /area/syndicate_station/hideout)
 "Y" = (
 /obj/table/syndicate/auto,
