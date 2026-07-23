@@ -1,5 +1,7 @@
 
 (t)thu jul 23 26
+(u)Sord
+(+)Auto injectors filled by a pharmacist don't set their name to the chem inside again. For crime.
 (u)ANNmagedon
 (p)27270
 (e)|
