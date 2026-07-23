@@ -1,7 +1,7 @@
 
 (t)thu jul 23 26
-(u)Sord
-(+)Auto injectors filled by a pharmacist don't set their name to the chem inside again. For crime.
+(u)JORJ949
+(+)Auto injectors filled by a pharmacist have the chem name applied via removable label. All pharmacies now come with a hand labeler. For crime.
 (u)ANNmagedon
 (p)27270
 (e)|
