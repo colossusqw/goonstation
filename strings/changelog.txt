@@ -1,5 +1,9 @@
 
 (t)thu jul 23 26
+(u)GabbySins
+(p)27169
+(e)⚗|A-Chemistry
+(+)The aquaphobic trait found on some species of cat is now properly blocked by wearing sealed spacesuits.
 (u)CelineTheYeen
 (p)27266
 (e)⚗|A-Chemistry
