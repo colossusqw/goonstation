@@ -31149,6 +31149,10 @@
 "bXF" = (
 /obj/table/wood/auto,
 /obj/machinery/light/lamp/green,
+/obj/item/pinpointer/disk{
+	pixel_x = 10;
+	pixel_y = 9
+	},
 /turf/simulated/floor/carpet/arcade,
 /area/station/crew_quarters/captain)
 "bXG" = (
