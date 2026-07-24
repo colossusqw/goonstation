@@ -9276,6 +9276,7 @@
 /obj/machinery/light/incandescent/netural{
 	dir = 1
 	},
+/obj/item/clothing/gloves/latex,
 /turf/simulated/floor/specialroom/medbay,
 /area/station/medical/medbay/pharmacy)
 "aUP" = (

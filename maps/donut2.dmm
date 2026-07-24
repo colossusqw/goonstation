@@ -44816,6 +44816,7 @@
 /obj/cable{
 	icon_state = "0-4"
 	},
+/obj/item/clothing/gloves/latex,
 /turf/simulated/floor/white/checker,
 /area/station/medical/medbay/pharmacy)
 "tAo" = (

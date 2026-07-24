@@ -59656,6 +59656,8 @@
 	},
 /obj/mapping_helper/access/medical,
 /obj/mapping_helper/firedoor_spawn,
+/obj/item/reagent_containers/dropper,
+/obj/item/clothing/gloves/latex,
 /turf/simulated/floor/blueblack{
 	dir = 4
 	},

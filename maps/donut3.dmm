@@ -117,7 +117,6 @@
 /turf/simulated/floor/specialroom/chapel,
 /area/station/chapel/sanctuary)
 "aaE" = (
-/obj/storage/secure/closet/fridge/blood,
 /obj/machinery/light/emergency,
 /turf/simulated/floor/blue,
 /area/station/medical/medbay/treatment)
@@ -8600,6 +8599,7 @@
 	pixel_x = 10
 	},
 /obj/machinery/light/incandescent/netural,
+/obj/submachine/chem_extractor,
 /turf/simulated/floor/black,
 /area/station/medical/medbay/pharmacy)
 "czz" = (
@@ -13889,8 +13889,8 @@
 /turf/simulated/floor/black,
 /area/station/crew_quarters/hop)
 "ekh" = (
-/obj/storage/secure/closet/medical/anesthetic,
 /obj/disposalpipe/segment/mail,
+/obj/storage/secure/closet/medical/medicine,
 /turf/simulated/floor/blue,
 /area/station/medical/medbay/treatment)
 "ekw" = (
@@ -36146,6 +36146,8 @@
 	},
 /obj/mapping_helper/firedoor_spawn,
 /obj/disposalpipe/segment/mail,
+/obj/item/reagent_containers/dropper,
+/obj/item/clothing/gloves/latex,
 /turf/simulated/floor/plating,
 /area/station/medical/medbay/pharmacy)
 "lon" = (
@@ -45999,9 +46001,9 @@
 /turf/simulated/floor,
 /area/station/hallway/primary/east)
 "opl" = (
-/obj/storage/secure/closet/medical/medicine,
 /obj/machinery/light/incandescent/cool,
 /obj/disposalpipe/segment/mail,
+/obj/storage/secure/closet/fridge/blood,
 /turf/simulated/floor/blue,
 /area/station/medical/medbay/treatment)
 "opv" = (
@@ -47763,6 +47765,10 @@
 	dir = 1
 	},
 /area/station/crew_quarters/cafeteria)
+"oQT" = (
+/obj/storage/secure/closet/research/chemical/pharmacy,
+/turf/simulated/floor/black,
+/area/station/medical/medbay/pharmacy)
 "oQW" = (
 /obj/item/storage/wall/fire{
 	dir = 8;
@@ -47989,7 +47995,7 @@
 /obj/machinery/status_display{
 	pixel_x = -32
 	},
-/obj/storage/secure/closet/research/chemical/pharmacy,
+/obj/storage/secure/closet/medical/anesthetic,
 /turf/simulated/floor/blue,
 /area/station/medical/medbay/treatment)
 "oUM" = (
@@ -119681,7 +119687,7 @@ nCi
 hGV
 xfg
 viT
-mgy
+oQT
 pfT
 qgJ
 sUp
